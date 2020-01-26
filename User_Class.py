@@ -5,6 +5,11 @@ class User(object):
         self.name = name
         self.zipcode = str(zipcode)
         self.highly_rated = []
+        self.allergies = []
+        self.food_preferences = []
+        self.cuisines = []
+        self.meal_types = []
+        self.items_in_kitchen = []
 
     # records highly rated recipes that the user likes each week
     def get_highly_rated_recipes(self, recipe_link, rating):
