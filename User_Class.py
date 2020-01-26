@@ -1,7 +1,5 @@
 
 
-
-
 class User(object):
     def __init__(self, name, zipcode, highly_rated):
         self.name = name
