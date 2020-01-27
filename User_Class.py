@@ -6,7 +6,6 @@ class User(object):
         self.zipcode = str(zipcode)
         self.highly_rated = []
         self.allergies = []
-        self.food_preferences = []
         self.cuisines = []
         self.meal_types = []
         self.items_in_kitchen = []
