@@ -5,17 +5,9 @@
 /* DROP TABLE user_info;
 DROP TABLE allergies;  Drops tables completely */
 
-DROP TABLE user_info;
-CREATE TABLE user_info
-  (username VARCHAR(30) NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  zipcode integer,
-  weekly_budget integer,
-  PRIMARY KEY (username)
-  );
-
 /* Deletes table contents */
 DELETE FROM allergies;
+DELETE FROM user_info;
 
 INSERT INTO user_info(username, password, zipcode, weekly_budget)
 VALUES ("testing", "pass123", 60637, 100);
