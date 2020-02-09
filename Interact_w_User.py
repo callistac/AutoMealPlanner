@@ -1,7 +1,7 @@
 from User_Class import User
 
-# An input is requested and stored in a variable
-name = input ("Enter your first and last name: ")
+# This is code for the initial interaction between a user and the program
+name = input("Enter your first and last name: ")
 name = str(name)
 
 zipcode = input("Enter your zipcode: ")
