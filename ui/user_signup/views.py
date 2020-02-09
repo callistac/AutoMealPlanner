@@ -11,6 +11,9 @@ def home(request):
 def new_user(request):
     return render(request, 'user_signup/new_user.html', {})
 
+def about(request):
+    return render(request, 'user_signup/about.html', {})    
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
