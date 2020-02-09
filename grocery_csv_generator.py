@@ -1,7 +1,7 @@
 """
 Grocery JSON Webscrapping Step
 Written by Dylan Sukay
-Sources: 
+Sources:
 For learning how to conviently access the data in the infinite scroll
 https://ianlondon.github.io/blog/web-scraping-discovering-hidden-apis/
 """
@@ -92,12 +92,12 @@ n=0
 allproducts = []
 while remaining > 0:
     json_url = (hpp_url0 + "{}" + hpp_url1).format(n)
-    raw = requests.get(json_url).text 
+    raw = requests.get(json_url).text
     data = json.loads(raw)
     products = data['products']
 
-    for product in products:                                                                                                                     
-        productinfo = re.findall("[\t]{6}.*", product) 
+    for product in products:
+        productinfo = re.findall("[\t]{6}.*", product)
         nameandquant = (productinfo[0][6:len(productinfo[0])])
         price = (productinfo[2][6:len(productinfo[2])])
 
@@ -123,9 +123,9 @@ while remaining > 0:
         #split up names, quantities, and prices
         priceperquant = re.split("/", price)
         if len(priceperquant) == 2:
-            name = remove_from_string("-", nameandquant, 
+            name = remove_from_string("-", nameandquant,
                             "everythingafter")
-            priceperquant[0] = remove_from_string("each", priceperquant[0], 
+            priceperquant[0] = remove_from_string("each", priceperquant[0],
                                 "everythingbefore")
             priceperquant[0] = priceperquant[0]
             pricequant = priceperquant[0] + " " + priceperquant[1]
@@ -137,10 +137,10 @@ while remaining > 0:
             nameandquantlist2= re.split(", ", nameandquant)
             price = remove_from_string("each", price, "everythingafter")
             if len(nameandquantlist) == 2:
-                productlist = [nameandquantlist[0], None, nameandquantlist[1], 
+                productlist = [nameandquantlist[0], None, nameandquantlist[1],
                     price]
             elif len(nameandquantlist2) == 2:
-                productlist = [nameandquantlist2[0], None, nameandquantlist2[1], 
+                productlist = [nameandquantlist2[0], None, nameandquantlist2[1],
                     price]
             elif len(priceperquant) == 2:
                 productlist = [priceperquant[0], priceperquant[0][2:(
