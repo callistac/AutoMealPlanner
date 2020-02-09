@@ -27,6 +27,10 @@ blank_url0 = "https://www.mercato.com/shop/products/hyde-park-produce?offset="
 blank_url1 =  "&ajax=true&productCategoryId=&resetFilters=false&national" +\
             "Shipping=false&deliveryOrPickup=true"
 
+with open("hydeparkproduce.txt", 'w') as txtfile:
+    txtfile.write("Product, PricePerQuant, Quant, PricePerThing \n")
+    txtfile.close()
+
 strings_to_remove =  ["C&amp;W "]
 remaining = 1
 n=0
@@ -79,13 +83,10 @@ while remaining > 0:
 
         allproducts.append(productlist)
         print(productlist)
+
+        with open("hydeparkproduce.txt", 'a') as csv:
+            csv.write(str(productlist) + ' \n')
+            csv.close()
     remaining = data['remaining']
     n = len(allproducts)
     print(remaining)
-
-
-with open("hydeparkproduce.csv", 'w') as csv:
-    csv.write("#[Product, PricePerQuant, Quant, PricePerThing] \n")
-    for x in allproducts:
-        csv.write(str(x)[1:len(x)])
-        csv.close()
