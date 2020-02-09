@@ -20,5 +20,5 @@ from user_interface import views
 urlpatterns = [
     path('', views.login_redirect, name="login_redirect"),
     path('admin/', admin.site.urls),
-    path('home/', include('user_signup.urls')),
+    path('home/', include('user_signup.urls'))
 ]
