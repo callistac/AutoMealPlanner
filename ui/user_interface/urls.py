@@ -25,3 +25,4 @@ urlpatterns = [
     path('home/', include('user_signup.urls')),
     path('home/login/about/.', views.about_redirect, name = 'about_redirect')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
