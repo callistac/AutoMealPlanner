@@ -12,7 +12,10 @@ def new_user(request):
     return render(request, 'user_signup/new_user.html', {})
 
 def about(request):
-    return render(request, 'user_signup/about.html', {})    
+    return render(request, 'user_signup/about.html', {})
+
+def about_redirect(request):
+    return redirect('/home/about')
 
 def register(request):
     if request.method == 'POST':
