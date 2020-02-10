@@ -11,5 +11,6 @@ urlpatterns = [
     path('login/new_user/', views.register, name='user_signup/new_user.html'),
     path('about/', views.about, name='user_signup/about.html'),
     path('about/.', views.about_redirect, name = 'about_redirect'),
-    path('login/new_user/user_info', views.user_info, name='user_info')
+    path('login/new_user/user_info', views.user_info, name='user_info'),
+    path('dashboard/', views.profile, name='user_dash')
 ]

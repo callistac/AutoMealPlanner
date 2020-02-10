@@ -2,24 +2,45 @@
 
 {% block body %}
 <div class="container">
-  <h2>Input Name, Zipcode, Weekly Budget ... </h2>
+  <h2>Input more information! </h2>
+  <br>
   <form method="POST">
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Email address</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="col">
+        <label for="inputEmail4">First name </label>
+        <input type="text" class="form-control" placeholder="First name", name="firstname">
+      </div>
+      <div class="col">
+        <label for="inputEmail4">Last name </label>
+        <input type="text" class="form-control" placeholder="Last name", name="lastname">
+      </div>
     </div>
+    <br>
+    <div class="form-row">
+      <div class="col">
+        <label for="inputEmail4">Email address </label>
+        <input type="text" class="form-control" placeholder="Email address", name="email">
+      </div>
+      <div class="col">
+        <label for="inputEmail4">Zipcode </label>
+        <input type="text" class="form-control" placeholder="Zipcode", name="zipcode">
+      </div>
+    </div>
+    <br>
     <div class="form-group">
-      <label for="exampleFormControlSelect1">Example select</label>
+      <label for="exampleFormControlSelect1">Weekly Budget (this can be changed later!)</label>
       <select class="form-control" id="exampleFormControlSelect1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+        <option><No budget</option>
+        <option><$40</option>
+        <option>$40-60</option>
+        <option>$60-80</option>
+        <option>$80-100</option>
+        <option>>$100</option>
       </select>
     </div>
     <div class="form-group">
-      <label for="exampleFormControlSelect2">Example multiple select</label>
+      <label for="exampleFormControlSelect2">Laziness (this can be changed later!)</label>
       <select multiple class="form-control" id="exampleFormControlSelect2">
         <option>1</option>
         <option>2</option>
@@ -28,11 +49,7 @@
         <option>5</option>
       </select>
     </div>
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Example textarea</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
-     Dietary Restrictions
+     Dietary Restrictions (select all that apply)
     <div class="form-check">
        <input class="form-check-input" type="checkbox" id="gridCheck1">
        <label class="form-check-label" for="gridCheck1">
