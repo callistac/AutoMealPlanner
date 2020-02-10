@@ -22,18 +22,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.login_redirect, name="login_redirect"),
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
-<<<<<<< HEAD
-    path('home/', include('user_signup.urls'))
-]
-=======
     path('home/', include('user_signup.urls')),
     path('home/login/about/.', views.about_redirect, name = 'about_redirect')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
->>>>>>> master
-=======
-    path('home/', include('user_signup.urls')),
-    path('home/login/about/.', views.about_redirect, name = 'about_redirect')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
->>>>>>> c5e4a8df16800e2cb5a04293b16628922dc6d8c5
