@@ -83,7 +83,7 @@ hpp_url1 =  "&ajax=true&productCategoryId=&resetFilters=false&national" +\
             "Shipping=false&deliveryOrPickup=true"
 
 with open("hydeparkproduce.txt", 'w') as txtfile:
-    txtfile.write("Product, PricePerQuant, Quant, PricePerThing \n")
+    txtfile.write("#[Product, PricePerQuant, Quant, PricePerThing] \n")
     txtfile.close()
 
 strings_to_remove =  ["C&amp;W ", "&amp"]
@@ -96,7 +96,7 @@ while remaining > 0:
     data = json.loads(raw)
     products = data['products']
 
-    for product in products:                                                                                                                     
+    for product in products:                                                                                                                
         productinfo = re.findall("[\t]{6}.*", product) 
         nameandquant = (productinfo[0][6:len(productinfo[0])])
         price = (productinfo[2][6:len(productinfo[2])])
@@ -104,21 +104,29 @@ while remaining > 0:
         for string in strings_to_remove:
             nameandquant = remove_from_string(string, nameandquant)
             price = remove_from_string(string, price)
+
         nameandquant = remove_from_string("<", nameandquant, "everythingafter")
         price = remove_from_string("<", price, "everythingafter")
 
+        #If the name was too long to have in the preview json, it will end
+        #with "...". Get the link to the product page and get the full name.
         checkiffulltitle = re.findall(".*\.\.\.", nameandquant)
         if checkiffulltitle != []:
             product_url = re.findall("https://www.*", product)[0]
-            request = get_request(product_url)
+            request = get_request(product_url[0:-1]) 
+            #get_request(...) ends with " since it was a string in the json, 
+            #we have to remove that or it will go to an error page.
             request_html = read_request(request)
-            soup = bs4.BeautifulSoup(request_html, "html5lib")
-            body = soup.find("body")
-            z = body.contents
-            for x in z:
-                print(x)
-                print(" ")
-            #print(div2)
+            soup = bs4.BeautifulSoup(request_html, "html.parser")
+            nameandquant0 = str(soup.find_all("h1",
+                class_="product-detail-info__main-text"))
+            nameandquant = remove_from_string("<h1 class=" +\
+                "\"product-detail-info__main-text\">\n", nameandquant0)
+            nameandquant = remove_from_string("</h1>", nameandquant)
+            nameandquant = nameandquant[1:(len(nameandquant)-1)] #get rid of []
+            
+            for string in strings_to_remove:
+                nameandquant = remove_from_string(string, nameandquant)
 
         #split up names, quantities, and prices
         priceperquant = re.split("/", price)
@@ -129,33 +137,43 @@ while remaining > 0:
                                 "everythingbefore")
             priceperquant[0] = priceperquant[0]
             pricequant = priceperquant[0] + " " + priceperquant[1]
-            productlist = [name, pricequant[2:(len(pricequant
-                            )-1)] , None, None]
+            productlist = [name, pricequant[2:(
+                                len(pricequant)-1)] , None, None]
         elif len(priceperquant) == 1:
             priceperquant = re.split(" per ", price)
             nameandquantlist= re.split("-", nameandquant)
-            nameandquantlist2= re.split(", ", nameandquant)
+            #sometimes instead of denoting the start of the quantity with a
+            #dash, hpp uses a comma, so we must also check for that.
+            if len(nameandquantlist) != 2:
+                #splits for ", 32 " or ", 1/", as in ", 32 oz." or 
+                #", 1/2 gallon". Just ",\s\d" catches "100% pure tea" etc.
+                nameandquantlist2= re.split(",\s\d*[\s/]", nameandquant)
+                #put the \d*[\s/] part back in
+                if len(nameandquantlist2) == 2:
+                    a = re.findall(",\s\d.*", nameandquant)[0]
+                    nameandquantlist2[1] = a[2:len(a)]
+
             price = remove_from_string("each", price, "everythingafter")
+            price = re.findall("[\d]*\.[\d]{2}", price)[0] #exclude $ sign
             if len(nameandquantlist) == 2:
                 productlist = [nameandquantlist[0], None, nameandquantlist[1], 
                     price]
-            elif len(nameandquantlist2) == 2:
+            elif len(nameandquantlist2) == 2: 
                 productlist = [nameandquantlist2[0], None, nameandquantlist2[1], 
                     price]
             elif len(priceperquant) == 2:
-                productlist = [priceperquant[0], priceperquant[0][2:(
-                    len(pricequant)-1)] , None, None]
+                productlist = [nameandquantlist[0], priceperquant[0] +\
+                    " " + priceperquant[1], None , None] #!!!
             else:
                 productlist = [nameandquantlist[0], None, None, price]
         else:
             print("no price for this item" + str(nameandquant))
-
         allproducts.append(productlist)
-        #print(productlist)
 
         with open("hydeparkproduce.txt", 'a') as csv:
             csv.write(str(productlist) + ' \n')
             csv.close()
+
     remaining = data['remaining']
     n = len(allproducts)
     print(remaining)
