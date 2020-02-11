@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from user_interface import views
+from user_interface import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.login_redirect, name="login_redirect"),
     path('admin/', admin.site.urls),
     path('home/', include('user_signup.urls')),
-]
+    path('home/login/about/.', views.about_redirect, name = 'about_redirect'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

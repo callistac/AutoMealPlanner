@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+{% load static %}
+<img style="width: 200px; height: 247px;"
+alt="Image description"
+ src="{% static 'user_signup/p4.jpg' %}"/>
+</body>
+</html>
+{% endblock %}
