@@ -14,3 +14,5 @@ urlpatterns = [
     path('login/new_user/user_info', views.user_info, name='user_info'),
     path('dashboard/', views.profile, name='user_dash')
 ]
+
+#path('login/new_user/user_info', views.User_Info.as_view(), name='user_info')

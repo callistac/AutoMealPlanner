@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
+from user_signup.models import User_Data_Posts
 
 class CustomForm(forms.ModelForm):
+    post = forms.CharField()
     class Meta:
-        fields = (
-            'email',
-        )
+        model = User_Data_Posts
+        fields = ('post',)

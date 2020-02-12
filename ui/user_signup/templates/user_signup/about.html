@@ -6,13 +6,15 @@
 <title>Page Title</title>
 </head>
 <body>
+<div class="container">
+  <h1>This is a Heading</h1>
+  <p>This is a paragraph.</p>
+  {% load static %}
+  <img style="width: 200px; height: 247px;"
+  alt="Image description"
+   src="{% static 'user_signup/p4.jpg' %}"/>
+</div>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-{% load static %}
-<img style="width: 200px; height: 247px;"
-alt="Image description"
- src="{% static 'user_signup/p4.jpg' %}"/>
 </body>
 </html>
 {% endblock %}
