@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 
-<h1>Home</h1>
-{% block head %}
-<title>Home</title>
-{% endblock %}
-
 {% block body %}
-<h1>Welcome!</h1>
 
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+
+<div class="container">
+  <h1>Welcome!</h1>
+  {% load static %}
+  <img
+  alt="Image description"
+   src="{% static 'user_signup/food.png' %}"/>
+
+</div>
+
+
+
+
+
+</body>
+</html>
 {% endblock %}
