@@ -71,3 +71,15 @@ def profile(request):
     args = {'user': request.user}
 
     return render(request, 'user_signup/dashboard.html', args)
+
+def user_preferences(request):
+    if request.method == 'POST':
+        print(request.POST.getlist('firstname'))
+        form = CustomForm(request.POST)
+        messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
+        return redirect("/home/dashboard")
+    else:
+        form = UserCreationForm()
+        args = {"form":form}
+
+        return render(request, 'user_signup/user_preferences.html', args)
