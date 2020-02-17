@@ -25,7 +25,7 @@ def user_info(request):
         print(request.POST.getlist('firstname'))
         form = CustomForm(request.POST)
         messages.add_message(request, messages.SUCCESS, 'You have signed up successfully!')
-        return redirect("/home/dashboard")
+        return redirect("/home/login")
     else:
         form = UserCreationForm()
         args = {"form":form}
