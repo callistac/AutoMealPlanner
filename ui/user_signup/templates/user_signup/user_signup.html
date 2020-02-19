@@ -4,6 +4,21 @@
 <br>
 <br>
 <div class="container">
+  <div>
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <div class = 'alert alert-dismissible alert-success' role = 'alert'>
+      <button onclick="window.location.href = '/home/login';" type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+    <span aria-hidden="true">&times;</span>
+  </button>
+  {{ message }}
+      </div>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
   <h1>Welcome</h1>
   <p>
     You can log in here!
@@ -24,5 +39,7 @@
     <a href="#">Forgot your password?</a>
   </div>
 </div>
+
+
 
 {% endblock %}
