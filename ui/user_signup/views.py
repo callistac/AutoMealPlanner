@@ -4,7 +4,12 @@ from django.contrib.auth.models import User
 from user_signup.forms import CustomForm
 from django.views.generic import TemplateView
 from django.contrib import messages
+from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
+from user_signup.models import User_Data
+
+
 def user_signup(request):
     return render(request, 'user_signup/user_signup.html', {})
 
@@ -31,6 +36,18 @@ def user_info(request):
         args = {"form":form}
 
         return render(request, 'user_signup/user_information.html', args)
+
+class User_Entry(CreateView):
+    model = User_Data
+    fields = ['firstname', 'lastname', 'email', 'zip', 'budget', 'laziness']
+
+class User_Update(UpdateView):
+    model = User_Data
+    fields = ['firstname', 'lastname', 'email', 'zip', 'budget', 'laziness']
+
+
+
+
 '''
 class User_Info(TemplateView):
     template_name = 'user_signup/user_information.html'
