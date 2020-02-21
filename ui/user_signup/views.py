@@ -6,8 +6,10 @@ from django.views.generic import TemplateView
 from django.contrib import messages
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.forms import CheckboxSelectMultiple
+from django import forms
 # Create your views here.
-from user_signup.models import User_Data
+from user_signup.models import User_Data, User_Diet
 
 
 def user_signup(request):
@@ -39,12 +41,14 @@ def user_info(request):
 
 class User_Entry(CreateView):
     model = User_Data
-    fields = ['firstname', 'lastname', 'email', 'zip', 'budget', 'laziness']
+    fields = ['firstname', 'lastname', 'email', 'zip', 'budget', 'laziness', 'dietary_restrictions']
+    widgets = {'dietary_restrictions': CheckboxSelectMultiple}
+    #fields = ['dietary_restrictions']
 
 class User_Update(UpdateView):
     model = User_Data
     fields = ['firstname', 'lastname', 'email', 'zip', 'budget', 'laziness']
-
+    manyfields = ['dietary_restrictions']
 
 
 
