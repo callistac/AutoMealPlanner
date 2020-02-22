@@ -8,6 +8,7 @@ from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.forms import CheckboxSelectMultiple
 from django import forms
+from django.http import Http404
 # Create your views here.
 from user_signup.models import User_Data, User_Diet
 
@@ -46,28 +47,35 @@ class User_Update(UpdateView):
     manyfields = ['dietary_restrictions']
 
 
-'''
 class User_Info(TemplateView):
-    template_name = 'user_signup/user_information.html'
+    #template_name = 'user_signup/user_information.html'
+    template_name = 'user_signup/user_data_form.html'
+
     def get(self, request):
         form = CustomForm()
         return render(request, self.template_name, {'form':form})
 
     def post(self, request):
+        print(request.POST)
         form = CustomForm(request.POST)
+        print(form.fields['dietary_restrictions'].choices)
+        #print(form)
+        print(form.errors)
         if form.is_valid():
+            print("HELLO")
             post = form.save(commit = False)
+            print(post)
             post.user = request.user
             print(post.user)
             post.save()
             # post below comes from initalization in forms.py
-            text = form.cleaned_data['post']
+            text = form.cleaned_data['firstname']
             form = CustomForm()
             return redirect('/home/dashboard')
 
-        args = {'form':form, 'text':text}
+        args = {'form':form}
         return render(request, self.template_name, args)
-'''
+
 def about_redirect(request):
     return redirect('/home/about')
 

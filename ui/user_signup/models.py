@@ -10,19 +10,22 @@ from django import forms
 # Create your models here.
 
 class User_Diet(models.Model):
-    dietary_restrictions = models.CharField(max_length = 10, default = '')
-    #dietary_restrictions = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,choices = DIETARY_CHOICES)
+    """
+    DIETARY_CHOICES = [
+    ('Vegetarian', 'Vegetarian'),
+    ('Vegan', 'Vegan')
+    ]
+    """
+    #dietary_restrictions = models.CharField(max_length = 10, default = 'None', choices = DIETARY_CHOICES)
+    dietary_restrictions = models.CharField(max_length = 10, default = 'None')
+
     def __str__(self):
+        #return f'{self.dietary_restrictions}'
         return self.dietary_restrictions
 
 
 class User_Data(models.Model):
     #user = models.ForeignKey(User, on_delete=models.CASCADE, default='')
-    """
-    formfield_overrides = {
-        models.ManyToManyField: {'widget': CheckboxSelectMultiple},
-    }
-    """
 
     BUDGET_CHOICES = [
         ('<$40', '<$40'),
@@ -42,7 +45,8 @@ class User_Data(models.Model):
 
     DIETARY_CHOICES = [
     ('Vegetarian', 'Vegetarian'),
-    ('Vegan', 'Vegan')
+    ('Vegan', 'Vegan'),
+    ('Peanut', 'Peanut')
     ]
 
     firstname = models.CharField(max_length=500, default='')
@@ -51,7 +55,8 @@ class User_Data(models.Model):
     zip = models.PositiveIntegerField()
     budget = models.CharField(max_length=500, default='', choices = BUDGET_CHOICES)
     laziness = models.CharField(max_length = 50, default = '', choices = LAZINESS_CHOICES)
-    dietary_restrictions = models.ManyToManyField(User_Diet, blank=True, choices = DIETARY_CHOICES)
+    dietary_restrictions = models.ManyToManyField(User_Diet, default = "", choices=DIETARY_CHOICES)
+
 
     def get_absolute_url(self):
         #return HttpResponseRedirect(reverse('login'))
