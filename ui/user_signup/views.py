@@ -11,21 +11,17 @@ from django import forms
 # Create your views here.
 from user_signup.models import User_Data, User_Diet
 
-
 def user_signup(request):
     return render(request, 'user_signup/user_signup.html', {})
 
 def home(request):
     return render(request, 'user_signup/home.html', {})
 
-
 def new_user(request):
     return render(request, 'user_signup/new_user.html', {})
 
 def about(request):
-
     return render(request, 'user_signup/about.html', {})
-
 
 def user_info(request):
     if request.method == 'POST':
@@ -43,13 +39,11 @@ class User_Entry(CreateView):
     model = User_Data
     fields = ['firstname', 'lastname', 'email', 'zip', 'budget', 'laziness', 'dietary_restrictions']
     widgets = {'dietary_restrictions': CheckboxSelectMultiple}
-    #fields = ['dietary_restrictions']
 
 class User_Update(UpdateView):
     model = User_Data
     fields = ['firstname', 'lastname', 'email', 'zip', 'budget', 'laziness']
     manyfields = ['dietary_restrictions']
-
 
 
 '''
@@ -90,7 +84,6 @@ def register(request):
 
 def profile(request):
     args = {'user': request.user}
-
     return render(request, 'user_signup/dashboard.html', args)
 
 def user_preferences(request):

@@ -5,21 +5,25 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.forms import CheckboxSelectMultiple
+from django.forms.widgets import CheckboxSelectMultiple
 from django import forms
 # Create your models here.
 
 class User_Diet(models.Model):
-    DIETARY_CHOICES = [
-    ('Vegetarian', 'Vegetarian'),
-    ('Vegan', 'Vegan')
-    ]
-
-    dietary_restrictions = models.CharField(max_length = 10, default = '', choices = DIETARY_CHOICES)
+    dietary_restrictions = models.CharField(max_length = 10, default = '')
     #dietary_restrictions = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple,choices = DIETARY_CHOICES)
+    def __str__(self):
+        return self.dietary_restrictions
 
 
 class User_Data(models.Model):
     #user = models.ForeignKey(User, on_delete=models.CASCADE, default='')
+    """
+    formfield_overrides = {
+        models.ManyToManyField: {'widget': CheckboxSelectMultiple},
+    }
+    """
+
     BUDGET_CHOICES = [
         ('<$40', '<$40'),
         ('$40-60', '$40-60'),
@@ -36,13 +40,18 @@ class User_Data(models.Model):
     ('5','5')
     ]
 
+    DIETARY_CHOICES = [
+    ('Vegetarian', 'Vegetarian'),
+    ('Vegan', 'Vegan')
+    ]
+
     firstname = models.CharField(max_length=500, default='')
     lastname = models.CharField(max_length=500, default='')
     email = models.EmailField(max_length=500, default='')
     zip = models.PositiveIntegerField()
     budget = models.CharField(max_length=500, default='', choices = BUDGET_CHOICES)
     laziness = models.CharField(max_length = 50, default = '', choices = LAZINESS_CHOICES)
-    dietary_restrictions = models.ManyToManyField('User_Diet', blank=True)
+    dietary_restrictions = models.ManyToManyField(User_Diet, blank=True, choices = DIETARY_CHOICES)
 
     def get_absolute_url(self):
         #return HttpResponseRedirect(reverse('login'))
