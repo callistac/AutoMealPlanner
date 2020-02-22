@@ -85,8 +85,9 @@ hpp_url0 = "https://www.mercato.com/shop/products/hyde-park-produce?offset="
 hpp_url1 =  "&ajax=true&productCategoryId=&resetFilters=false&national" +\
             "Shipping=false&deliveryOrPickup=true"
 
-with open("hydeparkproduce.txt", 'w') as txtfile:
-    txtfile.write("#[Product, PricePerQuant, Quant, PricePerThing] \n")
+
+with open("hpp_products.txt", 'w') as txtfile:
+    txtfile.write("#Product| PricePerQuant| Quant| PricePerThing \n")
     txtfile.close()
 
 strings_to_remove =  ["C&amp;W ", "&amp"]
@@ -107,7 +108,7 @@ while remaining > 0:
             nameandquant = remove_from_string(string, nameandquant)
             price = remove_from_string(string, price)
         nameandquant = re.sub(r'&amp;', '&', nameandquant)
-        price = re.sub(r'&amp;', '&', price)
+        price = re.sub(r'&amp;', '&', price) #replace &amp; with &
 
         nameandquant = remove_from_string("<", nameandquant, "everythingafter")
         price = remove_from_string("<", price, "everythingafter")
@@ -178,8 +179,9 @@ while remaining > 0:
             print("no price for this item" + str(nameandquant))
         allproducts.append(productlist)
 
-        with open("hydeparkproduce.txt", 'a') as txtfile:
-            txtfile.write(str(productlist) + ' \n')
+        with open("hpp_products.txt", 'a') as txtfile:
+            txtfile.write(str(productlist[0])+ "| " +str(productlist[1])+ "| "+\
+                str(productlist[2])+ "| "+str(productlist[3]) + " \n")
             txtfile.close()
 
     remaining = data['remaining']
