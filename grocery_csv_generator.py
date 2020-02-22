@@ -10,7 +10,10 @@ import json
 import re
 import csv
 import bs4
-import urllib.parse
+try:
+    from urllib.parse import urlparse
+except ImportError:
+    from urlparse import urlparse
 
 #from pa2
 def get_request(url):
@@ -75,7 +78,7 @@ def is_absolute_url(url):
     '''
     if url == "":
         return False
-    return urllib.parse.urlparse(url).netloc != ""
+    return urlparse(url).netloc != ""
 
 
 hpp_url0 = "https://www.mercato.com/shop/products/hyde-park-produce?offset="
@@ -96,19 +99,15 @@ while remaining > 0:
     data = json.loads(raw)
     products = data['products']
 
-<<<<<<< HEAD
     for product in products:                                                                                                                
-        productinfo = re.findall("[\t]{6}.*", product) 
-=======
-    for product in products:
         productinfo = re.findall("[\t]{6}.*", product)
->>>>>>> 73b3c5ff66f98cf7623e86d47f8e6f41c18fdf01
         nameandquant = (productinfo[0][6:len(productinfo[0])])
         price = (productinfo[2][6:len(productinfo[2])])
-
         for string in strings_to_remove:
             nameandquant = remove_from_string(string, nameandquant)
             price = remove_from_string(string, price)
+        nameandquant = re.sub(r'&amp;', '&', nameandquant)
+        price = re.sub(r'&amp;', '&', price)
 
         nameandquant = remove_from_string("<", nameandquant, "everythingafter")
         price = remove_from_string("<", price, "everythingafter")
@@ -132,6 +131,7 @@ while remaining > 0:
             
             for string in strings_to_remove:
                 nameandquant = remove_from_string(string, nameandquant)
+            nameandquant = re.sub(r'&amp;', '&', nameandquant)
 
         #split up names, quantities, and prices
         priceperquant = re.split("/", price)
@@ -147,19 +147,21 @@ while remaining > 0:
         elif len(priceperquant) == 1:
             priceperquant = re.split(" per ", price)
             nameandquantlist= re.split("-", nameandquant)
+            #re.split this part
             #sometimes instead of denoting the start of the quantity with a
             #dash, hpp uses a comma, so we must also check for that.
             if len(nameandquantlist) != 2:
                 #splits for ", 32 " or ", 1/", as in ", 32 oz." or 
                 #", 1/2 gallon". Just ",\s\d" catches "100% pure tea" etc.
                 nameandquantlist2= re.split(",\s\d*[\s/]", nameandquant)
-                #put the \d*[\s/] part back in
                 if len(nameandquantlist2) == 2:
+                    #put the \d*[\s/] part back in
                     a = re.findall(",\s\d.*", nameandquant)[0]
                     nameandquantlist2[1] = a[2:len(a)]
 
             price = remove_from_string("each", price, "everythingafter")
             price = re.findall("[\d]*\.[\d]{2}", price)[0] #exclude $ sign
+
             if len(nameandquantlist) == 2:
                 productlist = [nameandquantlist[0], None, nameandquantlist[1],
                     price]
@@ -171,13 +173,14 @@ while remaining > 0:
                     " " + priceperquant[1], None , None] #!!!
             else:
                 productlist = [nameandquantlist[0], None, None, price]
+
         else:
             print("no price for this item" + str(nameandquant))
         allproducts.append(productlist)
 
-        with open("hydeparkproduce.txt", 'a') as csv:
-            csv.write(str(productlist) + ' \n')
-            csv.close()
+        with open("hydeparkproduce.txt", 'a') as txtfile:
+            txtfile.write(str(productlist) + ' \n')
+            txtfile.close()
 
     remaining = data['remaining']
     n = len(allproducts)
