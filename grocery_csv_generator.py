@@ -86,7 +86,7 @@ hpp_url1 =  "&ajax=true&productCategoryId=&resetFilters=false&national" +\
             "Shipping=false&deliveryOrPickup=true"
 
 
-with open("hpp_products.txt", 'w') as txtfile:
+with open("hpp_products1.txt", 'w') as txtfile:
     txtfile.write("#Product| PricePerQuant| Quant| PricePerThing \n")
     txtfile.close()
 
@@ -111,8 +111,8 @@ while remaining > 0:
         price = re.sub(r'&amp;', '&', price) #replace &amp; with &
 
         nameandquant = remove_from_string("<", nameandquant, "everythingafter")
+        nameandquant = remove_from_string(">\n", nameandquant, "everythingbefore")
         price = remove_from_string("<", price, "everythingafter")
-
         #If the name was too long to have in the preview json, it will end
         #with "...". Get the link to the product page and get the full name.
         checkiffulltitle = re.findall(".*\.\.\.", nameandquant)
@@ -125,14 +125,12 @@ while remaining > 0:
             soup = bs4.BeautifulSoup(request_html, "html.parser")
             nameandquant0 = str(soup.find_all("h1",
                 class_="product-detail-info__main-text"))
-            nameandquant = remove_from_string("<h1 class=" +\
-                "\"product-detail-info__main-text\">\n", nameandquant0)
-            nameandquant = remove_from_string("</h1>", nameandquant)
-            nameandquant = nameandquant[1:(len(nameandquant)-1)] #get rid of []
-            
             for string in strings_to_remove:
-                nameandquant = remove_from_string(string, nameandquant)
-            nameandquant = re.sub(r'&amp;', '&', nameandquant)
+                nameandquant0 = remove_from_string(string, nameandquant0)
+            nameandquant0 = re.sub(r'&amp;', '&', nameandquant0)
+
+            nameandquant = re.findall(nameandquant[0:5]+".*", nameandquant0)[0]
+            nameandquant = remove_from_string("</h1>]", nameandquant)
 
         #split up names, quantities, and prices
         priceperquant = re.split("/", price)
@@ -148,6 +146,12 @@ while remaining > 0:
         elif len(priceperquant) == 1:
             priceperquant = re.split(" per ", price)
             nameandquantlist= re.split("-", nameandquant)
+            #sometimes "-" doesn't indicate quant and is just in the name, 
+            #this catches those cases.
+            if len(nameandquantlist) >1:
+                if re.findall("[0-9]", nameandquantlist[1]) == []:
+                    nameandquantlist = [nameandquant]
+                
             #re.split this part
             #sometimes instead of denoting the start of the quantity with a
             #dash, hpp uses a comma, so we must also check for that.
@@ -179,7 +183,7 @@ while remaining > 0:
             print("no price for this item" + str(nameandquant))
         allproducts.append(productlist)
 
-        with open("hpp_products.txt", 'a') as txtfile:
+        with open("hpp_products1.txt", 'a') as txtfile:
             txtfile.write(str(productlist[0])+ "| " +str(productlist[1])+ "| "+\
                 str(productlist[2])+ "| "+str(productlist[3]) + " \n")
             txtfile.close()
