@@ -9,45 +9,38 @@ from django.forms.widgets import CheckboxSelectMultiple
 from django import forms
 # Create your models here.
 
-class User_Diet(models.Model):
-    """
-    DIETARY_CHOICES = [
-    ('Vegetarian', 'Vegetarian'),
-    ('Vegan', 'Vegan')
-    ]
-    """
-    #dietary_restrictions = models.CharField(max_length = 10, default = 'None', choices = DIETARY_CHOICES)
-    dietary_restrictions = models.CharField(max_length = 10, default = 'None')
+BUDGET_CHOICES = [
+    ('<$40', '<$40'),
+    ('$40-60', '$40-60'),
+    ('$60-80', '$60-80'),
+    ('$80-100', '$80-100'),
+    ('>$100', '>$100')
+]
 
-    def __str__(self):
-        #return f'{self.dietary_restrictions}'
-        return self.dietary_restrictions
-
-
-class User_Data(models.Model):
-    #user = models.ForeignKey(User, on_delete=models.CASCADE, default='')
-
-    BUDGET_CHOICES = [
-        ('<$40', '<$40'),
-        ('$40-60', '$40-60'),
-        ('$60-80', '$60-80'),
-        ('$80-100', '$80-100'),
-        ('>$100', '>$100')
-    ]
-
-    LAZINESS_CHOICES = [
+LAZINESS_CHOICES = [
     ('1', '1'),
     ('2', '2'),
     ('3','3'),
     ('4', '4'),
     ('5','5')
-    ]
+]
 
-    DIETARY_CHOICES = [
+DIETARY_CHOICES = [
     ('Vegetarian', 'Vegetarian'),
     ('Vegan', 'Vegan'),
     ('Peanut', 'Peanut')
-    ]
+]
+
+class User_Diet(models.Model):
+
+    dietary_restrictions = models.CharField(max_length = 10, default = 'None')
+    #dietary_restrictions = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.dietary_restrictions
+
+class User_Data(models.Model):
+
 
     firstname = models.CharField(max_length=500, default='')
     lastname = models.CharField(max_length=500, default='')
@@ -57,7 +50,5 @@ class User_Data(models.Model):
     laziness = models.CharField(max_length = 50, default = '', choices = LAZINESS_CHOICES)
     dietary_restrictions = models.ManyToManyField(User_Diet, default = "", choices=DIETARY_CHOICES)
 
-
     def get_absolute_url(self):
-        #return HttpResponseRedirect(reverse('login'))
         return reverse('login')
