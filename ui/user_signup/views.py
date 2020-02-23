@@ -36,19 +36,7 @@ def user_info(request):
 
         return render(request, 'user_signup/user_information.html', args)
 
-class User_Entry(CreateView):
-    model = User_Data
-    fields = ['firstname', 'lastname', 'email', 'zip', 'budget', 'laziness', 'dietary_restrictions']
-    widgets = {'dietary_restrictions': CheckboxSelectMultiple}
-
-class User_Update(UpdateView):
-    model = User_Data
-    fields = ['firstname', 'lastname', 'email', 'zip', 'budget', 'laziness']
-    manyfields = ['dietary_restrictions']
-
-
 class User_Info(TemplateView):
-    #template_name = 'user_signup/user_information.html'
     template_name = 'user_signup/user_data_form.html'
 
     def get(self, request):
@@ -56,10 +44,10 @@ class User_Info(TemplateView):
         return render(request, self.template_name, {'form':form})
 
     def post(self, request):
+        print("post:", request.POST['dietary_restrictions'])
         print(request.POST)
         form = CustomForm(request.POST)
-        print(form.fields['dietary_restrictions'].choices)
-        #print(form)
+        print(form.fields['dietary_restrictions'])
         print(form.errors)
         if form.is_valid():
             print("HELLO")
@@ -68,11 +56,10 @@ class User_Info(TemplateView):
             post.user = request.user
             print(post.user)
             post.save()
-            # post below comes from initalization in forms.py
-            text = form.cleaned_data['firstname']
             form = CustomForm()
             return redirect('/home/dashboard')
 
+        messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
         args = {'form':form}
         return render(request, self.template_name, args)
 
@@ -85,6 +72,11 @@ def register(request):
         if form.is_valid():
             form.save()
             return redirect("/home/login/new_user/user_info")
+        else:
+            form = UserCreationForm()
+            messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
+            args = {'form':form}
+            return render(request, 'user_signup/new_user.html', args)
     else:
         form = UserCreationForm()
         args = {"form":form}
@@ -103,5 +95,4 @@ def user_preferences(request):
     else:
         form = UserCreationForm()
         args = {"form":form}
-
         return render(request, 'user_signup/user_preferences.html', args)
