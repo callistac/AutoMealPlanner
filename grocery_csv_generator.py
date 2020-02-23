@@ -86,11 +86,16 @@ hpp_url1 =  "&ajax=true&productCategoryId=&resetFilters=false&national" +\
             "Shipping=false&deliveryOrPickup=true"
 
 
-with open("hpp_products1.txt", 'w') as txtfile:
+with open("hpp_products.txt", 'w') as txtfile:
     txtfile.write("#Product| PricePerQuant| Quant| PricePerThing \n")
     txtfile.close()
 
 strings_to_remove =  ["C&amp;W ", "&amp"]
+list_of_units = [' Pound', ' LB', ' Count', ' Pint',' lb', ' Gallon', \
+    ' oz', ' oz.', ' Pounds', ' Quart', ' ct',  ' Liter', ' Liters', ' Gallons', \
+    ' Grams',' Ounce', ' Ounces', ' Fluid', ' Pints', ' Milliliters', ' Each',
+    ' Jumbo Eggs', ' Large Eggs', ' Extra Large Eggs'] 
+undesirableendings = ["-", " ", ",", "."]
 remaining = 1
 n=0
 allproducts = []
@@ -104,14 +109,15 @@ while remaining > 0:
         productinfo = re.findall("[\t]{6}.*", product)
         nameandquant = (productinfo[0][6:len(productinfo[0])])
         price = (productinfo[2][6:len(productinfo[2])])
+        nameandquant = re.sub(r'&amp;', '&', nameandquant)
+        price = re.sub(r'&amp;', '&', price) #replace &amp; with &
         for string in strings_to_remove:
             nameandquant = remove_from_string(string, nameandquant)
             price = remove_from_string(string, price)
-        nameandquant = re.sub(r'&amp;', '&', nameandquant)
-        price = re.sub(r'&amp;', '&', price) #replace &amp; with &
 
         nameandquant = remove_from_string("<", nameandquant, "everythingafter")
         nameandquant = remove_from_string(">\n", nameandquant, "everythingbefore")
+
         price = remove_from_string("<", price, "everythingafter")
         #If the name was too long to have in the preview json, it will end
         #with "...". Get the link to the product page and get the full name.
@@ -125,65 +131,76 @@ while remaining > 0:
             soup = bs4.BeautifulSoup(request_html, "html.parser")
             nameandquant0 = str(soup.find_all("h1",
                 class_="product-detail-info__main-text"))
+            nameandquant0 = re.sub(r'&amp;', '&', nameandquant0)
             for string in strings_to_remove:
                 nameandquant0 = remove_from_string(string, nameandquant0)
-            nameandquant0 = re.sub(r'&amp;', '&', nameandquant0)
+            
 
             nameandquant = re.findall(nameandquant[0:5]+".*", nameandquant0)[0]
             nameandquant = remove_from_string("</h1>]", nameandquant)
 
-        #split up names, quantities, and prices
-        priceperquant = re.split("/", price)
-        if len(priceperquant) == 2:
-            name = remove_from_string("-", nameandquant,
-                            "everythingafter")
-            priceperquant[0] = remove_from_string("each", priceperquant[0],
-                                "everythingbefore")
-            priceperquant[0] = priceperquant[0]
-            pricequant = priceperquant[0] + " " + priceperquant[1]
-            productlist = [name, pricequant[2:(
-                                len(pricequant)-1)] , None, None]
-        elif len(priceperquant) == 1:
-            priceperquant = re.split(" per ", price)
-            nameandquantlist= re.split("-", nameandquant)
-            #sometimes "-" doesn't indicate quant and is just in the name, 
-            #this catches those cases.
-            if len(nameandquantlist) >1:
-                if re.findall("[0-9]", nameandquantlist[1]) == []:
-                    nameandquantlist = [nameandquant]
-                
-            #re.split this part
-            #sometimes instead of denoting the start of the quantity with a
-            #dash, hpp uses a comma, so we must also check for that.
-            if len(nameandquantlist) != 2:
-                #splits for ", 32 " or ", 1/", as in ", 32 oz." or 
-                #", 1/2 gallon". Just ",\s\d" catches "100% pure tea" etc.
-                nameandquantlist2= re.split(",\s\d*[\s/]", nameandquant)
-                if len(nameandquantlist2) == 2:
-                    #put the \d*[\s/] part back in
-                    a = re.findall(",\s\d.*", nameandquant)[0]
-                    nameandquantlist2[1] = a[2:len(a)]
+        name = ""
+        priceperquant = ""
+        priceclean = ""
+        for unit in list_of_units:
+            quants = re.findall("\d*"+unit+"|\d*\.\d*"+unit+"|\d/\d"+unit, nameandquant)
+            if quants!=[]:
+                a = ""
+                for quant in quants:
+                    if len(quant) > len(a):
+                        a = quant
+                quantity = a
+                name = remove_from_string(quantity, nameandquant)
+                name = remove_from_string(" - ", name)
+        for unit in ['/lb', '/LB', " per lb", " per LB"]:
+            priceperquantlist = re.findall("\$\d*\.\d*"+unit, price)
+            if priceperquantlist !=[]:
+                priceperquant = priceperquantlist[0]
+                if unit == " per lb" or unit == " per LB":
+                    list0 = re.split(" per ", priceperquant)
+                    priceperquant = list0[0] + "/" + list0[1]
 
-            price = remove_from_string("each", price, "everythingafter")
-            price = re.findall("[\d]*\.[\d]{2}", price)[0] #exclude $ sign
+        for unwanted in [' each', ' each.']:
+            pricecleanlist = re.findall("\$\d*\.\d*"+unwanted, price)
+            if len(pricecleanlist) > 0:
+                priceclean = pricecleanlist[0]
+                #sometimes there is a ) following each, we want to remove that
+                if unwanted == ' each.':
+                    priceclean = priceclean[0:(len(priceclean)-1)]
 
-            if len(nameandquantlist) == 2:
-                productlist = [nameandquantlist[0], None, nameandquantlist[1],
-                    price]
-            elif len(nameandquantlist2) == 2: 
-                productlist = [nameandquantlist2[0], None, nameandquantlist2[1], 
-                    price]
-            elif len(priceperquant) == 2:
-                productlist = [nameandquantlist[0], priceperquant[0] +\
-                    " " + priceperquant[1], None , None] #!!!
-            else:
-                productlist = [nameandquantlist[0], None, None, price]
-
+        if name != "":
+            while name[len(name)-1] in undesirableendings:
+                name = name[0:(len(name)-1)]
         else:
-            print("no price for this item" + str(nameandquant))
-        allproducts.append(productlist)
+            while nameandquant[len(nameandquant)-1] in undesirableendings:
+                nameandquant = nameandquant[0:(len(nameandquant)-1)]
 
-        with open("hpp_products1.txt", 'a') as txtfile:
+        if type(priceclean) == list:
+            priceclean = remove_from_string("each", priceclean[0])
+        else:
+            priceclean = remove_from_string("each", str(priceclean))
+
+        if type(price) == list:
+            price = remove_from_string("each", price[0])
+        else:
+            price = remove_from_string("each", price)
+
+        if name != "" and priceperquant != "":
+            productlist = [name, priceperquant, quantity, None]
+        elif name != "" and priceclean != "":
+            productlist = [name, None, quantity, priceclean]
+        elif name != "":
+            productlist = [name, None, quantity, price]
+        elif priceperquant != "":
+            productlist = [nameandquant, priceperquant, None, None]
+        elif priceclean != "":
+            productlist = [nameandquant, None, None, priceclean]
+        else:
+            productlist = [nameandquant, None, None, price]
+
+        allproducts.append(productlist)
+  
+        with open("hpp_products.txt", 'a') as txtfile:
             txtfile.write(str(productlist[0])+ "| " +str(productlist[1])+ "| "+\
                 str(productlist[2])+ "| "+str(productlist[3]) + " \n")
             txtfile.close()
