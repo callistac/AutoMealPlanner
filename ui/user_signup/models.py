@@ -18,21 +18,21 @@ BUDGET_CHOICES = [
     ('$60-80', '$60-80'),
     ('$80-100', '$80-100'),
     ('>$100', '>$100')
-]
+    ]
 
-    LAZINESS_CHOICES = [
-    ('1', '1'),
-    ('2', '2'),
-    ('3','3'),
-    ('4', '4'),
-    ('5','5')
+LAZINESS_CHOICES = [
+('1', '1'),
+('2', '2'),
+('3','3'),
+('4', '4'),
+('5','5')
 ]
 
 DIETARY_CHOICES = [
     ('Vegetarian', 'Vegetarian'),
     ('Vegan', 'Vegan'),
     ('Peanut', 'Peanut')
-]
+    ]
 
 # Create your models here.
 class User_Diet(models.Model):
