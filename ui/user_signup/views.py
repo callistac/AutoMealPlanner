@@ -47,12 +47,7 @@ class User_Info(TemplateView):
         print("post:", request.POST['dietary_restrictions'])
         print(request.POST)
         form = CustomForm(request.POST)
-<<<<<<< HEAD
-
-=======
         print(form.fields['dietary_restrictions'])
->>>>>>> a8c7871df92012229022ce1001580bf307d4ca7a
-        #print(form)
         print(form.errors)
         if form.is_valid():
             print("HELLO")
@@ -101,5 +96,3 @@ def user_preferences(request):
         form = UserCreationForm()
         args = {"form":form}
         return render(request, 'user_signup/user_preferences.html', args)
-
-        

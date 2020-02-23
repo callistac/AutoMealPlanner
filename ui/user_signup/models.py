@@ -12,8 +12,6 @@ from django.utils.translation import gettext as _
 from multiselectfield import MultiSelectField
 from django.db import models
 
-
-<<<<<<< HEAD
 BUDGET_CHOICES = [
     ('<$40', '<$40'),
     ('$40-60', '$40-60'),
@@ -22,38 +20,7 @@ BUDGET_CHOICES = [
     ('>$100', '>$100')
 ]
 
-LAZINESS_CHOICES = [
-=======
-# Create your models here.
-class User_Diet(models.Model):
-
-    DIETARY_CHOICES = [
-    ('Vegetarian', 'Vegetarian'),
-    ('Vegan', 'Vegan')
-    ]
-
-    dietary_restrictions = MultiSelectField(choices = DIETARY_CHOICES)
-    #dietary_restrictions = models.ManyToManyField(User_Data, default = '', choices = DIETARY_CHOICES)
-
-    def __str__(self):
-        #return f'{self.dietary_restrictions}'
-        return self.dietary_restrictions
-
-
-
-class User_Data(models.Model):
-    #user = models.ForeignKey(User, on_delete=models.CASCADE, default='')
-
-    BUDGET_CHOICES = [
-        ('<$40', '<$40'),
-        ('$40-60', '$40-60'),
-        ('$60-80', '$60-80'),
-        ('$80-100', '$80-100'),
-        ('>$100', '>$100')
-    ]
-
     LAZINESS_CHOICES = [
->>>>>>> a8c7871df92012229022ce1001580bf307d4ca7a
     ('1', '1'),
     ('2', '2'),
     ('3','3'),
@@ -67,17 +34,18 @@ DIETARY_CHOICES = [
     ('Peanut', 'Peanut')
 ]
 
+# Create your models here.
 class User_Diet(models.Model):
 
-    dietary_restrictions = models.CharField(max_length = 10, default = 'None')
-    #dietary_restrictions = models.BooleanField(default=True)
+    dietary_restrictions = MultiSelectField(choices = DIETARY_CHOICES)
+    #dietary_restrictions = models.ManyToManyField(User_Data, default = '', choices = DIETARY_CHOICES)
 
     def __str__(self):
+        #return f'{self.dietary_restrictions}'
         return self.dietary_restrictions
 
+
 class User_Data(models.Model):
-
-
     firstname = models.CharField(max_length=500, default='')
     lastname = models.CharField(max_length=500, default='')
     email = models.EmailField(max_length=500, default='')
