@@ -58,7 +58,7 @@ class User_Info(TemplateView):
     def post(self, request):
         print(request.POST)
         form = CustomForm(request.POST)
-        print(form.fields['dietary_restrictions'].choices)
+        print(form.fields['dietary_restrictions'])
         #print(form)
         print(form.errors)
         if form.is_valid():
