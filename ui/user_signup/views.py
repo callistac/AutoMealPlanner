@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.forms import CheckboxSelectMultiple
 from django import forms
 from django.http import Http404
-# Create your views here.
+import sqlite3
 from user_signup.models import User_Data, User_Diet
 
 def user_signup(request):
@@ -44,8 +44,32 @@ class User_Info(TemplateView):
         return render(request, self.template_name, {'form':form})
 
     def post(self, request):
-        print("post:", request.POST['dietary_restrictions'])
-        print(request.POST)
+        user_data_statement = "INSERT INTO user_signup_user_data (firstname, lastname, email, zip, budget, laziness) VALUES (?, ?, ?, ?, ?, ?)"
+        diet_statement = "INSERT INTO user_diet (dietary_restrictions, user_id) VALUES (?, ?)"
+        select_user_unique_id = "SELECT id FROM user_signup_user_data ORDER BY id DESC LIMIT 1"
+        connection = sqlite3.connect('db.sqlite3')
+
+        results = []
+        diets = []
+        for key, value in request.POST.lists():
+            if key == 'dietary_restrictions':
+                diets.append(value)
+            else:
+                results.append(value[0])
+
+        c = connection.cursor()
+        c.execute(user_data_statement, results[1:])
+        c.execute(select_user_unique_id)
+        unique_id = c.fetchone()
+
+        for diet in diets[0]:
+            c.execute(diet_statement, (diet, unique_id[0]))
+
+        connection.commit()
+        connection.close()
+        return redirect('/home/dashboard')
+
+        '''
         form = CustomForm(request.POST)
         print(form.fields['dietary_restrictions'])
         print(form.errors)
@@ -62,6 +86,7 @@ class User_Info(TemplateView):
         messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
         args = {'form':form}
         return render(request, self.template_name, args)
+        '''
 
 def about_redirect(request):
     return redirect('/home/about')

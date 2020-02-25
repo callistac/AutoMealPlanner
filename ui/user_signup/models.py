@@ -20,7 +20,7 @@ BUDGET_CHOICES = [
     ('>$100', '>$100')
 ]
 
-    LAZINESS_CHOICES = [
+LAZINESS_CHOICES = [
     ('1', '1'),
     ('2', '2'),
     ('3','3'),
@@ -36,7 +36,6 @@ DIETARY_CHOICES = [
 
 # Create your models here.
 class User_Diet(models.Model):
-
     dietary_restrictions = MultiSelectField(choices = DIETARY_CHOICES)
     #dietary_restrictions = models.ManyToManyField(User_Data, default = '', choices = DIETARY_CHOICES)
 

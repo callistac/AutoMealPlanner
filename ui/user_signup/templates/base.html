@@ -9,9 +9,6 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
     crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-    crossorigin="anonymous">
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'user_signup/style.css' %}" type="text/css">
@@ -23,17 +20,18 @@
       <main>
 
     {% if user.is_authenticated %}
+
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-light border-bottom shadow-sm">
       <nav class = "my-0 mr-md-auto">
-      <a href="/home/dashboard"><img src="{% static 'user_signup/amp.png' %}"
-        alt="AMP"border="0" /></a>
+        <a class="navbar-brand" href="/home/dashboard/">Automated Meal Planner</a>
       </nav>
+
       <!-- <h5 class="my-0 mr-md-auto font-weight-normal">Automatic Meal Planner</h5> -->
       <nav class="my-2 my-md-0 mr-md-2">
         <a class="p-2 text-dark" href="/home/about/">About</a>
       </nav>
       <nav class="my-2 my-md-0 mr-md-2">
-        <a class="p-2 text-dark" href="/home/user_preferences/">Hello {{ user }}!</a>
+        <a class="p-2 text-dark" href="/home/user_preferences/">Hello, {{ user }}!</a>
       </nav>
       <a class="btn btn-outline-primary" href="/home/logout/">Sign out</a>
     </div>
@@ -41,8 +39,7 @@
     {% else %}
       <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-light border-bottom shadow-sm">
         <nav class = "my-0 mr-md-auto">
-        <a href="/home"><img src="{% static 'user_signup/amp.png' %}"
-          alt="AMP"border="0" /></a>
+        <a class="navbar-brand" href="/home/">Automated Meal Planner</a>
         </nav>
         <!-- <h5 class="my-0 mr-md-auto font-weight-normal">Automatic Meal Planner</h5> -->
         <nav class="my-2 my-md-0 mr-md-2">
