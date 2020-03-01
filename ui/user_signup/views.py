@@ -24,18 +24,6 @@ def new_user(request):
 def about(request):
     return render(request, 'user_signup/about.html', {})
 
-def user_info(request):
-    if request.method == 'POST':
-        print(request.POST.getlist('firstname'))
-        form = CustomForm(request.POST)
-        messages.add_message(request, messages.SUCCESS, 'You have signed up successfully!')
-        return redirect("/home/login")
-    else:
-        form = UserCreationForm()
-        args = {"form":form}
-
-        return render(request, 'user_signup/user_information.html', args)
-
 class User_Info(TemplateView):
     template_name = 'user_signup/user_data_form.html'
 
@@ -67,26 +55,27 @@ class User_Info(TemplateView):
 
         connection.commit()
         connection.close()
-        return redirect('/home/dashboard')
+        messages.add_message(request, messages.SUCCESS, 'You have signed up successfully, log in to get started!')
+        return redirect("/home/login")
 
-        '''
-        form = CustomForm(request.POST)
-        print(form.fields['dietary_restrictions'])
-        print(form.errors)
-        if form.is_valid():
-            print("HELLO")
-            post = form.save(commit = False)
-            print(post)
-            post.user = request.user
-            print(post.user)
-            post.save()
-            form = CustomForm()
-            return redirect('/home/dashboard')
+class MealGeneration(TemplateView):
+    def get(self, request):
+        args = {'user': request.user}
+        return render(request, 'user_signup/meals.html', args)
 
+    def post(self, request):
+        return redirect("/home/dashboard/meals.html")
+
+class Change_User_Info(TemplateView):
+    template_name = 'user_signup/user_preferences.html'
+    def get(self, request):
+        form = CustomForm()
+        return render(request, self.template_name, {'form':form})
+
+    def post(self, request):
+        update_info_statement = ""
         messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
-        args = {'form':form}
-        return render(request, self.template_name, args)
-        '''
+
 
 def about_redirect(request):
     return redirect('/home/about')
@@ -99,7 +88,7 @@ def register(request):
             return redirect("/home/login/new_user/user_info")
         else:
             form = UserCreationForm()
-            messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
+            messages.add_message(request, messages.SUCCESS, 'Input is invalid!')
             args = {'form':form}
             return render(request, 'user_signup/new_user.html', args)
     else:

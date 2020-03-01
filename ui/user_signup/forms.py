@@ -10,8 +10,19 @@ class CustomForm(forms.ModelForm):
 
         fields = ['firstname', 'lastname', 'email', 'zip', 'budget', 'laziness', 'dietary_restrictions']
 
+        labels = {
+            'firstname': "First name",
+            'lastname': "Last name",
+            'email': 'Email Address',
+            'zip': "Zip code",
+            'budget': "Weekly Budget",
+            'laziness': "Effort",
+            'dietary_restrictions': "Dietary Restrictions (select all that apply)"
+        }
+
         widgets = {
         'dietary_restrictions': forms.CheckboxSelectMultiple(choices = DIETARY_CHOICES),
         'laziness': forms.Select(choices=LAZINESS_CHOICES),
         'budget': forms.Select(choices=BUDGET_CHOICES)
         }
+    
