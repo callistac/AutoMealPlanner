@@ -4,7 +4,7 @@ CREATE TABLE user_diet (
     FOREIGN KEY(user_id) REFERENCES user_signup_user_data(id)
 );
 
-DROP TABLE table_name;  #drops everything
+DROP TABLE table_name;  # drops everything
 DELETE FROM table_name;  # removes content
 SELECT * FROM user_diet;
 SELECT * FROM user_signup_user_data;
