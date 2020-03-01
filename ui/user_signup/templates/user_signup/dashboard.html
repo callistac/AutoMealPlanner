@@ -29,10 +29,18 @@ window.setTimeout(function() {
     </ul>
     {% endif %}
   </div>
+  <br><br><br>
+  <div class="jumbotron text-center">
+    <h1 class="display-4">Welcome, {{ user }}!</h1>
+    <p class="lead">To begin generating recipes, click the button below.</p>
+    <hr class="my-4">
+    <p>You will have the opportunity to deselect recipes so that we can learn more about what you like and dislike. After deselecting any recipes, you can generate a grocery list for each week automatically!</p>
+    <br>
+    <p class="lead">
+      <button type="submit" class="btn btn-primary" onclick="window.location.href = '/home/dashboard/meals';">Generate New Weekly Menu</button>
+    </p>
+  </div>
 
-  <h1>  Welcome, {{ user }}!</h1>
-  <p>
-    Your weekly menu:
-  </p>
+
 </div>
 {% endblock %}

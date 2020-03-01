@@ -10,22 +10,18 @@ class CustomForm(forms.ModelForm):
 
         fields = ['firstname', 'lastname', 'email', 'zip', 'budget', 'laziness', 'dietary_restrictions']
 
+        labels = {
+            'firstname': "First name",
+            'lastname': "Last name",
+            'email': 'Email Address',
+            'zip': "Zip code",
+            'budget': "Weekly Budget",
+            'laziness': "Effort",
+            'dietary_restrictions': "Dietary Restrictions (select all that apply)"
+        }
+
         widgets = {
         'dietary_restrictions': forms.CheckboxSelectMultiple(choices = ['Vegetarian', 'Vegan', 'Peanut']),
         'laziness': forms.Select(choices=LAZINESS_CHOICES),
         'budget': forms.Select(choices=BUDGET_CHOICES)
         }
-        #dietary_restrictions = forms.ModelMultipleChoiceField(queryset=User_Diet.objects.all(), required=False)
-        #print("MODEL", model.dietary_restrictions)
-    def __init__(self, *args, **kwargs):
-        # Here kwargs should contain an instance of Supplier
-        print("kwargs", kwargs)
-        if 'instance' in kwargs:
-            # We get the 'initial' keyword argument or initialize it
-            # as a dict if it didn't exist.
-            initial = kwargs.setdefault('initial', {})
-            # The widget for a ModelMultipleChoiceField expects
-            # a list of primary key for the selected data (checked boxes).
-            initial['dietary_restrictions'] = [s.pk for s in kwargs['instance'].dietary_restrictions.all()]
-
-        ModelForm.__init__(self, *args, **kwargs)
