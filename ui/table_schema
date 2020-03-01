@@ -1,0 +1,11 @@
+CREATE TABLE user_diet (
+    dietary_restrictions varchar(500) NOT NULL,
+    user_id integer NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES user_signup_user_data(id)
+);
+
+DROP TABLE table_name;  #drops everything
+DELETE FROM table_name;  # removes content
+SELECT * FROM user_diet;
+SELECT * FROM user_signup_user_data;
+SELECT * FROM user_signup_user_data JOIN user_diet ON user_signup_user_data.id = user_diet.user_id;
