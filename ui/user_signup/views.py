@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from user_signup.forms import CustomForm
+from user_signup.forms import CustomForm, Deselect
 from django.views.generic import TemplateView
+from django.views import generic
 from django.contrib import messages
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -10,7 +11,9 @@ from django.forms import CheckboxSelectMultiple
 from django import forms
 from django.http import Http404
 import sqlite3
-from user_signup.models import User_Data, User_Diet
+from user_signup.models import User_Data, User_Diet, Deselect_Options
+from bootstrap_modal_forms.generic import BSModalCreateView
+from user_signup.generate_recipes import generate_html_page
 
 def user_signup(request):
     return render(request, 'user_signup/user_signup.html', {})
@@ -57,14 +60,29 @@ class User_Info(TemplateView):
         connection.close()
         messages.add_message(request, messages.SUCCESS, 'You have signed up successfully, log in to get started!')
         return redirect("/home/login")
-
+'''
 class MealGeneration(TemplateView):
     def get(self, request):
+        print("HEY")
         args = {'user': request.user}
+        generate_html_page()
         return render(request, 'user_signup/meals.html', args)
 
     def post(self, request):
         return redirect("/home/dashboard/meals.html")
+'''
+class MealGeneration(TemplateView):
+    def get(self, request):
+        print("HEY")
+        form = Deselect()
+        args = {'user': request.user, 'form':form}
+        generate_html_page()
+        return render(request, 'user_signup/meals.html', args)
+
+    def post(self, request):
+        print("IN POST REQUST")
+        print(request.POST)
+        return redirect("/home/dashboard/meals/")
 
 class Change_User_Info(TemplateView):
     template_name = 'user_signup/user_preferences.html'
@@ -76,6 +94,17 @@ class Change_User_Info(TemplateView):
         update_info_statement = ""
         messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
 
+class BlackListView(TemplateView):
+    template_name = "user_signup/meals.html"
+    def get(self, request):
+        print("HELLO")
+        form = Deselect()
+        return render(request, self.template_name, {'form':form})
+
+    def post(self, request):
+        print("IN POST REQUST")
+        print(request.POST)
+        return redirect("/home/dashboard/meals/")
 
 def about_redirect(request):
     return redirect('/home/about')

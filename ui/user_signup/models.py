@@ -38,8 +38,7 @@ BLACKLIST_CHOICES = [
     ('option1', 'Does not fulfill my dietary restrictions'),
     ('option2', 'Looks gross'),
     ('option3', 'Had a similar meal recently'),
-    ('option4', 'Does not look tasty'),
-    ('option5', 'Prefer not to answer')
+    ('option4', 'Prefer not to answer')
 ]
 
 # Create your models here.
@@ -62,3 +61,10 @@ class User_Data(models.Model):
 
     def get_absolute_url(self):
         return reverse('login')
+
+
+class Deselect_Options(models.Model):
+    reason = models.CharField(max_length=500, default='', choices=BLACKLIST_CHOICES)
+
+    def get_absolute_url(self):
+        return reverse('/home/dashboard/meals/')
