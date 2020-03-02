@@ -1,7 +1,6 @@
 from django.urls import path
 from user_signup import views
 from django.contrib.auth.views import LoginView, LogoutView
-from django.conf.urls.static import static
 
 app_name = 'user_signup'
 urlpatterns = [
@@ -16,4 +15,3 @@ urlpatterns = [
     path('user_preferences/', views.Change_User_Info.as_view(), name='user_preferences'),
     path('login/new_user/user_info/', views.User_Info.as_view(), name = 'user_entry'),
 ]
-#    path('dashboard/meals/deselect/', views.BlackListView.as_view(), name='blacklistview')

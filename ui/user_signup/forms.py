@@ -1,7 +1,6 @@
 from django import forms
 from user_signup.models import User_Data, User_Diet, Deselect_Options
 from user_signup.models import BUDGET_CHOICES, LAZINESS_CHOICES, DIETARY_CHOICES
-from bootstrap_modal_forms.forms import BSModalForm
 
 
 class CustomForm(forms.ModelForm):

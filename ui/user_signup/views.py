@@ -3,26 +3,23 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from user_signup.forms import CustomForm, Deselect
 from django.views.generic import TemplateView
-from django.views import generic
 from django.contrib import messages
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django import forms
-from django.http import Http404
-import sqlite3
-from user_signup.models import User_Data, User_Diet
 from user_signup.generate_recipes import generate_html_page
+import sqlite3
 
-def user_signup(request):
-    return render(request, 'user_signup/user_signup.html', {})
 
 def home(request):
     return render(request, 'user_signup/home.html', {})
 
-def new_user(request):
-    return render(request, 'user_signup/new_user.html', {})
-
 def about(request):
     return render(request, 'user_signup/about.html', {})
+
+def about_redirect(request):
+    return redirect('/home/about')
+
+def profile(request):
+    args = {'user': request.user}
+    return render(request, 'user_signup/dashboard.html', args)
 
 class User_Info(TemplateView):
     template_name = 'user_signup/user_data_form.html'
@@ -98,8 +95,6 @@ class Change_User_Info(TemplateView):
         update_info_statement = ""
         messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
 
-def about_redirect(request):
-    return redirect('/home/about')
 
 def register(request):
     if request.method == 'POST':
@@ -116,19 +111,3 @@ def register(request):
         form = UserCreationForm()
         args = {"form":form}
         return render(request, 'user_signup/new_user.html', args)
-
-def profile(request):
-    args = {'user': request.user}
-    return render(request, 'user_signup/dashboard.html', args)
-
-
-def user_preferences(request):
-    if request.method == 'POST':
-        print(request.POST.getlist('firstname'))
-        form = CustomForm(request.POST)
-        messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
-        return redirect("/home/dashboard")
-    else:
-        form = UserCreationForm()
-        args = {"form":form}
-        return render(request, 'user_signup/user_preferences.html', args)
