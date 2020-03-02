@@ -5,14 +5,11 @@ from user_signup.forms import CustomForm, Deselect
 from django.views.generic import TemplateView
 from django.views import generic
 from django.contrib import messages
-from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.forms import CheckboxSelectMultiple
 from django import forms
 from django.http import Http404
 import sqlite3
-from user_signup.models import User_Data, User_Diet, Deselect_Options
-from bootstrap_modal_forms.generic import BSModalCreateView
+from user_signup.models import User_Data, User_Diet
 from user_signup.generate_recipes import generate_html_page
 
 def user_signup(request):
@@ -32,9 +29,13 @@ class User_Info(TemplateView):
 
     def get(self, request):
         form = CustomForm()
-        return render(request, self.template_name, {'form':form})
+        print(request.user)
+        args = {'user': request.user, 'form':form}
+        return render(request, self.template_name, args)
 
     def post(self, request):
+        # selecting last signed up user from auth_user
+        #auth_user_statement = "SELECT id FROM auth_user ORDER BY id DESC LIMIT 1"
         user_data_statement = "INSERT INTO user_signup_user_data (firstname, lastname, email, zip, budget, laziness) VALUES (?, ?, ?, ?, ?, ?)"
         diet_statement = "INSERT INTO user_diet (dietary_restrictions, user_id) VALUES (?, ?)"
         select_user_unique_id = "SELECT id FROM user_signup_user_data ORDER BY id DESC LIMIT 1"
@@ -42,14 +43,20 @@ class User_Info(TemplateView):
 
         results = []
         diets = []
+        #c.execute(auth_user_statement)
+        #auth_user_id = c.fetchone()
+        #results.append(auth_user_id)
         for key, value in request.POST.lists():
-            if key == 'dietary_restrictions':
+            if key == 'csrfmiddlewaretoken':
+                pass
+            elif key == 'dietary_restrictions':
                 diets.append(value)
             else:
                 results.append(value[0])
 
+        print(results)
         c = connection.cursor()
-        c.execute(user_data_statement, results[1:])
+        c.execute(user_data_statement, results)
         c.execute(select_user_unique_id)
         unique_id = c.fetchone()
 
@@ -60,28 +67,25 @@ class User_Info(TemplateView):
         connection.close()
         messages.add_message(request, messages.SUCCESS, 'You have signed up successfully, log in to get started!')
         return redirect("/home/login")
-'''
-class MealGeneration(TemplateView):
-    def get(self, request):
-        print("HEY")
-        args = {'user': request.user}
-        generate_html_page()
-        return render(request, 'user_signup/meals.html', args)
 
-    def post(self, request):
-        return redirect("/home/dashboard/meals.html")
-'''
 class MealGeneration(TemplateView):
     def get(self, request):
-        print("HEY")
         form = Deselect()
         args = {'user': request.user, 'form':form}
         generate_html_page()
         return render(request, 'user_signup/meals.html', args)
 
     def post(self, request):
-        print("IN POST REQUST")
-        print(request.POST)
+        print(request.user)
+        insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_id, user_id, reason) VALUES (?, ?, ?)"
+        connection = sqlite3.connect('db.sqlite3')
+
+        results = []
+        results.append(request.user.id)
+        results.append(request.POST['reason'])
+
+        print(results)
+        #c = c.execute(insert_blacklist_statement, )
         return redirect("/home/dashboard/meals/")
 
 class Change_User_Info(TemplateView):
@@ -93,18 +97,6 @@ class Change_User_Info(TemplateView):
     def post(self, request):
         update_info_statement = ""
         messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
-
-class BlackListView(TemplateView):
-    template_name = "user_signup/meals.html"
-    def get(self, request):
-        print("HELLO")
-        form = Deselect()
-        return render(request, self.template_name, {'form':form})
-
-    def post(self, request):
-        print("IN POST REQUST")
-        print(request.POST)
-        return redirect("/home/dashboard/meals/")
 
 def about_redirect(request):
     return redirect('/home/about')
@@ -128,6 +120,7 @@ def register(request):
 def profile(request):
     args = {'user': request.user}
     return render(request, 'user_signup/dashboard.html', args)
+
 
 def user_preferences(request):
     if request.method == 'POST':

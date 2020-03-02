@@ -1,5 +1,6 @@
 ids = ()
-select_rand_recipes = "SELECT recipe_pic, recipe_link FROM recipes WHERE recipe_id IN ?"
+select_rand_recipes = "SELECT recipe_pic, recipe_link, ingredients FROM recipes_tbl JOIN ingredients_tbl \
+                        ON recipe_tbl.id = ingredients_tbl.recipe_id WHERE recipe_id IN ?"
 #connection = sqlite3.connect('db.sqlite3')
 
 #c = connection.cursor()
