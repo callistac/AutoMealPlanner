@@ -1,8 +1,7 @@
 from django import forms
-from user_signup.models import User_Data, User_Diet
+from user_signup.models import User_Data, User_Diet, Deselect_Options
 from user_signup.models import BUDGET_CHOICES, LAZINESS_CHOICES, DIETARY_CHOICES
 from django.forms import ModelForm
-
 
 class CustomForm(forms.ModelForm):
     class Meta:
@@ -25,3 +24,9 @@ class CustomForm(forms.ModelForm):
         'laziness': forms.Select(choices=LAZINESS_CHOICES),
         'budget': forms.Select(choices=BUDGET_CHOICES)
         }
+
+class Deselect(forms.ModelForm):
+    class Meta:
+        model = Deselect_Options
+        fields = ['reason']
+        labels = {'reason': "Reason for deselecting recipe:"}
