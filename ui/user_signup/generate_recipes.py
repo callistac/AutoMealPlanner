@@ -1,6 +1,5 @@
 ids = ()
-select_rand_recipes = "SELECT recipe_pic, recipe_link, ingredients FROM recipes_tbl JOIN ingredients_tbl \
-                        ON recipe_tbl.id = ingredients_tbl.recipe_id WHERE recipe_id IN ?"
+select_rand_recipes = "SELECT * FROM recipes WHERE id IN ?"
 #connection = sqlite3.connect('db.sqlite3')
 
 #c = connection.cursor()
@@ -99,14 +98,7 @@ def generate_html_page():
 
             """
             file.write(html_body2)
-            '''
-            file.write("<h2>Day %d</h2>\n" % (i+1))
-            file.write("<img src='https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F20969.jpg'>\n")
-            #file.write("<img src= %s >\n" % (url_img[i]))
 
-            file.write("<button type='submit' class='btn btn-dark' onclick=\"window.location.href ='/home/dashboard/meals';\">Deselect</button><br>\n")
-            file.write("<br>\n")
-            '''
         end_html = """
 
         </div>
