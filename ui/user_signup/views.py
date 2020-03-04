@@ -63,15 +63,12 @@ class User_Dashboard(TemplateView):
 
         c = connection.cursor()
         c.execute(user_data_statement, results)
-        c.execute(select_user_unique_id)
-        unique_id = c.fetchone()
 
         for diet in diets[0]:
-            #c.execute(diet_statement, (diet, unique_id[0]))
             c.execute(diet_statement, (diet, request.user.id))
 
-        connection.commit()
-        connection.close()
+        #connection.commit()
+        #connection.close()
         messages.add_message(request, messages.SUCCESS, 'You have finished with the creation of your account.')
         return redirect("/home/dashboard")
 
@@ -79,7 +76,14 @@ class User_Dashboard(TemplateView):
 class MealGeneration(TemplateView):
     def get(self, request):
         form = Deselect()
-        args = {'user': request.user, 'form':form}
+        sql_statement = "SELECT firstname FROM user_signup_user_data WHERE user_id = ?"
+        connection = sqlite3.connect('db.sqlite3')
+        c = connection.cursor()
+        c.execute(sql_statement, (request.user.id,))
+        name = c.fetchone()
+        if name is None:
+            name = ['']
+        args = {'user': request.user, 'form':form, 'name':name[0]}
         #print(request.GET.get('name'))
         generate_html_page()
         return render(request, 'user_signup/meals.html', args)
