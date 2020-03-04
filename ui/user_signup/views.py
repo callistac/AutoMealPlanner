@@ -67,7 +67,6 @@ class User_Info(TemplateView):
 
 class MealGeneration(TemplateView):
     def get(self, request):
-        print("HI")
         form = Deselect()
         args = {'user': request.user, 'form':form}
         generate_html_page()
@@ -97,6 +96,7 @@ class Change_User_Info(TemplateView):
 class Deselect_Tracker(TemplateView):
     def get(self, request):
         name = request.GET.get('name')
+        print("NAME", name)
         return render(request, self.template_name, {'form':form})
     def post(self, request):
         name = "blah"
