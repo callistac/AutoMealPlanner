@@ -67,6 +67,7 @@ class User_Info(TemplateView):
 
 class MealGeneration(TemplateView):
     def get(self, request):
+        print("HI")
         form = Deselect()
         args = {'user': request.user, 'form':form}
         generate_html_page()
@@ -76,11 +77,9 @@ class MealGeneration(TemplateView):
         print(request.user)
         insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_id, user_id, reason) VALUES (?, ?, ?)"
         connection = sqlite3.connect('db.sqlite3')
-
         results = []
         results.append(request.user.id)
         results.append(request.POST['reason'])
-
         print(results)
         #c = c.execute(insert_blacklist_statement, )
         return redirect("/home/dashboard/meals/")
@@ -94,6 +93,13 @@ class Change_User_Info(TemplateView):
     def post(self, request):
         update_info_statement = ""
         messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
+
+class Deselect_Tracker(TemplateView):
+    def get(self, request):
+        name = request.GET.get('name')
+        return render(request, self.template_name, {'form':form})
+    def post(self, request):
+        name = "blah"
 
 
 def register(request):
