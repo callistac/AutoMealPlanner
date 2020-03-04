@@ -67,8 +67,8 @@ class User_Dashboard(TemplateView):
         for diet in diets[0]:
             c.execute(diet_statement, (diet, request.user.id))
 
-        #connection.commit()
-        #connection.close()
+        connection.commit()
+        connection.close()
         messages.add_message(request, messages.SUCCESS, 'You have finished with the creation of your account.')
         return redirect("/home/dashboard")
 
@@ -84,7 +84,9 @@ class MealGeneration(TemplateView):
         if name is None:
             name = ['']
         args = {'user': request.user, 'form':form, 'name':name[0]}
-        #print(request.GET.get('name'))
+
+        connection.commit()
+        connection.close()
         generate_html_page()
         return render(request, 'user_signup/meals.html', args)
 
