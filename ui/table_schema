@@ -8,8 +8,7 @@ DROP TABLE table_name;  # drops everything
 DELETE FROM table_name;  # removes content
 SELECT * FROM user_diet;
 SELECT * FROM user_signup_user_data;
-SELECT * FROM user_signup_user_data JOIN user_diet ON user_signup_user_data.id = user_diet.user_id;
-
+SELECT * FROM user_signup_user_data JOIN user_diet ON user_signup_user_data.user_id = user_diet.user_id;
 
 CREATE TABLE blacklisted_recipes (
     id integer NOT NULL PRIMARY KEY AUTOINCREMENT,

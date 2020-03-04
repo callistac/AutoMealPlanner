@@ -48,6 +48,7 @@ class User_Data(models.Model):
     budget = models.CharField(max_length=500, default='', choices = BUDGET_CHOICES)
     laziness = models.CharField(max_length = 50, default = '', choices = LAZINESS_CHOICES)
     dietary_restrictions = models.ManyToManyField(User_Diet, default = "", choices=DIETARY_CHOICES)
+    user_id = models.PositiveIntegerField(default=0)
 
     def get_absolute_url(self):
         return reverse('login')

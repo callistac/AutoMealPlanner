@@ -5,6 +5,7 @@ from user_signup.forms import CustomForm, Deselect
 from django.views.generic import TemplateView
 from django.contrib import messages
 from user_signup.generate_recipes import generate_html_page
+from django.http import HttpResponse
 import sqlite3
 
 
@@ -16,33 +17,42 @@ def about(request):
 
 def about_redirect(request):
     return redirect('/home/about')
-
+'''
 def profile(request):
     args = {'user': request.user}
     return render(request, 'user_signup/dashboard.html', args)
 
-class User_Info(TemplateView):
-    template_name = 'user_signup/user_data_form.html'
+    REWRITING BELOW
+'''
+class User_Dashboard(TemplateView):
+    template_name = 'user_signup/dashboard.html'
 
     def get(self, request):
         form = CustomForm()
-        print(request.user)
-        args = {'user': request.user, 'form':form}
-        return render(request, self.template_name, args)
+        sql_statement = "SELECT firstname FROM user_signup_user_data WHERE user_id = ?"
+        connection = sqlite3.connect('db.sqlite3')
+        c = connection.cursor()
+        c.execute(sql_statement, (request.user.id,))
+        name = c.fetchone()
+
+        if name is not None:
+            truth = True
+        else:
+            name = ['']
+            truth = False
+
+        args = {'user_complete':truth, 'form':form, 'name':name[0]}
+        return render(request, 'user_signup/dashboard.html', args)
 
     def post(self, request):
-        # selecting last signed up user from auth_user
-        #auth_user_statement = "SELECT id FROM auth_user ORDER BY id DESC LIMIT 1"
-        user_data_statement = "INSERT INTO user_signup_user_data (firstname, lastname, email, zip, budget, laziness) VALUES (?, ?, ?, ?, ?, ?)"
+        user_data_statement = "INSERT INTO user_signup_user_data (user_id, firstname, lastname, email, zip, budget, laziness) VALUES (?, ?, ?, ?, ?, ?, ?)"
         diet_statement = "INSERT INTO user_diet (dietary_restrictions, user_id) VALUES (?, ?)"
         select_user_unique_id = "SELECT id FROM user_signup_user_data ORDER BY id DESC LIMIT 1"
         connection = sqlite3.connect('db.sqlite3')
 
         results = []
         diets = []
-        #c.execute(auth_user_statement)
-        #auth_user_id = c.fetchone()
-        #results.append(auth_user_id)
+        results.append(request.user.id)
         for key, value in request.POST.lists():
             if key == 'csrfmiddlewaretoken':
                 pass
@@ -51,19 +61,20 @@ class User_Info(TemplateView):
             else:
                 results.append(value[0])
 
-        print(results)
         c = connection.cursor()
         c.execute(user_data_statement, results)
         c.execute(select_user_unique_id)
         unique_id = c.fetchone()
 
         for diet in diets[0]:
-            c.execute(diet_statement, (diet, unique_id[0]))
+            #c.execute(diet_statement, (diet, unique_id[0]))
+            c.execute(diet_statement, (diet, request.user.id))
 
         connection.commit()
         connection.close()
-        messages.add_message(request, messages.SUCCESS, 'You have signed up successfully, log in to get started!')
-        return redirect("/home/login")
+        messages.add_message(request, messages.SUCCESS, 'You have finished with the creation of your account.')
+        return redirect("/home/dashboard")
+
 
 class MealGeneration(TemplateView):
     def get(self, request):
@@ -96,11 +107,14 @@ class Change_User_Info(TemplateView):
 
 class Deselect_Tracker(TemplateView):
     def get(self, request):
+        print("USER", request.user)
         name = request.GET.get('name')
         print("NAME", name)
-        return render(request, self.template_name, {'form':form})
+        # NEED TO STORE RECIPE NAME SOMEWHERE
+        #return render(request, self.template_name, {'form':form})
     def post(self, request):
-        name = "blah"
+        return
+
 
 
 def register(request):
@@ -108,7 +122,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/home/login/new_user/user_info")
+            return redirect("/home/login/")
         else:
             form = UserCreationForm()
             messages.add_message(request, messages.SUCCESS, 'Input is invalid!')

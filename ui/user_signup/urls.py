@@ -10,9 +10,10 @@ urlpatterns = [
     path('login/new_user/', views.register, name='user_signup/new_user.html'),
     path('about/', views.about, name='user_signup/about.html'),
     path('about/.', views.about_redirect, name = 'about_redirect'),
-    path('dashboard/', views.profile, name='user_dash'),
+    path('dashboard/', views.User_Dashboard.as_view(), name='user_dash'),
     path('dashboard/meals/', views.MealGeneration.as_view(), name='meal_generation'),
     path('user_preferences/', views.Change_User_Info.as_view(), name='user_preferences'),
-    path('login/new_user/user_info/', views.User_Info.as_view(), name = 'user_entry'),
-    path('deselect/', views.Deselect_Tracker.as_view(), name='deselect')
+    path('deselect/', views.Deselect_Tracker.as_view(), name='deselect'),
 ]
+
+# path('login/new_user/user_info/', views.User_Info.as_view(), name = 'user_entry'),
