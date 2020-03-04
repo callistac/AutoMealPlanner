@@ -63,7 +63,7 @@ def generate_html_page():
             """
             file.write(html_body2)
 
-            file.write("<button href='/home/deselect' class='btn btn-dark' data-toggle='modal' data-target='#myModal' name='button%d'>Deselect Recipe</button>"% (i+1))
+            file.write("<button href='/home/deselect?name=button%d' class='btn btn-dark' data-toggle='modal' data-target='#myModal'>Deselect Recipe</button>"% (i+1))
             html_body3 = """
                 <br>
             </div>

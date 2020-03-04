@@ -69,6 +69,7 @@ class MealGeneration(TemplateView):
     def get(self, request):
         form = Deselect()
         args = {'user': request.user, 'form':form}
+        #print(request.GET.get('name'))
         generate_html_page()
         return render(request, 'user_signup/meals.html', args)
 
