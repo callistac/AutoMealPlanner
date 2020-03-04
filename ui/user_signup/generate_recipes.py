@@ -60,7 +60,11 @@ def generate_html_page():
 
                 <a href="#" class="card-link">Recipe link</a>
                 <br>
-                <button class="btn btn-dark" data-toggle="modal" data-target="#myModal">Deselect Recipe</button>
+            """
+            file.write(html_body2)
+
+            file.write("<button href='/home/deselect' class='btn btn-dark' data-toggle='modal' data-target='#myModal' name='button%d'>Deselect Recipe</button>"% (i+1))
+            html_body3 = """
                 <br>
             </div>
               <!-- Modal -->
@@ -97,7 +101,7 @@ def generate_html_page():
             <br><br><br>
 
             """
-            file.write(html_body2)
+            file.write(html_body3)
 
         end_html = """
 
