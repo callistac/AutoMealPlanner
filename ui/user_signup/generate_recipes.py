@@ -1,8 +1,14 @@
+import sqlite3
+import re
+
 ids = ()
 select_rand_recipes = "SELECT * FROM recipes WHERE id IN ?"
-#connection = sqlite3.connect('db.sqlite3')
+connection = sqlite3.connect('db.sqlite3')
 
-#c = connection.cursor()
+c = connection.cursor()
+c.execute("SELECT Name, Categories FROM all_recipes")
+recipe_names = c.fetchall()
+print(recipe_names[0][0])
 #urls_img = c.execute(select_rand_recipe, ids)
 
 #connection.commit()
@@ -49,9 +55,10 @@ def generate_html_page():
             <div class="card-body">
             """
             file.write(html_body1)
-            file.write("<h5 class='card-title'>Name of Recipe, Day %d </h5>" % (i+1))
+            file.write("<h5 class='card-title'>%s, Day %d </h5>" % (recipe_names[i][0], i+1))
+            file.write("<p class='card-text'>%s</p>" % (recipe_names[i][1]))
+
             html_body2 = """
-            <p class="card-text">Any information we might want to include.</p>
             </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Cras justo odio</li>
@@ -63,7 +70,7 @@ def generate_html_page():
             """
             file.write(html_body2)
 
-            file.write("<button href='/home/deselect?name=button%d' class='btn btn-dark' data-toggle='modal' data-target='#myModal'>Deselect Recipe</button>"% (i+1))
+            file.write("<button href='/home/deselect?name=%s' class='btn btn-dark' data-toggle='modal' data-target='#myModal'>Deselect Recipe</button>"%(recipe_names[i][0]))
             html_body3 = """
                 <br>
             </div>

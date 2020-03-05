@@ -86,19 +86,27 @@ class MealGeneration(TemplateView):
         args = {'user': request.user, 'form':form, 'name':name[0]}
 
         connection.commit()
-        connection.close()
         generate_html_page()
+        #connection.close()
+        #c.close()
         return render(request, 'user_signup/meals.html', args)
 
     def post(self, request):
         print(request.user)
-        insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_id, user_id, reason) VALUES (?, ?, ?)"
+        #insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_id, user_id, reason) VALUES (?, ?, ?)"
+        insert_blacklist_statement = "UPDATE blacklisted_recipes SET reason = '%s' WHERE ID = (SELECT MAX(ID) FROM blacklisted_recipes)"%(request.POST['reason'])
         connection = sqlite3.connect('db.sqlite3')
+        c = connection.cursor()
+        #print("GETTT", request.GET.get('name'))
         results = []
+        results.append("999999999999999")
         results.append(request.user.id)
         results.append(request.POST['reason'])
-        print(results)
-        #c = c.execute(insert_blacklist_statement, )
+        print("RES", results)
+        c = c.execute(insert_blacklist_statement)
+        connection.commit()
+        #c.close()
+        #connection.close()
         return redirect("/home/dashboard/meals/")
 
 class Change_User_Info(TemplateView):
@@ -113,15 +121,24 @@ class Change_User_Info(TemplateView):
 
 class Deselect_Tracker(TemplateView):
     def get(self, request):
+        #NEED TO CHANGE NAME TO RECIPE.ID WHEN CORRECT TABLE IS DONE
         print("USER", request.user)
         name = request.GET.get('name')
-        print("NAME", name)
+        print("NAME", type(name))
+
+        insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_id, user_id, reason) VALUES (?, ?, ?)"
+
+        connection = sqlite3.connect('db.sqlite3')
+        c = connection.cursor()
+        c = c.execute(insert_blacklist_statement, (name, request.user.id, "Nothing"))
+        connection.commit()
+        #c.close()
+        #connection.close()
+
         # NEED TO STORE RECIPE NAME SOMEWHERE
         #return render(request, self.template_name, {'form':form})
-    def post(self, request):
-        return
-
-
+    #def post(self, request):
+        #return redirect()
 
 def register(request):
     if request.method == 'POST':
