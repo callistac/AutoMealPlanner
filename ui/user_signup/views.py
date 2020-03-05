@@ -64,8 +64,12 @@ class User_Dashboard(TemplateView):
         c = connection.cursor()
         c.execute(user_data_statement, results)
 
-        for diet in diets[0]:
-            c.execute(diet_statement, (diet, request.user.id))
+        if len(diets)>0:
+            for diet in diets[0]:
+                c.execute(diet_statement, (diet, request.user.id))
+        else:
+            c.execute(diet_statement, ("N/A", request.user.id))
+
 
         connection.commit()
         connection.close()
