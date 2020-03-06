@@ -17,13 +17,7 @@ def about(request):
 
 def about_redirect(request):
     return redirect('/home/about')
-'''
-def profile(request):
-    args = {'user': request.user}
-    return render(request, 'user_signup/dashboard.html', args)
 
-    REWRITING BELOW
-'''
 class User_Dashboard(TemplateView):
     template_name = 'user_signup/dashboard.html'
 
