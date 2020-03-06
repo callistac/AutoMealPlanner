@@ -29,10 +29,38 @@ window.setTimeout(function() {
     </ul>
     {% endif %}
   </div>
+  <br><br><br>
+  {% if user_complete %}
+    <div class="jumbotron text-center">
+      <h1 class="display-4">Welcome, {{ name }}!</h1>
+      <p class="lead">To begin generating recipes, click the button below.</p>
+      <hr class="my-4">
+      <p>You will have the opportunity to deselect recipes so that we can learn more about what you like and dislike. After deselecting any recipes, you can generate a grocery list for each week automatically!</p>
+      <br>
+      <p class="lead">
+        <button type="submit" class="btn btn-primary" onclick="window.location.href = '/home/dashboard/meals';">Generate New Weekly Menu</button>
+      </p>
+    </div>
+  {% else %}
 
-  <h1>  Welcome, {{ user }}!</h1>
-  <p>
-    Your weekly menu:
-  </p>
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <h4> Please fill out your information below to finish the creation of your account </h4>
+    <br>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include 'user_signup/form-template.html' %}
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary" onclick="href = '/home/dashboard';">Submit</button>
+            </div>
+        </div>
+    </form>
+
+  {% endif %}
+
+
+
 </div>
 {% endblock %}

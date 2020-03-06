@@ -8,7 +8,7 @@
       <ul class="messages">
       {% for message in messages %}
       <div class = 'alert alert-dismissible alert-success' role = 'alert'>
-      <button onclick="window.location.href = '/home/login';" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <button onclick="window.location.href = 'login/new_user/user_info/';" type="button" class="close" data-dismiss="alert" aria-label="Close">
 
       <span aria-hidden="true">&times;</span>
       </button>
@@ -18,7 +18,7 @@
       </ul>
     {% endif %}
   </div>
-  <h1>Welcome</h1>
+  <h1>Please sign in to get started!</h1>
   <p>
     You can log in here!
   </p>
@@ -26,7 +26,7 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type='submit' class='btn btn-primary btn-lg' onclick="window.location.href ='/home/login/new_user/user_info';">Login</button>
   </form>
 </div>
 <br>
