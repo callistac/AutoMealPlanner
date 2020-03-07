@@ -1,21 +1,12 @@
 ingredient_id|name
-9722|toasted sesame oil
-4432|chopped green bell pepper
-4279|chopped carrots
-4405|scallions
-5831|cubed ham
-4421|frozen green peas, thawed
-4342|garlic
-29041|Uncle Ben's(R) Ready Rice(R) Jasmine Rice
-2958|reduced-sodium soy sauce
-18868|rice wine vinegar
-16317|egg
 16157|butter
+4342|garlic
 2686|sea scallops
 16421|salt
 16406|pepper
 5107|lemon juice
 4147|lean ground beef
+4405|chopped green onions
 3725|jalapeno pepper, seeded and minced
 2496|water
 18765|taco seasoning mix
@@ -29,19 +20,21 @@ ingredient_id|name
 1636|cornstarch
 16397|ground ginger
 6305|cooking oil
-20269|red onion, minced
+20269|diced red onion
+4432|chopped green bell pepper
 4572|tomato, sliced
 3103|ground beef
 4397|diced onion
+16317|egg
 7428|Worcestershire sauce
-16405|dried parsley flakes
+16405|dried parsley
 16396|garlic powder
 16402|onion powder
 4378|sliced mushrooms
 1684|flour
 5460|beef broth
 16261|sour cream
-2061|refrigerated biscuit dough
+2061|refrigerated jumbo buttermilk biscuits
 5861|(1 pound) bulk pork sausage
 16215|mild Cheddar cheese
 16278|milk
@@ -50,36 +43,32 @@ ingredient_id|name
 6379|vegetable oil
 3640|tomato paste
 7120|low fat, low sodium beef broth
+4279|chopped carrots
 4442|potatoes, cubed
 16429|fresh rosemary
 16417|dried thyme
 16380|bay leaf
-16407|pinch cayenne pepper
+16407|ground cayenne pepper
+4421|frozen peas
 7842|white vinegar
 2356|baking powder
 16424|vanilla extract
 6294|mayonnaise
 4286|large head cauliflower, cut into florets
 18806|English mustard
-16133|hot chicken broth
+16133|chicken broth
 5838|links mild Italian sausage, casings removed
 3704|bulb fennel, finely chopped
 10041|cannellini beans, rinsed and drained, divided
 16423|minced fresh thyme
 34832|truffle salt
-9725|extra-virgin olive oil , divided
+9725|extra-virgin olive oil
 2078|s whole-grain bread, lightly toasted
 5012|avocado, sliced
 3767|sliced toasted almonds
 16246|s Swiss cheese
 1525|brown sugar
 6057|rolled oats
-10895|cherry tomatoes, halved
-2077|s day old Italian bread, grated
-16244|grated Romano cheese
-16159|fresh basil, stems removed
-4409|minced fresh parsley
-1718|spaghetti
 3717|chopped cilantro
 6307|olive oil
 10896|jar marinated artichoke hearts, drained and chopped
@@ -91,40 +80,24 @@ ingredient_id|name
 3844|ground flax seed
 1338|chocolate chips
 1502|honey
-3743|chia seeds
-1002|chili without beans
-5588|jar salsa
+3743|chia seeds (optional)
 8610|mini semi-sweet chocolate chips
 2857|crunchy peanut butter
 4357|kale
 18741|seasoned salt
 20453|roma (plum) tomatoes, diced
 5111|lime, juiced
-20551|pinch ground cumin, or to taste
-21796|full-fat plain Greek yogurt
-16420|prepared mustard
-35024|everything bagel seasoning, or to taste
+20551|ground cumin
 16339|unsalted butter
 4663|diced shallots
 3474|white wine
-16258|heavy whipping cream
+16258|cream
 16319|egg yolk
 18774|fresh tarragon leaves
 5110|lemon zest
 0|large oven-safe scallop shells
 16229|shredded Gruyere cheese
 16404|paprika
-22106|finely shredded sharp Cheddar cheese
-111|cooking spray
-18866|kosher salt
-16403|dried oregano
-5803|jar marinara sauce
-20244|red pepper flakes
-18930|balsamic vinegar
-20482|oil for frying
-2520|anchovy fillet
-20414|French baguette
-5233|strawberries
 20415|sweet onion, cut into quarters
 126|artichoke hearts, drained and chopped
 4520|frozen chopped spinach, thawed and drained
@@ -139,61 +112,58 @@ ingredient_id|name
 5103|kiwis, peeled and diced
 11042|Golden Delicious apples - peeled, cored and diced
 5222|raspberries
+5233|strawberries
 1503|fruit preserves, any flavor
 2352|(10 inch) flour tortillas
+111|cooking spray
 20708|cinnamon sugar
 4431|whole green chiles, drained
 4634|canned diced jalapeno peppers, drained
 3703|sun-dried tomatoes, packed in oil
+18930|balsamic vinegar
+16159|fresh basil, stems removed
+20414|French baguette
+16244|grated Romano cheese
 18681|dried basil
-13705|container Alfredo-style pasta sauce
+13705|jar Alfredo sauce
 2863|refried beans
+5588|jar salsa
 4372|small head iceberg lettuce, shredded
-5133|sliced black olives, drained
+5133|black olives, sliced
 4370|Boston Bibb or butter lettuce leaves
 5595|hoisin sauce
+18868|rice wine vinegar
 18865|minced pickled ginger
 7818|dash Asian chile pepper sauce, or to taste (optional)
 4607|water chestnuts, drained and finely chopped
+9722|Asian (dark) sesame oil
 16318|egg white
 3810|pecan halves
 16386|ground cinnamon
 2819|canned garbanzo beans, drained
 10841|tahini
+4409|chopped parsley
 3452|beer
 3789|flaked coconut
+20482|oil for frying
 5045|jellied cranberry sauce
 18901|chili sauce
 1682|wheat germ
-5219|raisins
+5219|raisins (optional)
 5592|hot pepper sauce
+16403|dried oregano
 23043|skewers
-16381|caraway seeds
-7785|baking powder
-2359|baking soda
-16287|buttermilk
-4448|cooked potatoes
-1685|self-rising flour
 18955|champagne vinegar
+2359|baking soda
 27583|Jimmy Dean(R) Original Hearty Pork Sausage Crumbles
-34939|Almond Breeze Vanilla almondmilk
-5015|mashed banana
 16347|evaporated milk
 16231|shredded Monterey Jack cheese
 13596|green enchilada sauce
 2329|frozen puff pastry, thawed
 10536|cooking spray
-27815|lean ground turkey
-4978|small apple - peeled, cored, and finely chopped
-1536|maple syrup
-16414|dried sage
-16399|dried marjoram
-16387|ground cloves
-4529|grated zucchini
-3819|chopped walnuts
-4808|pumpkin puree
-16401|ground nutmeg
+7785|baking powder
 2104|thick slices bread
+16287|buttermilk
 16236|shredded Muenster cheese
 4492|pumpkin puree
 16422|vinegar
@@ -201,17 +171,22 @@ ingredient_id|name
 4380|mushrooms, drained
 16225|herb and garlic feta, crumbled
 20627|(9 inch) unbaked deep dish pie crust
-6420|vegetable oil
+6420|canola oil
+5015|ripe bananas, mashed
 5020|fresh blueberries
-6311|margarine
+1536|maple syrup
+16401|ground nutmeg (optional)
 22104|extra lean ground beef
 18752|sea salt
 20245|Italian seasoning
+20244|red pepper flakes
 16284|skim milk
 2363|seasoned bread crumbs
 15720|cooking sherry
-16218|small curd cottage cheese, divided
-4381|portobello mushrooms, thinly sliced
+1718|spaghetti
+5803|jar marinara sauce
+16218|cottage cheese
+4381|portobello mushrooms, diced
 17625|Arborio rice
 2750|salmon
 5444|ground turkey
@@ -221,6 +196,7 @@ ingredient_id|name
 20607|tilapia fillets
 20467|(6 inch) flour tortillas
 2362|(.25 ounce) package active dry yeast
+18866|kosher salt
 1686|bread flour
 5855|thick pepperoni slices
 1709|egg noodles
@@ -237,4 +213,71 @@ ingredient_id|name
 2231|finely crushed saltine cracker crumbs
 20312|dry ziti pasta
 16241|provolone cheese, sliced
+16420|prepared mustard
 18845|lemon pepper to taste
+3910|boneless beef chuck roast
+3472|red wine
+16399|dried marjoram
+20316|red potatoes, washed and halved
+12306|pearl onions, peeled and halved
+5516|cube beef bouillon
+16412|dried rosemary
+4292|sliced celery
+11484|canola oil
+16124|no-salt-added chicken broth
+8540|Italian meatballs, preferably home made
+27198|pastina pasta
+4517|baby spinach
+3914|thinly sliced Scotch fillet (chuck eye steaks)
+3752|sesame seeds
+6309|sesame oil
+15710|mirin (Japanese sweet wine)
+4582|tomato sauce
+16385|chili powder
+23126|ciabatta rolls, sliced in half
+7248|chopped giardiniera (pickled Italian vegetables)
+20699|chopped Italian parsley
+4004|Korean-style short ribs (beef chuck flanken, cut 1/3 to 1/2 inch thick across bones)
+2958|reduced-sodium soy sauce
+15708|Asian plum wine
+4343|grated fresh ginger root
+3723|serrano chile pepper, finely chopped
+18844|ground coriander
+16418|ground turmeric
+10498|diced tomatoes
+20473|garam masala
+3980|(5 pound) bone-in beef rib roast
+11500|pan drippings from prime rib
+13974|beef stock
+5491|condensed French onion soup
+16400|mustard powder
+631|condensed golden mushroom soup
+20421|rump roast
+18193|French rolls
+4434|diced green chili peppers
+4577|diced tomatoes with green chile peppers
+13608|jar taco sauce
+20468|(8 inch) flour tortillas
+16217|shredded Colby cheese
+4574|whole peeled tomatoes
+4126|beef sirloin, cut into 2 inch strips
+4575|stewed tomatoes, with liquid
+18779|chili seasoning mix
+2795|dark red kidney beans
+4578|(46 fluid ounce) can tomato juice
+2805|pinto beans, drained and rinsed
+4978|medium apples - peeled, cored, and cut into 1/4-inch slices
+20318|Yukon Gold potatoes, cut into 1/4-inch slices
+6522|bone-in, skin on chicken thighs
+20726|penne pasta
+10895|cherry tomatoes, halved
+22447|whole wheat lasagna noodles
+13687|jars tomato-basil pasta sauce
+17500|angel hair pasta
+22005|medium shrimp, peeled and deveined
+17673|linguine pasta
+4786|red bell pepper, diced
+17674|dry fettuccini pasta
+25522|Campbell's(R) Condensed Cream of Mushroom Soup (regular or 25% Lower Sodium)
+2698|tuna, drained
+1710|hot cooked medium egg noodles

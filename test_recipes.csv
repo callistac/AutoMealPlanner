@@ -1,89 +1,101 @@
-recipe_num|title|url|image|servings|prep_time|cook_time|total_time
-272242|Ham Fried Rice with Eggs|https://www.allrecipes.com/recipe/272242/ham-fried-rice-with-eggs/|https://images.media-allrecipes.com/userphotos/560x315/6533568.jpg|4|12|13|25
-132358|Easy Garlic-Lemon Scallops|https://www.allrecipes.com/recipe/132358/easy-garlic-lemon-scallops/|https://images.media-allrecipes.com/userphotos/560x315/5916120.jpg|6|10|10|20
-24263|Ground Beef Enchiladas|https://www.allrecipes.com/recipe/24263/ground-beef-enchiladas/|https://images.media-allrecipes.com/userphotos/560x315/1937864.jpg|6|15|40|55
-172704|Chinese Pepper Steak|https://www.allrecipes.com/recipe/172704/chinese-pepper-steak/|https://images.media-allrecipes.com/userphotos/560x315/7127114.jpg|4|15|15|30
-261774|Low-Carb Salisbury Steak|https://www.allrecipes.com/recipe/261774/low-carb-salisbury-steak/|https://images.media-allrecipes.com/userphotos/560x315/7581453.jpg|6|10|39|49
-245119|Biscuits and Gravy Casserole|https://www.allrecipes.com/recipe/245119/biscuits-and-gravy-casserole/|https://images.media-allrecipes.com/userphotos/560x315/4537530.jpg|6|10|35|45
-15431|Beef and Vegetable Stew|https://www.allrecipes.com/recipe/15431/beef-and-vegetable-stew/|https://images.media-allrecipes.com/userphotos/560x315/285716.jpg|6|15|145|160
-277325|Japanese Souffle Pancakes|https://www.allrecipes.com/recipe/277325/japanese-souffle-pancakes/|https://images.media-allrecipes.com/userphotos/560x315/7308088.jpg|4|15|10|25
-260682|Easy Slow Cooker Cauliflower Soup with Cheese|https://www.allrecipes.com/recipe/260682/easy-slow-cooker-cauliflower-soup-with-cheese/|https://images.media-allrecipes.com/userphotos/560x315/4569959.jpg|4|10|240|250
-278462|Creamy Cannellini Soup|https://www.allrecipes.com/recipe/278462/creamy-cannellini-soup/|https://images.media-allrecipes.com/userphotos/560x315/7664771.jpg|5|10|20|40
-60037|California Melt|https://www.allrecipes.com/recipe/60037/california-melt/|https://images.media-allrecipes.com/userphotos/560x315/3247309.jpg|4|15|2|17
-83853|Butterscotch Oatmeal|https://www.allrecipes.com/recipe/83853/butterscotch-oatmeal/|https://images.media-allrecipes.com/userphotos/560x315/1025147.jpg|3|5|10|15
-265335|Spaghetti with Oven-Roasted Cherry Tomatoes|https://www.allrecipes.com/recipe/265335/spaghetti-with-oven-roasted-cherry-tomatoes/|https://images.media-allrecipes.com/userphotos/560x315/7746097.jpg|4|20|30|50
-221286|Traditional Mexican Guacamole|https://www.allrecipes.com/recipe/221286/traditional-mexican-guacamole/|https://images.media-allrecipes.com/userphotos/560x315/848092.jpg|4|10||10
-175989|Artichoke Stuffed Mushrooms|https://www.allrecipes.com/recipe/175989/artichoke-stuffed-mushrooms/|https://images.media-allrecipes.com/userphotos/560x315/550260.jpg|12|20|25|45
-277952|Air Fryer Hard-Boiled Eggs|https://www.allrecipes.com/recipe/277952/air-fryer-hard-boiled-eggs/|https://images.media-allrecipes.com/userphotos/560x315/7623784.jpg|6|5|15|30
-245429|No Bake Energy Balls|https://www.allrecipes.com/recipe/245429/no-bake-energy-balls/|https://images.media-allrecipes.com/userphotos/560x315/3297624.jpg|20|10||40
-15184|Mouth-Watering Stuffed Mushrooms|https://www.allrecipes.com/recipe/15184/mouth-watering-stuffed-mushrooms/|https://images.media-allrecipes.com/userphotos/560x315/414837.jpg|12|25|20|45
-241156|Slow Cooker Chili Queso Dip|https://www.allrecipes.com/recipe/241156/slow-cooker-chili-queso-dip/|https://images.media-allrecipes.com/userphotos/560x315/3108578.jpg|20|10|245|255
-239969|No-Bake Energy Bites|https://www.allrecipes.com/recipe/239969/no-bake-energy-bites/|https://images.media-allrecipes.com/userphotos/560x315/4540780.jpg|24|15||75
-176957|Baked Kale Chips|https://www.allrecipes.com/recipe/176957/baked-kale-chips/|https://images.media-allrecipes.com/userphotos/250x250/490832.jpg|6|10|10|20
-203800|Pico de Gallo|https://www.allrecipes.com/recipe/203800/pico-de-gallo/|https://images.media-allrecipes.com/userphotos/560x315/282674.jpg|12|20||200
-278124|Everything Deviled Eggs|https://www.allrecipes.com/recipe/278124/everything-deviled-eggs/|https://images.media-allrecipes.com/userphotos/560x315/7580213.jpg|12|15|20|35
-235471|How to Make Coquilles Saint-Jacques |https://www.allrecipes.com/recipe/235471/how-to-make-coquilles-saint-jacques/|https://images.media-allrecipes.com/userphotos/560x315/3726702.jpg|4|20|30|50
-278271|Air Fryer Stuffed Mushrooms|https://www.allrecipes.com/recipe/278271/air-fryer-stuffed-mushrooms/|https://images.media-allrecipes.com/userphotos/560x315/7638987.jpg|6|20|10|35
-278265|Fried Mozzarella Puffs|https://www.allrecipes.com/recipe/278265/fried-mozzarella-puffs/|https://images.media-allrecipes.com/userphotos/560x315/7624311.jpg|6|20|15|100
-69225|Strawberry Bruschetta|https://www.allrecipes.com/recipe/69225/strawberry-bruschetta/|https://images.media-allrecipes.com/userphotos/560x315/1281203.jpg|12|10|5|15
-223012|Amazing No Cook Spinach Artichoke Dip|https://www.allrecipes.com/recipe/223012/amazing-no-cook-spinach-artichoke-dip/|https://images.media-allrecipes.com/userphotos/560x315/1060887.jpg|32|20||20
-16679|Garlicky Appetizer Shrimp Scampi|https://www.allrecipes.com/recipe/16679/garlicky-appetizer-shrimp-scampi/|https://images.media-allrecipes.com/userphotos/250x250/945189.jpg|6|15|6|21
-229454|Artichoke Hearts Gratin|https://www.allrecipes.com/recipe/229454/artichoke-hearts-gratin/|https://images.media-allrecipes.com/userphotos/250x250/946954.jpg|4|10|10|35
-14231|Guacamole|https://www.allrecipes.com/recipe/14231/guacamole/|https://images.media-allrecipes.com/userphotos/560x315/4521556.jpg|4|10||10
-26692|Annie's Fruit Salsa and Cinnamon Chips|https://www.allrecipes.com/recipe/26692/annies-fruit-salsa-and-cinnamon-chips/|https://images.media-allrecipes.com/userphotos/560x315/4536841.jpg|10|15|10|45
-139012|Jalapeno Popper Spread|https://www.allrecipes.com/recipe/139012/jalapeno-popper-spread/|https://images.media-allrecipes.com/userphotos/250x250/265544.jpg|32|10|3|13
-20669|Double Tomato Bruschetta|https://www.allrecipes.com/recipe/20669/double-tomato-bruschetta/|https://images.media-allrecipes.com/userphotos/560x315/4542188.jpg|12|15|7|35
-26819|Hot Artichoke and Spinach Dip II|https://www.allrecipes.com/recipe/26819/hot-artichoke-and-spinach-dip-ii/|https://images.media-allrecipes.com/userphotos/560x315/3391875.jpg|12|15|25|40
-33474|Artichoke & Spinach Dip Restaurant Style|https://www.allrecipes.com/recipe/33474/artichoke-spinach-dip-restaurant-style/|https://images.media-allrecipes.com/userphotos/560x315/2073139.jpg|12|15|30|75
-19673|Seven Layer Taco Dip|https://www.allrecipes.com/recipe/19673/seven-layer-taco-dip/|https://images.media-allrecipes.com/userphotos/560x315/246196.jpg|56|30||30
-71722|Asian Lettuce Wraps|https://www.allrecipes.com/recipe/71722/asian-lettuce-wraps/|https://images.media-allrecipes.com/userphotos/560x315/2630776.jpg|4|20|15|35
-13838|Sugar Coated Pecans|https://www.allrecipes.com/recipe/13838/sugar-coated-pecans/|https://images.media-allrecipes.com/userphotos/560x315/403891.jpg|12|||
-14830|Hummus III|https://www.allrecipes.com/recipe/14830/hummus-iii/|https://images.media-allrecipes.com/userphotos/560x315/4477057.jpg|16|10||10
-17753|Coconut Shrimp I|https://www.allrecipes.com/recipe/17753/coconut-shrimp-i/|https://images.media-allrecipes.com/userphotos/560x315/3494547.jpg|6|10|20|60
-15206|Cocktail Meatballs|https://www.allrecipes.com/recipe/15206/cocktail-meatballs/|https://images.media-allrecipes.com/userphotos/560x315/1066728.jpg|10|20|85|105
-81298|Playgroup Granola Bars|https://www.allrecipes.com/recipe/81298/playgroup-granola-bars/|https://images.media-allrecipes.com/userphotos/560x315/1131887.jpg|24|15|35|50
-19484|Grilled Marinated Shrimp|https://www.allrecipes.com/recipe/19484/grilled-marinated-shrimp/|https://images.media-allrecipes.com/userphotos/560x315/667049.jpg|6|30|10|160
-256753|Irish Soda Bread Muffins|https://www.allrecipes.com/recipe/256753/irish-soda-bread-muffins/|https://images.media-allrecipes.com/userphotos/560x315/4462122.jpg|12|10|20|30
-241419|Potato Scones|https://www.allrecipes.com/recipe/241419/potato-scones/|https://images.media-allrecipes.com/userphotos/560x315/2082789.jpg|6|20|10|30
-222204|Chef John's Poached Eggs|https://www.allrecipes.com/recipe/222204/chef-johns-poached-eggs/|https://images.media-allrecipes.com/userphotos/560x315/1017298.jpg|2|10|15|25
-162760|Fluffy Pancakes|https://www.allrecipes.com/recipe/162760/fluffy-pancakes/|https://images.media-allrecipes.com/userphotos/560x315/5079227.jpg|4|10|10|25
-216391|Easy Sausage Gravy and Biscuits|https://www.allrecipes.com/recipe/216391/easy-sausage-gravy-and-biscuits/|https://images.media-allrecipes.com/userphotos/560x315/571726.jpg|8|5|10|15
-269573|Overnight Chia Oats|https://www.allrecipes.com/recipe/269573/overnight-chia-oats/|https://images.media-allrecipes.com/userphotos/560x315/6133237.jpg|1|5||485
-217018|Chili Relleno Casserole|https://www.allrecipes.com/recipe/217018/chili-relleno-casserole/|https://images.media-allrecipes.com/userphotos/560x315/2438287.jpg|8|10|45|55
-246512|Puff Pastry Waffles|https://www.allrecipes.com/recipe/246512/puff-pastry-waffles/|https://images.media-allrecipes.com/userphotos/560x315/3374022.jpg|8|5|3|8
-259473|Maple Apple Turkey Sausage|https://www.allrecipes.com/recipe/259473/maple-apple-turkey-sausage/|https://images.media-allrecipes.com/userphotos/560x315/4553597.jpg|10|10|6|16
-21014|Good Old Fashioned Pancakes|https://www.allrecipes.com/recipe/21014/good-old-fashioned-pancakes/|https://images.media-allrecipes.com/userphotos/560x315/4948036.jpg|8|5|15|20
-6698|Mom's Zucchini Bread|https://www.allrecipes.com/recipe/6698/moms-zucchini-bread/|https://images.media-allrecipes.com/userphotos/560x315/1037957.jpg|24|20|60|100
-6820|Downeast Maine Pumpkin Bread|https://www.allrecipes.com/recipe/6820/downeast-maine-pumpkin-bread/|https://images.media-allrecipes.com/userphotos/560x315/4567827.jpg|24|15|50|65
-6984|Banana Sour Cream Bread|https://www.allrecipes.com/recipe/6984/banana-sour-cream-bread/|https://images.media-allrecipes.com/userphotos/560x315/4510541.jpg|32|10|60|70
-22180|Waffles I|https://www.allrecipes.com/recipe/22180/waffles-i/|https://images.media-allrecipes.com/userphotos/560x315/3875444.jpg|6|5|15|20
-16895|Fluffy French Toast|https://www.allrecipes.com/recipe/16895/fluffy-french-toast/|https://images.media-allrecipes.com/userphotos/560x315/2049275.jpg|12|10|20|30
-24530|Buttermilk Pancakes II|https://www.allrecipes.com/recipe/24530/buttermilk-pancakes-ii/|https://images.media-allrecipes.com/userphotos/560x315/439719.jpg|12|15|10|25
-16383|Basic Crepes|https://www.allrecipes.com/recipe/16383/basic-crepes/|https://images.media-allrecipes.com/userphotos/560x315/1266.jpg|4|10|20|30
-20513|Classic Waffles|https://www.allrecipes.com/recipe/20513/classic-waffles/|https://images.media-allrecipes.com/userphotos/560x315/34761.jpg|5|10|15|25
-20876|Crustless Spinach Quiche|https://www.allrecipes.com/recipe/20876/crustless-spinach-quiche/|https://images.media-allrecipes.com/userphotos/560x315/451789.jpg|6|20|30|50
-17036|Pumpkin Pancakes|https://www.allrecipes.com/recipe/17036/pumpkin-pancakes/|https://images.media-allrecipes.com/userphotos/560x315/705316.jpg|6|20|20|40
-16664|Spinach Quiche|https://www.allrecipes.com/recipe/16664/spinach-quiche/|https://images.media-allrecipes.com/userphotos/560x315/2144550.jpg|6|20|40|60
-20334|Banana Pancakes I|https://www.allrecipes.com/recipe/20334/banana-pancakes-i/|https://images.media-allrecipes.com/userphotos/560x315/708583.jpg|6|5|10|15
-15057|Overnight Blueberry French Toast|https://www.allrecipes.com/recipe/15057/overnight-blueberry-french-toast/|https://images.media-allrecipes.com/userphotos/560x315/381517.jpg|10|15|75|600
-6815|Monkey Bread I|https://www.allrecipes.com/recipe/6815/monkey-bread-i/|https://images.media-allrecipes.com/userphotos/560x315/546316.jpg|15|15|35|60
-6862|Pumpkin Bread IV|https://www.allrecipes.com/recipe/6862/pumpkin-bread-iv/|https://images.media-allrecipes.com/userphotos/560x315/3850368.jpg|36|15|60|75
-7016|French Toast I|https://www.allrecipes.com/recipe/7016/french-toast-i/|https://images.media-allrecipes.com/userphotos/560x315/234562.jpg|3|5|15|20
-213742|Meatball Nirvana|https://www.allrecipes.com/recipe/213742/meatball-nirvana/|https://images.media-allrecipes.com/userphotos/560x315/397070.jpg|4|20|20|40
-78370|Hamburger Steak with Onions and Gravy|https://www.allrecipes.com/recipe/78370/hamburger-steak-with-onions-and-gravy/|https://images.media-allrecipes.com/userphotos/560x315/5938981.jpg|4|15|25|40
-222582|Baked Spaghetti |https://www.allrecipes.com/recipe/222582/baked-spaghetti/|https://images.media-allrecipes.com/userphotos/560x315/1578406.jpg|8|25|60|85
-85389|Gourmet Mushroom Risotto|https://www.allrecipes.com/recipe/85389/gourmet-mushroom-risotto/|https://images.media-allrecipes.com/userphotos/560x315/246711.jpg|6|20|30|50
-51283|Maple Salmon|https://www.allrecipes.com/recipe/51283/maple-salmon/|https://images.media-allrecipes.com/userphotos/560x315/862371.jpg|4|10|20|60
-39748|Actually Delicious Turkey Burgers|https://www.allrecipes.com/recipe/39748/actually-delicious-turkey-burgers/|https://images.media-allrecipes.com/userphotos/560x315/7689706.jpg|12|15|15|30
-14140|Baked Macaroni and Cheese|https://www.allrecipes.com/recipe/14140/baked-macaroni-and-cheese/|https://images.media-allrecipes.com/userphotos/560x315/964194.jpg|3|||
-221936|Quick Fish Tacos|https://www.allrecipes.com/recipe/221936/quick-fish-tacos/|https://images.media-allrecipes.com/userphotos/560x315/1017268.jpg|4|20|15|35
-268466|Detroit-Style Pizza|https://www.allrecipes.com/recipe/268466/detroit-style-pizza/|https://images.media-allrecipes.com/userphotos/560x315/5822211.jpg|12|15|15|95
-23260|Simple Hamburger Stroganoff|https://www.allrecipes.com/recipe/23260/simple-hamburger-stroganoff/|https://images.media-allrecipes.com/userphotos/560x315/4573295.jpg|6|20|10|30
-223050|Chef John's Turkey Sloppy Joes|https://www.allrecipes.com/recipe/223050/chef-johns-turkey-sloppy-joes/|https://images.media-allrecipes.com/userphotos/560x315/1259534.jpg|6|10|30|40
-50644|Broiled Tilapia Parmesan|https://www.allrecipes.com/recipe/50644/broiled-tilapia-parmesan/|https://images.media-allrecipes.com/userphotos/560x315/687910.jpg|8|5|10|15
-16066|Awesome Slow Cooker Pot Roast|https://www.allrecipes.com/recipe/16066/awesome-slow-cooker-pot-roast/|https://images.media-allrecipes.com/userphotos/560x315/2287775.jpg|12|10|480|490
-25203|Brown Sugar Meatloaf|https://www.allrecipes.com/recipe/25203/brown-sugar-meatloaf/|https://images.media-allrecipes.com/userphotos/560x315/2573174.jpg|8|20|60|90
-11758|Baked Ziti I|https://www.allrecipes.com/recipe/11758/baked-ziti-i/|https://images.media-allrecipes.com/userphotos/560x315/4557541.jpg|10|20|35|55
-16354|Easy Meatloaf|https://www.allrecipes.com/recipe/16354/easy-meatloaf/|https://images.media-allrecipes.com/userphotos/560x315/7698881.jpg|8|10|60|70
-24264|Sloppy Joes II|https://www.allrecipes.com/recipe/24264/sloppy-joes-ii/|https://images.media-allrecipes.com/userphotos/560x315/747244.jpg|6|10|30|40
-12720|Grilled Salmon I|https://www.allrecipes.com/recipe/12720/grilled-salmon-i/|https://images.media-allrecipes.com/userphotos/560x315/800839.jpg|6|15|16|151
+recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg_review
+132358|Easy Garlic-Lemon Scallops|https://www.allrecipes.com/recipe/132358/easy-garlic-lemon-scallops/||6|10|10|20|368|4.58
+24263|Ground Beef Enchiladas|https://www.allrecipes.com/recipe/24263/ground-beef-enchiladas/||6|15|40|55|747|4.45
+172704|Chinese Pepper Steak|https://www.allrecipes.com/recipe/172704/chinese-pepper-steak/||4|15|15|30|674|4.59
+261774|Low-Carb Salisbury Steak|https://www.allrecipes.com/recipe/261774/low-carb-salisbury-steak/||6|10|39|49|65|4.55
+245119|Biscuits and Gravy Casserole|https://www.allrecipes.com/recipe/245119/biscuits-and-gravy-casserole/||6|10|35|45|405|4.59
+15431|Beef and Vegetable Stew|https://www.allrecipes.com/recipe/15431/beef-and-vegetable-stew/||6|15|145|160|129|4.18
+277325|Japanese Souffle Pancakes|https://www.allrecipes.com/recipe/277325/japanese-souffle-pancakes/||4|15|10|25|19|4.36
+260682|Easy Slow Cooker Cauliflower Soup with Cheese|https://www.allrecipes.com/recipe/260682/easy-slow-cooker-cauliflower-soup-with-cheese/||4|10|240|250|20|3.68
+278462|Creamy Cannellini Soup|https://www.allrecipes.com/recipe/278462/creamy-cannellini-soup/||5|10|20|40|23|4.21
+60037|California Melt|https://www.allrecipes.com/recipe/60037/california-melt/||4|15|2|17|129|4.41
+83853|Butterscotch Oatmeal|https://www.allrecipes.com/recipe/83853/butterscotch-oatmeal/||3|5|10|15|479|4.5
+221286|Traditional Mexican Guacamole|https://www.allrecipes.com/recipe/221286/traditional-mexican-guacamole/||4|10||10|115|4.66
+175989|Artichoke Stuffed Mushrooms|https://www.allrecipes.com/recipe/175989/artichoke-stuffed-mushrooms/||12|20|25|45|184|4.61
+245429|No Bake Energy Balls|https://www.allrecipes.com/recipe/245429/no-bake-energy-balls/||20|10||40|128|4.82
+15184|Mouth-Watering Stuffed Mushrooms|https://www.allrecipes.com/recipe/15184/mouth-watering-stuffed-mushrooms/||12|25|20|45|3041|4.62
+239969|No-Bake Energy Bites|https://www.allrecipes.com/recipe/239969/no-bake-energy-bites/||24|15||75|449|4.8
+176957|Baked Kale Chips|https://www.allrecipes.com/recipe/176957/baked-kale-chips/||6|10|10|20|1910|4.48
+203800|Pico de Gallo|https://www.allrecipes.com/recipe/203800/pico-de-gallo/||12|20||200|343|4.7
+235471|How to Make Coquilles Saint-Jacques |https://www.allrecipes.com/recipe/235471/how-to-make-coquilles-saint-jacques/||4|20|30|50|49|4.79
+223012|Amazing No Cook Spinach Artichoke Dip|https://www.allrecipes.com/recipe/223012/amazing-no-cook-spinach-artichoke-dip/||32|20||20|18|4.52
+16679|Garlicky Appetizer Shrimp Scampi|https://www.allrecipes.com/recipe/16679/garlicky-appetizer-shrimp-scampi/||6|15|6|21|134|4.65
+229454|Artichoke Hearts Gratin|https://www.allrecipes.com/recipe/229454/artichoke-hearts-gratin/||4|10|10|35|55|4.04
+14231|Guacamole|https://www.allrecipes.com/recipe/14231/guacamole/||4|10||10|4644|4.81
+26692|Annie's Fruit Salsa and Cinnamon Chips|https://www.allrecipes.com/recipe/26692/annies-fruit-salsa-and-cinnamon-chips/||10|15|10|45|3286|4.78
+139012|Jalapeno Popper Spread|https://www.allrecipes.com/recipe/139012/jalapeno-popper-spread/||32|10|3|13|2835|4.75
+20669|Double Tomato Bruschetta|https://www.allrecipes.com/recipe/20669/double-tomato-bruschetta/||12|15|7|35|2055|4.82
+26819|Hot Artichoke and Spinach Dip II|https://www.allrecipes.com/recipe/26819/hot-artichoke-and-spinach-dip-ii/||12|15|25|40|2148|4.72
+33474|Artichoke & Spinach Dip Restaurant Style|https://www.allrecipes.com/recipe/33474/artichoke-spinach-dip-restaurant-style/||12|15|30|75|2095|4.67
+19673|Seven Layer Taco Dip|https://www.allrecipes.com/recipe/19673/seven-layer-taco-dip/||56|30||30|1901|4.74
+71722|Asian Lettuce Wraps|https://www.allrecipes.com/recipe/71722/asian-lettuce-wraps/||4|20|15|35|1815|4.64
+13838|Sugar Coated Pecans|https://www.allrecipes.com/recipe/13838/sugar-coated-pecans/||12||||1692|4.91
+14830|Hummus III|https://www.allrecipes.com/recipe/14830/hummus-iii/||16|10||10|1594|4.55
+17753|Coconut Shrimp I|https://www.allrecipes.com/recipe/17753/coconut-shrimp-i/||6|10|20|60|1455|4.79
+15206|Cocktail Meatballs|https://www.allrecipes.com/recipe/15206/cocktail-meatballs/||10|20|85|105|1395|4.47
+81298|Playgroup Granola Bars|https://www.allrecipes.com/recipe/81298/playgroup-granola-bars/||24|15|35|50|1440|4.54
+19484|Grilled Marinated Shrimp|https://www.allrecipes.com/recipe/19484/grilled-marinated-shrimp/||6|30|10|160|1191|4.82
+222204|Chef John's Poached Eggs|https://www.allrecipes.com/recipe/222204/chef-johns-poached-eggs/||2|10|15|25|33|4.31
+162760|Fluffy Pancakes|https://www.allrecipes.com/recipe/162760/fluffy-pancakes/||4|10|10|25|11331|4.83
+216391|Easy Sausage Gravy and Biscuits|https://www.allrecipes.com/recipe/216391/easy-sausage-gravy-and-biscuits/||8|5|10|15|602|4.81
+217018|Chili Relleno Casserole|https://www.allrecipes.com/recipe/217018/chili-relleno-casserole/||8|10|45|55|110|4.5
+246512|Puff Pastry Waffles|https://www.allrecipes.com/recipe/246512/puff-pastry-waffles/||8|5|3|8|19|4.64
+21014|Good Old Fashioned Pancakes|https://www.allrecipes.com/recipe/21014/good-old-fashioned-pancakes/||8|5|15|20|12128|4.59
+22180|Waffles I|https://www.allrecipes.com/recipe/22180/waffles-i/||6|5|15|20|3428|4.5
+16895|Fluffy French Toast|https://www.allrecipes.com/recipe/16895/fluffy-french-toast/||12|10|20|30|2864|4.63
+24530|Buttermilk Pancakes II|https://www.allrecipes.com/recipe/24530/buttermilk-pancakes-ii/||12|15|10|25|2851|4.72
+16383|Basic Crepes|https://www.allrecipes.com/recipe/16383/basic-crepes/||4|10|20|30|2608|4.63
+20513|Classic Waffles|https://www.allrecipes.com/recipe/20513/classic-waffles/||5|10|15|25|2489|4.55
+20876|Crustless Spinach Quiche|https://www.allrecipes.com/recipe/20876/crustless-spinach-quiche/||6|20|30|50|2285|4.72
+17036|Pumpkin Pancakes|https://www.allrecipes.com/recipe/17036/pumpkin-pancakes/||6|20|20|40|2277|4.57
+16664|Spinach Quiche|https://www.allrecipes.com/recipe/16664/spinach-quiche/||6|20|40|60|1952|4.7
+20334|Banana Pancakes I|https://www.allrecipes.com/recipe/20334/banana-pancakes-i/||6|5|10|15|1810|4.48
+15057|Overnight Blueberry French Toast|https://www.allrecipes.com/recipe/15057/overnight-blueberry-french-toast/||10|15|75|600|1629|4.53
+7016|French Toast I|https://www.allrecipes.com/recipe/7016/french-toast-i/||3|5|15|20|1244|4.55
+213742|Meatball Nirvana|https://www.allrecipes.com/recipe/213742/meatball-nirvana/||4|20|20|40|2904|4.63
+78370|Hamburger Steak with Onions and Gravy|https://www.allrecipes.com/recipe/78370/hamburger-steak-with-onions-and-gravy/||4|15|25|40|2760|4.61
+222582|Baked Spaghetti |https://www.allrecipes.com/recipe/222582/baked-spaghetti/||8|25|60|85|923|4.7
+85389|Gourmet Mushroom Risotto|https://www.allrecipes.com/recipe/85389/gourmet-mushroom-risotto/||6|20|30|50|2157|4.8
+51283|Maple Salmon|https://www.allrecipes.com/recipe/51283/maple-salmon/||4|10|20|60|3578|4.67
+39748|Actually Delicious Turkey Burgers|https://www.allrecipes.com/recipe/39748/actually-delicious-turkey-burgers/||12|15|15|30|1789|4.58
+14140|Baked Macaroni and Cheese|https://www.allrecipes.com/recipe/14140/baked-macaroni-and-cheese/||3||||443|4.11
+221936|Quick Fish Tacos|https://www.allrecipes.com/recipe/221936/quick-fish-tacos/||4|20|15|35|154|4.55
+268466|Detroit-Style Pizza|https://www.allrecipes.com/recipe/268466/detroit-style-pizza/||12|15|15|95|21|4.54
+23260|Simple Hamburger Stroganoff|https://www.allrecipes.com/recipe/23260/simple-hamburger-stroganoff/||6|20|10|30|853|4.3
+223050|Chef John's Turkey Sloppy Joes|https://www.allrecipes.com/recipe/223050/chef-johns-turkey-sloppy-joes/||6|10|30|40|328|4.74
+50644|Broiled Tilapia Parmesan|https://www.allrecipes.com/recipe/50644/broiled-tilapia-parmesan/||8|5|10|15|7175|4.71
+16066|Awesome Slow Cooker Pot Roast|https://www.allrecipes.com/recipe/16066/awesome-slow-cooker-pot-roast/||12|10|480|490|7031|4.64
+25203|Brown Sugar Meatloaf|https://www.allrecipes.com/recipe/25203/brown-sugar-meatloaf/||8|20|60|90|6491|4.58
+11758|Baked Ziti I|https://www.allrecipes.com/recipe/11758/baked-ziti-i/||10|20|35|55|5903|4.7
+16354|Easy Meatloaf|https://www.allrecipes.com/recipe/16354/easy-meatloaf/||8|10|60|70|5707|4.58
+24264|Sloppy Joes II|https://www.allrecipes.com/recipe/24264/sloppy-joes-ii/||6|10|30|40|5262|4.67
+12720|Grilled Salmon I|https://www.allrecipes.com/recipe/12720/grilled-salmon-i/||6|15|16|151|3616|4.76
+162091|Awesome Red Wine Pot Roast|https://www.allrecipes.com/recipe/162091/awesome-red-wine-pot-roast/||12|15|255|270|187|4.53
+25678|Beef Stew VI|https://www.allrecipes.com/recipe/25678/beef-stew-vi/||10|20|120|140|2410|4.62
+258468|Beef Stroganoff for Instant Pot®|https://www.allrecipes.com/recipe/258468/beef-stroganoff-for-instant-pot/||8|20|37|62|554|4.46
+270310|Instant Pot® Italian Wedding Soup|https://www.allrecipes.com/recipe/270310/instant-pot-italian-wedding-soup/||4|10|35|60|48|4.91
+42964|Awesome Korean Steak|https://www.allrecipes.com/recipe/42964/awesome-korean-steak/||6|20|10|750|185|4.56
+262326|A Minnesotan's Beef and Macaroni Hotdish|https://www.allrecipes.com/recipe/262326/a-minnesotans-beef-and-macaroni-hotdish/||6|15|25|40|21|4.52
+236322|Chicago-Inspired Italian Beef Sandwich |https://www.allrecipes.com/recipe/236322/chicago-inspired-italian-beef-sandwich/||4|15|70|85|27|4.65
+158229|The Real Deal Korean Beef Ribs|https://www.allrecipes.com/recipe/158229/the-real-deal-korean-beef-ribs/||6|15|15|1530|16|4.37
+231026|Keema Aloo (Ground Beef and Potatoes)|https://www.allrecipes.com/recipe/231026/keema-aloo-ground-beef-and-potatoes/||8|20|55|80|172|4.61
+160399|Prime Rib Au Jus with Yorkshire Pudding|https://www.allrecipes.com/recipe/160399/prime-rib-au-jus-with-yorkshire-pudding/||6|20|90|260|62|4.59
+14685|Slow Cooker Beef Stew I|https://www.allrecipes.com/recipe/14685/slow-cooker-beef-stew-i/||6|20|720|740|3695|4.44
+14595|Salisbury Steak|https://www.allrecipes.com/recipe/14595/salisbury-steak/||6|20|20|40|3415|4.41
+16352|Slow Cooker Beef Stroganoff I|https://www.allrecipes.com/recipe/16352/slow-cooker-beef-stroganoff-i/||4|10|480|490|2938|4.38
+16239|Easy Slow Cooker French Dip|https://www.allrecipes.com/recipe/16239/easy-slow-cooker-french-dip/||9|10|420|430|2882|4.51
+16881|Burrito Pie|https://www.allrecipes.com/recipe/16881/burrito-pie/||16|30|30|60|2838|4.56
+21353|Italian Spaghetti Sauce with Meatballs|https://www.allrecipes.com/recipe/21353/italian-spaghetti-sauce-with-meatballs/||6|20|120|140|2597|4.53
+23567|Slow-Cooker Pepper Steak|https://www.allrecipes.com/recipe/23567/slow-cooker-pepper-steak/||6|20|250|270|2365|4.45
+16235|Debdoozie's Blue Ribbon Chili|https://www.allrecipes.com/recipe/16235/debdoozies-blue-ribbon-chili/||8|10|60|70|2409|4.77
+14985|It's Chili by George!!|https://www.allrecipes.com/recipe/14985/its-chili-by-george/||10|10|105|115|2266|4.65
+24202|Shepherd's Pie VI|https://www.allrecipes.com/recipe/24202/shepherds-pie-vi/||6|30|20|50|2156|4.47
+276263|Rosemary-Roasted Chicken with Apples and Potatoes|https://www.allrecipes.com/recipe/276263/rosemary-roasted-chicken-with-apples-and-potatoes/||6|10|70|80|18|4.63
+261148|Creamy Pasta Bake with Cherry Tomatoes and Basil|https://www.allrecipes.com/recipe/261148/creamy-pasta-bake-with-cherry-tomatoes-and-basil/||6|20|31|51|71|4.73
+218091|Classic and Simple Meat Lasagna|https://www.allrecipes.com/recipe/218091/classic-and-simple-meat-lasagna/||8|25|60|95|142|4.61
+273326|Parmesan-Crusted Shrimp Scampi with Pasta|https://www.allrecipes.com/recipe/273326/parmesan-crusted-shrimp-scampi-with-pasta/||6|25|20|45|101|4.51
+229960|Shrimp Scampi with Pasta|https://www.allrecipes.com/recipe/229960/shrimp-scampi-with-pasta/||6|20|20|40|713|4.58
+133128|Peppered Shrimp Alfredo|https://www.allrecipes.com/recipe/133128/peppered-shrimp-alfredo/||6|30|20|50|1515|4.78
+23431|To Die For Fettuccine Alfredo|https://www.allrecipes.com/recipe/23431/to-die-for-fettuccine-alfredo/||6|15|15|30|1486|4.61
+275489|Chef John's American Goulash|https://www.allrecipes.com/recipe/275489/chef-johns-american-goulash/||12|10|60|75|59|4.89
+151593|Campbell's® Tuna Noodle Casserole|https://www.allrecipes.com/recipe/151593/campbells-tuna-noodle-casserole/||8|10|35|45|291|4.36

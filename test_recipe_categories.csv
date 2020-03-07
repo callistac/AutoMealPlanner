@@ -1,7 +1,4 @@
 recipe_num|category
-272242|Pork
-272242|Main
-272242|Dinner
 132358|Quick Easy
 132358|Mother
 132358|Seafood
@@ -55,14 +52,6 @@ recipe_num|category
 60037|Dinner
 83853|Breakfast
 83853|Main
-265335|Clean Eating
-265335|Health
-265335|Vegetarian
-265335|Italian
-265335|Pasta
-265335|World
-265335|Main
-265335|Dinner
 221286|Entertaining
 221286|Quick Easy
 221286|Cinco
@@ -72,18 +61,11 @@ recipe_num|category
 221286|World
 175989|Entertaining
 175989|Appetizer
-277952|Vegetarian
-277952|Quick Easy
-277952|Easter
-277952|Appetizer
-277952|Holiday
 245429|Appetizer
 15184|Vegetarian
 15184|Lowcarb
 15184|Appetizer
 15184|Holiday
-241156|Slow
-241156|Appetizer
 239969|Appetizer
 176957|Clean Eating
 176957|Gluten Free
@@ -104,26 +86,12 @@ recipe_num|category
 203800|Appetizer
 203800|Holiday
 203800|World
-278124|Quick Easy
-278124|Appetizer
 235471|Seafood
 235471|Appetizer
 235471|Holiday
 235471|World
 235471|Main
 235471|Dinner
-278271|Vegetarian
-278271|Appetizer
-278271|Dinner
-278265|Entertaining
-278265|Appetizer
-278265|Dinner
-69225|Italian
-69225|Lowfat
-69225|Appetizer
-69225|Holiday
-69225|World
-69225|Main
 223012|Family
 223012|Quick Easy
 223012|Appetizer
@@ -207,13 +175,6 @@ recipe_num|category
 19484|Appetizer
 19484|Main
 19484|Dinner
-256753|Bread
-256753|Breakfast
-256753|Holiday
-241419|Bread
-241419|Breakfast
-241419|Holiday
-241419|World
 222204|One Two
 222204|Paleo
 222204|Budget
@@ -229,9 +190,6 @@ recipe_num|category
 216391|Breakfast
 216391|Pork
 216391|Main
-269573|One Two
-269573|Breakfast
-269573|Main
 217018|Family
 217018|Budget
 217018|Vegetarian
@@ -244,23 +202,9 @@ recipe_num|category
 246512|Family
 246512|Quick Easy
 246512|Breakfast
-259473|Family
-259473|Breakfast
 21014|Budget
 21014|Quick Easy
 21014|Breakfast
-6698|Dairy Free
-6698|Bread
-6698|Breakfast
-6698|Holiday
-6820|Dairy Free
-6820|Bread
-6820|Breakfast
-6820|Holiday
-6820|World
-6984|Bread
-6984|Breakfast
-6984|Holiday
 22180|Budget
 22180|Quick Easy
 22180|Breakfast
@@ -296,17 +240,18 @@ recipe_num|category
 15057|Breakfast
 15057|Holiday
 15057|Main
-6815|Bread
-6815|Breakfast
-6862|Dairy Free
-6862|Bread
-6862|Breakfast
-6862|Holiday
 7016|Breakfast
 7016|Main
 213742|Beef
 213742|Main
 213742|Dinner
+78370|Family
+78370|Budget
+78370|Quick Easy
+78370|Beef
+78370|World
+78370|Main
+78370|Dinner
 78370|Family
 78370|Budget
 78370|Quick Easy
@@ -401,3 +346,159 @@ recipe_num|category
 12720|Seafood
 12720|Main
 12720|Dinner
+162091|Family
+162091|Beef
+162091|Main
+162091|Dinner
+25678|Soup
+25678|Beef
+25678|Dinner
+258468|Family
+258468|Pasta
+258468|Beef
+258468|Main
+258468|Dinner
+270310|Pasta
+270310|Soup
+270310|Beef
+42964|Dairy Free
+42964|Asian
+42964|Beef
+42964|World
+42964|Main
+42964|Dinner
+262326|Casserole
+262326|Pasta
+262326|Beef
+262326|Main
+262326|Dinner
+236322|Italian
+236322|Beef
+236322|World
+236322|Main
+236322|Dinner
+158229|Family
+158229|BBQ
+158229|Asian
+158229|Beef
+158229|World
+158229|Main
+158229|Dinner
+231026|Family
+231026|Budget
+231026|Indian
+231026|Beef
+231026|World
+231026|Main
+231026|Dinner
+160399|Entertaining
+160399|Beef
+160399|Holiday
+160399|Main
+160399|Dinner
+14685|Dairy Free
+14685|Slow
+14685|Soup
+14685|Beef
+14685|Dinner
+14595|Dairy Free
+14595|Family
+14595|Budget
+14595|Beef
+14595|Main
+14595|Dinner
+16352|Family
+16352|Slow
+16352|Pasta
+16352|Beef
+16352|Lowcarb
+16352|Main
+16352|Dinner
+16239|Family
+16239|Budget
+16239|Slow
+16239|Beef
+16239|Main
+16239|Dinner
+16881|Family
+16881|Budget
+16881|Casserole
+16881|Mexican
+16881|Beef
+16881|World
+16881|Main
+16881|Dinner
+21353|Italian
+21353|Beef
+21353|World
+21353|Main
+23567|Family
+23567|Slow
+23567|Beef
+23567|Main
+23567|Dinner
+16235|Entertaining
+16235|Quick Easy
+16235|Soup
+16235|Beef
+16235|Dinner
+14985|Gluten Free
+14985|Dairy Free
+14985|Budget
+14985|Slow
+14985|Soup
+14985|Beef
+14985|Dinner
+24202|Beef
+24202|Main
+24202|Dinner
+276263|Chicken
+276263|Main
+276263|Dinner
+261148|Vegetarian
+261148|Pasta
+261148|Main
+261148|Dinner
+218091|Italian
+218091|Pasta
+218091|Beef
+218091|World
+218091|Main
+218091|Dinner
+273326|Quick Easy
+273326|Seafood
+273326|Pasta
+273326|Main
+273326|Dinner
+229960|Entertaining
+229960|Quick Easy
+229960|Italian
+229960|Seafood
+229960|Pasta
+229960|Holiday
+229960|World
+229960|Main
+229960|Dinner
+133128|Family
+133128|Italian
+133128|Seafood
+133128|Pasta
+133128|Holiday
+133128|World
+133128|Main
+133128|Dinner
+23431|Pasta
+23431|Main
+23431|Dinner
+275489|Family
+275489|Pasta
+275489|Soup
+275489|Beef
+275489|World
+275489|Main
+275489|Dinner
+151593|Health
+151593|Entertaining
+151593|Seafood
+151593|Pasta
+151593|Dinner
