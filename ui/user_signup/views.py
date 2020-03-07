@@ -5,8 +5,10 @@ from user_signup.forms import CustomForm, Deselect
 from django.views.generic import TemplateView
 from django.contrib import messages
 from user_signup.generate_recipes import generate_html_page
+from user_signup.query_recipes import query_recipes
 from django.http import HttpResponse
 import sqlite3
+import numpy as np
 
 
 def home(request):
@@ -70,18 +72,31 @@ class User_Dashboard(TemplateView):
 class MealGeneration(TemplateView):
     def get(self, request):
         form = Deselect()
-        sql_statement = "SELECT firstname FROM user_signup_user_data WHERE user_id = ?"
+        sql_statement = "SELECT * FROM user_signup_user_data WHERE user_id = ?"
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
         c.execute(sql_statement, (request.user.id,))
-        name = c.fetchone()
-        if name is None:
-            name = ['']
-        args = {'user': request.user, 'form':form, 'name':name[0]}
+        user_info = c.fetchone()
+        print(user_info)
 
+        if len(user_info) == 0:
+            user_info = ['']
+        args = {'user': request.user, 'form':form, 'name':user_info[1]}
+
+        # recipes = query_recipes()
+        # check to see if the recipes we extracted fufill user's budget
+        # check to see if the recipes we extracted are not in the blacklisted recipes for that user
+        # if not, regenerate recipes
         connection.commit()
         connection.close()
-        generate_html_page()
+        recipes = [('Pork Dumplings', 'https://www.allrecipes.com/recipe/14759/pork-dumplings/', 'https://images.media-allrecipes.com/userphotos/560x315/704866.jpg'),
+                    ('Easy Lemon-Pepper Blackened Salmon', 'https://www.allrecipes.com/recipe/156814/easy-lemon-pepper-blackened-salmon/', 'https://images.media-allrecipes.com/userphotos/560x315/7249818.jpg')]
+        ingredients = ['apples', 'tomatoes', 'lunchmeat', 'pizza']
+
+        request.session['recipes'] = recipes
+        request.session['ingredients'] = ingredients
+
+        generate_html_page(recipes)
         return render(request, 'user_signup/meals.html', args)
 
     def post(self, request):
@@ -93,7 +108,21 @@ class MealGeneration(TemplateView):
         results.append(request.POST['reason'])
         print(results)
         #c = c.execute(insert_blacklist_statement, )
+        generate_html_page()
         return redirect("/home/dashboard/meals/")
+
+# is only called when the generate ingredients recipe is called so we have our final recipes
+def SaveRecipes(request):
+    if request.method == "POST":
+        print(request.user.id)
+        print(request.session.get('recipes'))
+        print(request.session.get('ingredients'))
+
+        with open('grocery_list.txt', 'w') as f:
+            for item in request.session.get('ingredients'):
+                f.write("%s\n" % item)
+        # save the recipes to the database
+        return redirect("/home/dashboard")
 
 class Change_User_Info(TemplateView):
     template_name = 'user_signup/user_preferences.html'
@@ -114,7 +143,6 @@ class Deselect_Tracker(TemplateView):
         #return render(request, self.template_name, {'form':form})
     def post(self, request):
         return
-
 
 
 def register(request):
