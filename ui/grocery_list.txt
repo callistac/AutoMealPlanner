@@ -1,0 +1,4 @@
+apples
+tomatoes
+lunchmeat
+pizza

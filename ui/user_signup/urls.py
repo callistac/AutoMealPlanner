@@ -14,6 +14,8 @@ urlpatterns = [
     path('dashboard/meals/', views.MealGeneration.as_view(), name='meal_generation'),
     path('user_preferences/', views.Change_User_Info.as_view(), name='user_preferences'),
     path('deselect/', views.Deselect_Tracker.as_view(), name='deselect'),
+    path('dashboard/meals/SaveResults/', views.SaveRecipes, name='save_meals'),
+    path('dashboard/past_recipes/', views.DisplayPastRecipes.as_view(), name='past_recipes')
 ]
 
 # path('login/new_user/user_info/', views.User_Info.as_view(), name = 'user_entry'),
