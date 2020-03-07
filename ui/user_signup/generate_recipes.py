@@ -1,8 +1,8 @@
 
 
-def generate_html_page(recipes):
+def generate_html_page(filename, recipes):
     num_days = len(recipes)
-    with open('user_signup/templates/user_signup/meals.html', 'w') as file:
+    with open('user_signup/templates/user_signup/'+filename, 'w') as file:
         beg_html = """
         {% extends 'base.html' %}
 
@@ -51,7 +51,7 @@ def generate_html_page(recipes):
                 <br>
               </p>
             """
-            file.write(html_body1 % (recipes[i][2], recipes[i][0], (i+1), recipes[i][1]))
+            file.write(html_body1 % (recipes[i][3], recipes[i][1], (i+1), recipes[i][2]))
             file.write("<button href='/home/deselect?name=button%d' class='btn btn-dark' data-toggle='modal' data-target='#myModal'>Deselect Recipe</button>"% (i+1))
             html_body3 = """
                 <br>

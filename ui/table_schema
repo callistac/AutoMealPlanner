@@ -9,6 +9,8 @@ DELETE FROM table_name;  # removes content
 SELECT * FROM user_diet;
 SELECT * FROM user_signup_user_data;
 SELECT * FROM user_signup_user_data JOIN user_diet ON user_signup_user_data.user_id = user_diet.user_id;
+SELECT * FROM user_signup_user_data JOIN auth_user ON user_signup_user_data.user_id = auth_user.id;
+
 
 CREATE TABLE blacklisted_recipes (
     id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -28,6 +30,15 @@ CREATE TABLE recipes (
     link varchar(600) NOT NULL,
     image varchar(600) NOT NULL
 );
+
+CREATE TABLE user_recipes_rating (
+    id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+    recipe_id integer NOT NULL,
+    user_id integer NOT NULL,
+    rating integer,
+    week integer NOT NULL
+);
+
 
 
 INSERT INTO recipes (name, ingredients, amounts, categories, link, image) VALUES ("Pork Dumplings", "wonton wrappers, ground pork, garlic, green onion, soy sauce, sesame oil", "100, "1.75lb, 1T, 4clove, 2T, 4T, 3T, 1, 5C", "asian, chinese", "https://www.allrecipes.com/recipe/14759/pork-dumplings/", "https://images.media-allrecipes.com/userphotos/560x315/704866.jpg");
