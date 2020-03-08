@@ -16,7 +16,12 @@ except ImportError:
 UNIT_LIST = ['cup', 'tablespoon', 'teaspoon', 'ounce', 'oz', 'lb', 'pound', \
         'pint', 'clove', 'leaf', 'quart', 'gallon', 'gram', 'g', 'ml', \
         'milliliter', 'fl. ounce', 'tsp', 'tbsp', 'T', 't', 'can', 'package', \
-        'slice', 'sprig', 'bunch', 'packet']
+        'slice', 'sprig', 'bunch', 'packet', 'container', 'cups', 'tablespoons', \
+        'teaspoons', 'ounces','lbs', 'pounds', 'pints', 'cloves', 'leaves', \
+        'quarts', 'gallons', 'grams', 'g', 'ml', 'milliliters', 'fl. ounces', \
+        'fluid ounces',' cans', 'packages', 'slices', 'sprigs', 'bunches', \
+        'packets', 'containers', 'dash', 'pinch', 'dashes', 'pinches', 'box', \
+        'bulb', 'sheet', 'sheets', 'bottle', 'bottles', 'jar', 'jars']
 
 BAD_CATS = ["Dessert", "Drink", "Smoothie", "Bread", "Desserts", "Candy", \
         "Cookie", "Cookies", "Drinks", "Candies", "Breads", "Smoothies", "Pie", \
@@ -77,16 +82,18 @@ def get_ingredient(ingredient_string):
             count_str = count
             ingredient = ingredient_string[len(count) + 1:]
             try:
-                count = float(count) + unicodedata.numeric(ingredient[0])
+                unicode_frac2 = unicodedata.numeric(ingredient[0])
+                count = float(count) + unicode_frac2
                 ingredient = ingredient[2:]
 
             except:
-                pass
+                unicode_frac2 = None
 
         else:
             count = unicode_frac
             count_str = ingredient_string[0]
             ingredient = ingredient_string[2:]
+            unicode_frac2 = None
 
         try:
             count = float(count)
@@ -104,7 +111,7 @@ def get_ingredient(ingredient_string):
             except:
                 count = int(num_list[0])
                 ingredient = ingredient[len(num_list[0]) + 1:]
-        search = re.search("\\(\\d+\\.?\\d* ounce\\)", ingredient)
+        search = re.search("\\(\\d+\\.?\\d*(\sfluid)? (ounce|pound)\\)", ingredient)
 
         if search:
             search = search.group()
@@ -125,11 +132,15 @@ def get_ingredient(ingredient_string):
                 ingredient = ingredient[len(secondary_unit)+1:]
         else:
             amount = float(count)
-            first_word = ingredient_string[len(count_str)+1:].split(" ")[0]
+            if ingredient and unicode_frac2:
+                first_word = ingredient.split(" ")[0]
+            else:
+                first_word = ingredient_string[len(count_str)+1:].split(" ")[0]
+
             units = re.fullmatch(unit_regex, first_word)
 
             if units:
-                units = units.group().strip("s")
+                units = units.group().rstrip("s")
                 ingredient = ingredient[len(units)+1:]
 
             else:
@@ -171,10 +182,13 @@ def add_to_csvs(ingredients, categories, image, title, rec_num, link, \
 
     for code in ingredients.keys():
         ingredient, amount, units = get_ingredient(ingredients[code])
+        code = int(code)
 
-        if code not in i_codes.index or \
-                len(i_codes.loc()[code]) > len(ingredient):
-            i_codes.loc()[code] = ingredient
+        if code not in i_codes.index:
+            i_codes.loc[code] = ingredient
+
+        elif len(i_codes.loc[code, 'name']) > len(ingredient):
+            i_codes.loc[code, 'name'] = ingredient
 
         ingred_csv.write("\n" + str(rec_num) + "|" + str(amount) + "|" + \
                 units + "|" + str(code))
@@ -191,7 +205,7 @@ def add_to_csvs(ingredients, categories, image, title, rec_num, link, \
     ingred_csv.close()
     cat_csv.close()
     i_codes.to_csv(ingred_code_filename, index_label = "ingredient_id", \
-            sep = "|")
+            sep = "|", mode = "w")
 
 
 #from pa2
