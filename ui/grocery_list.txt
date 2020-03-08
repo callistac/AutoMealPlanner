@@ -1,49 +1,49 @@
-['avocado, sliced']
-['tomato, sliced']
-['diced onion']
-['chopped cilantro']
-['lemon juice']
-['jalapeno pepper, seeded and minced']
-['salt']
-['rolled oats']
-['peanut butter']
-['ground flax seed']
-['chocolate chips']
-['honey']
-['chia seeds (optional)']
-['vanilla extract']
-['flour']
-['egg']
-['milk']
-['water']
-['salt']
-['butter']
-['flour']
-['white sugar']
-['baking powder']
-['salt']
-['egg']
-['milk']
-['canola oil']
-['ripe bananas, mashed']
-['maple syrup']
-['soy sauce']
-['garlic']
-['garlic salt']
-['pepper']
-['salmon']
-['ground beef']
-['egg']
-['diced onion']
-['milk']
-['bread crumbs']
-['salt']
-['brown sugar']
-['prepared mustard']
-['ketchup']
-['cubed beef stew meat']
-['condensed golden mushroom soup']
-['diced onion']
-['Worcestershire sauce']
-['water']
-['cream cheese']
+egg
+milk
+brown sugar
+rolled oats
+butter
+frozen puff pastry, thawed
+cooking spray
+flour
+milk
+salt
+egg
+ground cinnamon
+vanilla extract
+white sugar
+thick slices bread
+flour
+salt
+baking powder
+white sugar
+egg
+milk
+butter
+vanilla extract
+condensed cream of mushroom soup
+dry onion soup mix
+water
+pot roast
+ground beef
+diced onion
+pepper
+garlic salt
+tomato sauce
+jar salsa
+chili seasoning mix
+dark red kidney beans
+lean ground beef
+(46 fluid ounce) can tomato juice
+tomato sauce
+dark red kidney beans
+pinto beans, drained and rinsed
+diced onion
+chopped green bell pepper
+ground cayenne pepper
+white sugar
+dried oregano
+pepper
+salt
+ground cumin
+chili powder

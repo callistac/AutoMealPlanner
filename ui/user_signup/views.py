@@ -9,6 +9,8 @@ from user_signup.query_recipes import query_recipes
 from django.http import HttpResponse
 import sqlite3
 import numpy as np
+from django.http import FileResponse
+
 
 
 def home(request):
@@ -125,13 +127,44 @@ class MealGeneration(TemplateView):
         generate_html_page('meals.html', request.session['recipes'])
         return redirect("/home/dashboard/meals/")
 
+def DownloadFile(request):
+    print(request)
+    # generating text file with ingredients
+    filename = 'grocery_list.txt'
+    with open(filename, 'w') as f:
+        for item in request.session.get('ingredients'):
+            #print(item[0])
+            f.write("%s\n" % item[0])
+
+    response = FileResponse(open(filename, 'rb'), as_attachment = True)
+    response['Content-Type']='text/html'
+    response['Content-Disposition'] = "attachment; filename=%s"%(filename)
+    return response
+
 def SaveRecipes(request):
     if request.method == "POST":
+        '''
         # generating text file with ingredients
-        with open('grocery_list.txt', 'w') as f:
-            for item in request.session.get('ingredients'):
-                f.write("%s\n" % item)
+        def xsendfile(request):
+            filename = 'grocery_list.txt'
+            with open(filename, 'w') as f:
+                for item in request.session.get('ingredients'):
+                    #print(item[0])
+                    f.write("%s\n" % item[0])
 
+            #content = FileWrapper(filename)
+            #response = HttpResponse(my_data, content_type='application/vnd.ms-excel')
+            #response = HttpResponse(filename)
+            response = FileResponse(open(filename, 'rb'), as_attachment = True)
+            #response = HttpResponse()
+            response['Content-Type']='text/html'
+            response['Content-Disposition'] = "attachment; filename=%s"%(filename)
+            #print(response)
+            #response['X-Sendfile']= smart_str(os.path.join(settings.MEDIA_ROOT, path))
+            return response
+        xsendfile(request)
+
+        '''
         # save the recipes to the database
         recipes = request.session.get('recipes')
         insert_into_user_recipes_state = "INSERT INTO user_recipes_rating (recipe_id, user_id, rating, week) VALUES (?, ?, ?, ?)"
@@ -150,6 +183,7 @@ def SaveRecipes(request):
 
         connection.commit()
         connection.close()
+
         return redirect("/home/dashboard")
 
 class DisplayPastRecipes(TemplateView):

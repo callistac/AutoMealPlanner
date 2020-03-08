@@ -7,11 +7,12 @@ def generate_html_page(filename, recipes):
     rec_ids = tuple(rec_ids)
     print("IDSSSS", rec_ids)
 
-    #c.execute("SELECT recipe_num FROM blacklisted_recipes WHERE user_id = ?", [str(user_info[7])])
     #print(black_recipes)
     #urls_img = c.execute(select_rand_recipe, ids)
 
-
+    #<form action='SaveResults/' method='POST'>
+    #{% csrf_token %}
+    #</form>
     num_days = len(recipes)
     with open('user_signup/templates/user_signup/'+filename, 'w') as file:
         beg_html = """
@@ -30,10 +31,8 @@ def generate_html_page(filename, recipes):
             <div class="container">
               <h1 class="jumbotron-heading">Your Weekly Meals, {{ user }}!</h1>
               <p class="lead text-muted">Your weekly meals have been generated below! You now have the option of either automatically generating your weekly grocery list based on the below recipes by pressing "Generate Grocery List", or you can press "Deselect Recipe" button if you want a new recipe. After deselecting a recipe, a short form will pop up so that you can let us know why you deselected it, we will refrain from showing you this recipe again based on your response.</p>
-                <form action='SaveResults/' method='POST'>
-                {% csrf_token %}
-                <button type='submit' class='btn btn-primary btn-lg'> Generate Grocery List</button><br>
-                </form>
+                <button type="button" value="download" href='/dashboard/meals/download/' class='btn btn-primary btn-lg' > Generate Grocery List</button><br>
+
             </div>
           </section>
 
