@@ -51,7 +51,7 @@ def generate_html_page(filename, recipes):
             <div class="card-body">
             <h5 class='card-title'>%s, Day %d </h5>
 
-            <p class="card-text">Any information we might want to include.</p>
+            <p class="card-text">%s Servings</p>
             </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Cras justo odio</li>
@@ -62,7 +62,7 @@ def generate_html_page(filename, recipes):
                 <br>
               </p>
             """
-            file.write(html_body1 % (recipes[i][3], recipes[i][1], (i+1), recipes[i][2]))
+            file.write(html_body1 % (recipes[i][3], recipes[i][1], (i+1), recipes[i][4], recipes[i][2]))
             file.write("<button href='/home/deselect?name=%s' class='btn btn-dark' data-toggle='modal' data-target='#myModal'>Deselect Recipe</button>"% (rec_ids[i]))
             html_body3 = """
                 <br>
