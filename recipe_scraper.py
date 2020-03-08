@@ -111,7 +111,7 @@ def get_ingredient(ingredient_string):
             except:
                 count = int(num_list[0])
                 ingredient = ingredient[len(num_list[0]) + 1:]
-        search = re.search("\\(\\d+\\.?\\d*(\sfluid)? (ounce|pound)\\)", ingredient)
+        search = re.search("\\(\\d*\\.?\\d+(\sfluid)? (ounce|pound)\\)", ingredient)
 
         if search:
             search = search.group()
