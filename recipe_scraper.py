@@ -182,9 +182,9 @@ def add_to_csvs(ingredients, categories, image, title, rec_num, link, \
     for category in categories:
         cat_csv.write("\n" + str(rec_num) + "|" + category)
 
-    main_csv.write("\n" + str(rec_num) + "|" + title + "|" + link + "|" + \
-            image + "|" + str(servings) + "|" + str(times[0]) + "|" + \
-            str(times[1]) + "|" + str(times[2]) + "|" + str(n_reviews) + \
+    main_csv.write("\n" + str(rec_num) + "|" + str(title) + "|" + str(link) + \
+            "|" + str(image) + "|" + str(servings) + "|" + str(times[0]) + \
+            "|" + str(times[1]) + "|" + str(times[2]) + "|" + str(n_reviews) + \
             "|" + str(avg_review))
 
     main_csv.close()
@@ -398,8 +398,8 @@ def go(num_recipes_to_scrape, ingred_filename, ingred_code_filename, \
     Outputs:
         CSV file of the index
     '''
-    #starting_url = "https://www.allrecipes.com/recipe/132358/easy-garlic-lemon-scallops/"
-    starting_url = "https://www.allrecipes.com/"
+    starting_url = "https://www.allrecipes.com/recipe/8711/island-chicken-with-fruit-salsa/"
+    #starting_url = "https://www.allrecipes.com/"
     limiting_domain = "www.allrecipes.com"
     generate_csvs(main_filename, ingred_filename, ingred_code_filename, \
             cat_filename)
