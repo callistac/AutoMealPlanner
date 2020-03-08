@@ -1,7 +1,8 @@
 '''
 CS 122 Winter '20 Group Project
 The function find_product matches the ingredients of a receipe to the products
-online at Hyde Park Produce. It will return the product names.
+online at Hyde Park Produce. It will return the product row from the 
+HPP_Products SQL table.
 '''
 import sqlite3
 import os
