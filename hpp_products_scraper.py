@@ -5,6 +5,7 @@ Sources:
 For learning how to conviently access the data in the infinite scroll
 https://ianlondon.github.io/blog/web-scraping-discovering-hidden-apis/
 """
+
 import requests
 import json
 import re
@@ -86,15 +87,20 @@ hpp_url1 =  "&ajax=true&productCategoryId=&resetFilters=false&national" +\
             "Shipping=false&deliveryOrPickup=true"
 
 
-with open("hpp_products.txt", 'w') as txtfile:
-    txtfile.write("#Product| PricePerQuant| Quant| PricePerThing \n")
-    txtfile.close()
+with open("hpp_products.csv", 'w') as csvfile:
+    csvfile.write("Product|PricePerQuant|Quant|PricePerThing\n")
+    csvfile.close()
 
 strings_to_remove =  ["C&amp;W ", "&amp"]
-list_of_units = [' Pound', ' LB', ' Count', ' Pint',' lb', ' Gallon', \
-    ' oz', ' oz.', ' Pounds', ' Quart', ' ct',  ' Liter', ' Liters', ' Gallons', \
-    ' Grams',' Ounce', ' Ounces', ' Fluid', ' Pints', ' Milliliters', ' Each',
-    ' Jumbo Eggs', ' Large Eggs', ' Extra Large Eggs'] 
+list_of_units = [' Pound', ' LB', ' Pint',' lb', ' Gallon', ' oz', ' oz.', 
+                ' Pounds', ' Quart',  ' Liter', ' Liters', ' Gallons',
+                ' Grams',' Ounce', ' Ounces', ' Fluid Ounces', ' Pints', ' Milliliters', 
+                ' ct', ' Each', ' Count', ' Jumbo Eggs', ' Large Eggs', 
+                ' Extra Large Eggs'] 
+units_to_remove = [' ct', ' Each', ' Count', ' Jumbo Eggs', ' Large Eggs', 
+                ' Extra Large Eggs']
+units_to_convert = {" LB":" Pound", " lb":" pound", 
+                    " Fluid Ounces":" fluid_ounces", }
 undesirableendings = ["-", " ", ",", "."]
 remaining = 1
 n=0
@@ -105,7 +111,7 @@ while remaining > 0:
     data = json.loads(raw)
     products = data['products']
 
-    for product in products:                                                                                                                
+    for product in products:                                                                                                             
         productinfo = re.findall("[\t]{6}.*", product)
         nameandquant = (productinfo[0][6:len(productinfo[0])])
         price = (productinfo[2][6:len(productinfo[2])])
@@ -198,13 +204,37 @@ while remaining > 0:
         else:
             productlist = [nameandquant, None, None, price]
 
+        if productlist[1]:
+            for unit in units_to_remove:
+                productlist[1] = remove_from_string(unit, productlist[1])
+            
+            unit = re.findall("\w*\s+\w*|\w+", productlist[1])
+            if unit:
+                if unit[0] in units_to_convert:
+                    new_unit = units_to_convert[unit[0]]
+                    productlist[1] = (remove_from_string(unit[0], 
+                        productlist[1]) + new_unit)
+            productlist[1] = productlist[1].lower()
+
+        if productlist[2]:
+            for unit in units_to_remove:
+                productlist[2] = remove_from_string(unit, productlist[2])
+            
+            unit = re.findall("\w*\s+\w*|\w+", productlist[2])
+            if unit:
+                if unit[0] in units_to_convert:
+                    new_unit = units_to_convert[unit[0]]
+                    productlist[2] = (remove_from_string(unit[0], 
+                        productlist[2]) + new_unit)
+            productlist[2] = productlist[2].lower()
+
         allproducts.append(productlist)
   
-        with open("hpp_products.txt", 'a') as txtfile:
-            txtfile.write(str(productlist[0])+ "| " +str(productlist[1])+ "| "+\
-                str(productlist[2])+ "| "+str(productlist[3]) + " \n")
-            txtfile.close()
+        with open("hpp_products.csv", 'a') as csvfile:
+            csvfile.write(str(productlist[0])+ "|" +str(productlist[1])+ "|"+\
+                str(productlist[2])+ "|"+str(productlist[3]) + "\n")
+            csvfile.close()
 
     remaining = data['remaining']
     n = len(allproducts)
-    print(remaining)
+    print("remaining items: " + str(remaining))
