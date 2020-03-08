@@ -80,26 +80,25 @@ class MealGeneration(TemplateView):
         sql_statement = "SELECT * FROM user_signup_user_data WHERE user_id = ?"
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
+        print(request.user.id, "ID")
         c.execute(sql_statement, (request.user.id,))
         user_info = c.fetchone()
-
+        #print("all", c.fetchall())
         if len(user_info) == 0:
             user_info = ['']
         args = {'user': request.user, 'form':form, 'name':user_info[1]}
 
-        # recipes = query_recipes()
+
         # check to see if the recipes we extracted fufill user's budget
         # check to see if the recipes we extracted are not in the blacklisted recipes for that user
         # if not, regenerate recipes
         connection.commit()
         connection.close()
-        recipes = [(10, 'Pork Dumplings', 'https://www.allrecipes.com/recipe/14759/pork-dumplings/', 'https://images.media-allrecipes.com/userphotos/560x315/704866.jpg'),
-                    (27, 'Easy Lemon-Pepper Blackened Salmon', 'https://www.allrecipes.com/recipe/156814/easy-lemon-pepper-blackened-salmon/', 'https://images.media-allrecipes.com/userphotos/560x315/7249818.jpg')]
-        ingredients = ['apples', 'tomatoes', 'lunchmeat', 'pizza']
+
+        recipes, ingredients = query_recipes(user_info)
 
         request.session['recipes'] = recipes
         request.session['ingredients'] = ingredients
-
         filename = 'meals.html'
         generate_html_page(filename, recipes)
         return render(request, 'user_signup/'+filename, args)
@@ -115,7 +114,14 @@ class MealGeneration(TemplateView):
         results.append(request.user.id)
         results.append(request.POST['reason'])
         print(results)
-        #c = c.execute(insert_blacklist_statement, )
+        sql_statement = "SELECT * FROM user_signup_user_data WHERE user_id = ?"
+        #connection = sqlite3.connect('db.sqlite3')
+        #c = connection.cursor()
+        print(request.user.id, "ID")
+        c.execute(sql_statement, (request.user.id,))
+        user_info = c.fetchone()
+        c = c.execute(insert_blacklist_statement )
+        connection.commit()
         generate_html_page('meals.html', request.session['recipes'])
         return redirect("/home/dashboard/meals/")
 
@@ -185,12 +191,12 @@ class Change_User_Info(TemplateView):
 
 class Deselect_Tracker(TemplateView):
     def get(self, request):
-        #NEED TO CHANGE NAME TO RECIPE.ID WHEN CORRECT TABLE IS DONE
         print("USER", request.user)
+        print("GET", request.GET)
         name = request.GET.get('name')
         print("NAME", type(name))
 
-        insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_id, user_id, reason) VALUES (?, ?, ?)"
+        insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_num, user_id, reason) VALUES (?, ?, ?)"
 
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
