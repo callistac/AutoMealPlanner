@@ -22,7 +22,7 @@ brands = ["Kellogg's", "General Mills", "Malt-O-Meal", "Nestlé", "Quaker Oats",
             "Spice Supreme", "Filippo Berio", "Whole", "Diamond Crystal", 
             "Kosher", "Birds Eye", "Dean Jacobs", "Grinder Mill", 
             "North Atlantic", "Kikkoman", "Dynasty", "Sauders Amish", 
-            "Eggland's", "Best", "Eggland", "Kelloggs", "Bulbs", "(Loose)", 
+            "Eggland's", "Eggland", "Kelloggs", "Bulbs", "(Loose)", 
             "Imperial", "Bags", "Ancient Harvest", "Vigo", "Authentic",
             "La Preferida", "Inca Red Grains", "Royal Bolivian", 
             "Bobs Red Mill", "Fritos", "Domino", "Pure Cane", "Idaho",
@@ -75,7 +75,7 @@ def match_ingredient_to_product(ingredient):
     return (query_string, arg_list)
 
 
-def generate_query_string(recipe_ingredients):
+def generate_query_string(recipe_ingredient):
     '''
     Takes a list of ingredients and generates an SQL query for each one
     that will return Products that match ingredient string.
@@ -86,13 +86,11 @@ def generate_query_string(recipe_ingredients):
                 query_string (string): SQL query string
                 arg_list (list): arguments for the SQL query
     '''
-    queries_and_args = []
-    for ingredient in recipe_ingredients:
-        queries_and_args.append(match_ingredient_to_product(ingredient))
-    return queries_and_args
+    query_and_args = match_ingredient_to_product(recipe_ingredient)
+    return query_and_args
 
 
-def find_product(recipe_ingredients):
+def find_product(recipe_ingredient):
     '''
     Matches ingredients to products online at Hyde Park Produce. Prefers a 
     direct match of the whole ingredient string, if none exist, splits the 
@@ -108,90 +106,87 @@ def find_product(recipe_ingredients):
     '''
     db = sqlite3.connect(DATABASE_FILENAME)
     c = db.cursor()
-    queryandargs = generate_query_string(recipe_ingredients)
+    query_string, arg_list = generate_query_string(recipe_ingredient)
 
     bestmatches = []
-    for qanda in queryandargs:
-        query_string, arg_list = qanda
-        query = c.execute(query_string, arg_list)
-        fetch = query.fetchall()
+    query = c.execute(query_string, arg_list)
+    fetch = query.fetchall()
 
-        matchscore = 0
-        maxcount = 0
-        longest_fetch_len = 0
-        longest_fetch = []
-        otherfetches = []
-        if fetch == []:
-            #leave bestmatch as None in case new search still doesn't turn up results
-            bestmatch = None
-            newargs = arg_list[0][1:len(arg_list[0])-1].split(" ")
-            all_fetches = []
-            combinedfetches = []
-            for newarg in newargs:
-                query = c.execute(query_string, ["%"+newarg+"%"])
-                fetch = query.fetchall()
-                if newarg in cantmatchon:
-                    otherfetches.append(fetch)
-                    fetch = []
-                else:
-                    all_fetches.append(fetch)
+    matchscore = 0
+    maxcount = 0
+    longest_fetch_len = 0
+    longest_fetch = []
+    otherfetches = []
+    if fetch == []:
+	    #leave bestmatch as None in case new search still doesn't turn up results
+	    bestmatch = None
+	    newargs = arg_list[0][1:len(arg_list[0])-1].split(" ")
+	    all_fetches = []
+	    combinedfetches = []
+	    for newarg in newargs:
+		    query = c.execute(query_string, ["%"+newarg+"%"])
+		    fetch = query.fetchall()
+		    if newarg in cantmatchon:
+			    otherfetches.append(fetch)
+			    fetch = []
+		    else:
+			    all_fetches.append(fetch)
 
-            for fetch in all_fetches:
-                if longest_fetch_len < len(fetch):
-                    longest_fetch_len = len(fetch)
-                    longest_fetch = fetch
+	    for fetch in all_fetches:
+		    if longest_fetch_len < len(fetch):
+			    longest_fetch_len = len(fetch)
+			    longest_fetch = fetch
 
-            for fetch in all_fetches:
-                if fetch not in longest_fetch:
-                    otherfetches.append(fetch)
+	    for fetch in all_fetches:
+		    if fetch not in longest_fetch:
+			    otherfetches.append(fetch)
 
-            for fetch in longest_fetch:
-                count = 0
-                for otherfetch in otherfetches:
-                    if fetch in otherfetch:
-                        count += 1
-                if count > maxcount:
-                    maxcount = count
-                    combinedfetches = []
-                if count >= maxcount:
-                    combinedfetches.append(fetch)
-            if maxcount == 0:
-                for otherfetch in otherfetches:
-                    for fetch in otherfetch:
-                        combinedfetches.append(fetch)
+	    for fetch in longest_fetch:
+		    count = 0
+		    for otherfetch in otherfetches:
+			    if fetch in otherfetch:
+				    count += 1
+		    if count > maxcount:
+			    maxcount = count
+			    combinedfetches = []
+		    if count >= maxcount:
+			    combinedfetches.append(fetch)
+	    if maxcount == 0:
+		    for otherfetch in otherfetches:
+			    for fetch in otherfetch:
+				    combinedfetches.append(fetch)
 
-            for product in combinedfetches:
-                cleanproduct = product[0]
-                cleanarg = arg_list[0][1:len(arg_list[0])-1]
-                for brand in brands:
-                    if re.findall(brand, cleanproduct) != []:
-                        cleanproduct = remove_from_string(brand, cleanproduct)
-                        #cleanproduct = remove_from_string(, cleanproduct)
-                        cleanproduct = remove_from_string(",", cleanproduct)
-                    if re.findall(brand, arg_list[0][1:len(arg_list[0])-1]):
-                        cleanarg = remove_from_string(brand, cleanarg)
-                jaroval = jellyfish.jaro_winkler(cleanarg, cleanproduct)
-                #print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
-                if jaroval > matchscore:
-                    matchscore = jaroval
-                    bestmatch = product
+	    for product in combinedfetches:
+		    cleanproduct = product[0]
+		    cleanarg = arg_list[0][1:len(arg_list[0])-1]
+		    for brand in brands:
+			    if re.findall(brand, cleanproduct) != []:
+				    cleanproduct = remove_from_string(brand, cleanproduct)
+				    #cleanproduct = remove_from_string(, cleanproduct)
+				    cleanproduct = remove_from_string(",", cleanproduct)
+			    if re.findall(brand, arg_list[0][1:len(arg_list[0])-1]):
+				    cleanarg = remove_from_string(brand, cleanarg)
+		    jaroval = jellyfish.jaro_winkler(cleanarg, cleanproduct)
+		    #print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
+		    if jaroval > matchscore:
+			    matchscore = jaroval
+			    bestmatch = product
 
-        else:
-            for product in fetch:
-                cleanproduct = product[0]
-                for brand in brands:
-                    if re.findall(brand, cleanproduct) != []:
-                        cleanproduct = remove_from_string(brand, cleanproduct)
-                        cleanproduct = remove_from_string(",", cleanproduct)
+    else:
+	    for product in fetch:
+		    cleanproduct = product[0]
+		    for brand in brands:
+			    if re.findall(brand, cleanproduct) != []:
+				    cleanproduct = remove_from_string(brand, cleanproduct)
+				    cleanproduct = remove_from_string(",", cleanproduct)
 
-                jaroval = jellyfish.jaro_winkler(arg_list[0], cleanproduct)
-                #if jaroval > 0.5:
-                #print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
-                if jaroval > matchscore:
-                    matchscore = jaroval
-                    bestmatch = product
-        #print(matchscore, bestmatch)
-        bestmatches.append(bestmatch)
+		    jaroval = jellyfish.jaro_winkler(arg_list[0], cleanproduct)
+		    #if jaroval > 0.5:
+		    #print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
+		    if jaroval > matchscore:
+			    matchscore = jaroval
+			    bestmatch = product
+
 
     db.close()
-    return bestmatches
+    return bestmatch
