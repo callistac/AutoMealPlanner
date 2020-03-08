@@ -1,6 +1,8 @@
 from django.urls import path
 from user_signup import views
 from django.contrib.auth.views import LoginView, LogoutView
+from django.conf.urls.static import static
+from user_interface import settings
 
 app_name = 'user_signup'
 urlpatterns = [
@@ -14,9 +16,8 @@ urlpatterns = [
     path('dashboard/meals/', views.MealGeneration.as_view(), name='meal_generation'),
     path('user_preferences/', views.Change_User_Info.as_view(), name='user_preferences'),
     path('deselect/', views.Deselect_Tracker.as_view(), name='deselect'),
-    path('dashboard/meals/SaveResults/', views.SaveRecipes, name='save_meals'),
     path('dashboard/meals/download/', views.DownloadFile, name='download_file'),
     path('dashboard/past_recipes/', views.DisplayPastRecipes.as_view(), name='past_recipes')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # path('login/new_user/user_info/', views.User_Info.as_view(), name = 'user_entry'),
