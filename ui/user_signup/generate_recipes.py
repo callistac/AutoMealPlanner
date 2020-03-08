@@ -1,6 +1,18 @@
-
+import sqlite3
+import re
 
 def generate_html_page(filename, recipes):
+    ids = ()
+    rec_ids = [x[0] for x in recipes]
+    rec_ids = tuple(rec_ids)
+    print("IDSSSS", rec_ids)
+
+    #print(black_recipes)
+    #urls_img = c.execute(select_rand_recipe, ids)
+
+    #<form action='SaveResults/' method='POST'>
+    #{% csrf_token %}
+    #</form>
     num_days = len(recipes)
     with open('user_signup/templates/user_signup/'+filename, 'w') as file:
         beg_html = """
@@ -17,12 +29,9 @@ def generate_html_page(filename, recipes):
         <body>
           <section class="jumbotron text-center">
             <div class="container">
-              <h1 class="jumbotron-heading">Your Weekly Meals, {{ name }}!</h1>
+              <h1 class="jumbotron-heading">Your Weekly Meals, {{ user }}!</h1>
               <p class="lead text-muted">Your weekly meals have been generated below! You now have the option of either automatically generating your weekly grocery list based on the below recipes by pressing "Generate Grocery List", or you can press "Deselect Recipe" button if you want a new recipe. After deselecting a recipe, a short form will pop up so that you can let us know why you deselected it, we will refrain from showing you this recipe again based on your response.</p>
-                <form action='SaveResults/' method='POST'>
-                {% csrf_token %}
-                <button type='submit' class='btn btn-primary btn-lg'> Generate Grocery List</button><br>
-                </form>
+            <button type="button" value='Download' onclick="window.location.href = '/home/dashboard/meals/download/';" class='btn btn-primary btn-lg' > Generate Grocery List</button><br>
             </div>
           </section>
 
@@ -40,7 +49,7 @@ def generate_html_page(filename, recipes):
             <div class="card-body">
             <h5 class='card-title'>%s, Day %d </h5>
 
-            <p class="card-text">Any information we might want to include.</p>
+            <p class="card-text">%s Servings</p>
             </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Cras justo odio</li>
@@ -51,8 +60,8 @@ def generate_html_page(filename, recipes):
                 <br>
               </p>
             """
-            file.write(html_body1 % (recipes[i][3], recipes[i][1], (i+1), recipes[i][2]))
-            file.write("<button href='/home/deselect?name=button%d' class='btn btn-dark' data-toggle='modal' data-target='#myModal'>Deselect Recipe</button>"% (i+1))
+            file.write(html_body1 % (recipes[i][3], recipes[i][1], (i+1), recipes[i][4], recipes[i][2]))
+            file.write("<button href='/home/deselect?name=%s' class='btn btn-dark' data-toggle='modal' data-target='#myModal'>Deselect Recipe</button>"% (rec_ids[i]))
             html_body3 = """
                 <br>
             </div>

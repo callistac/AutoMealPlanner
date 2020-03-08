@@ -15,6 +15,7 @@ urlpatterns = [
     path('user_preferences/', views.Change_User_Info.as_view(), name='user_preferences'),
     path('deselect/', views.Deselect_Tracker.as_view(), name='deselect'),
     path('dashboard/meals/SaveResults/', views.SaveRecipes, name='save_meals'),
+    path('dashboard/meals/download/', views.DownloadFile, name='download_file'),
     path('dashboard/past_recipes/', views.DisplayPastRecipes.as_view(), name='past_recipes')
 ]
 

@@ -20,16 +20,51 @@ CREATE TABLE blacklisted_recipes (
     FOREIGN KEY(recipe_id) REFERENCES recipes(id),
     FOREIGN KEY(user_id) REFERENCES auth_user(id)
 );
+_______________________
+CREATE TABLE recipes(
+"recipe_num" INTEGER,
+"title" TEXT,
+"url" TEXT,
+"image" TEXT,
+"servings" INTEGER,
+"prep_time" INTEGER,
+"cook_time" INTEGER,
+"total_time" INTEGER,
+"n_reviews" INTEGER,
+"avg_review" REAL);
 
-CREATE TABLE recipes (
-    id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
-    name varchar(500) NOT NULL,
-    ingredients varchar(500) NOT NULL,
-    amounts varchar(500) NOT NULL,
-    categories varchar(500) NOT NULL,
-    link varchar(600) NOT NULL,
-    image varchar(600) NOT NULL
+
+CREATE TABLE ingred_codes(
+  "ingredient_id" INTEGER,
+  "name" TEXT
 );
+
+CREATE TABLE recipe_cats(
+  "recipe_num" INTEGER,
+  "category" TEXT
+);
+
+CREATE TABLE recipe_ingred(
+  "recipe_num" INTEGER,
+  "amount" REAL,
+  "unit" TEXT,
+  "ingredient_id" INTEGER
+);
+
+delete from recipe_ingred  where unit = 'unit';
+delete from recipe_cats where category = 'category';
+delete from ingred_codes where name = 'name';
+delete from recipes where prep_time = 'prep_time';
+
+
+CREATE TABLE blacklisted_recipes (
+    id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+    recipe_num integer NOT NULL,
+    user_id integer NOT NULL,
+    reason varchar(500) NOT NULL,
+    FOREIGN KEY(recipe_num) REFERENCES recipes(recipe_num),
+    FOREIGN KEY(user_id) REFERENCES auth_user(id));
+______________
 
 CREATE TABLE user_recipes_rating (
     id integer NOT NULL PRIMARY KEY AUTOINCREMENT,

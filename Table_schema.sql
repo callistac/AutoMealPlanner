@@ -20,13 +20,17 @@ CREATE TABLE recipes
   (id integer NOT NULL,
    url VARCHAR(100) NOT NULL,
    recipe_name VARCHAR(15),
-   ingredient VARCHAR(20),
-   cuisine VARCHAR(20),
    PRIMARY KEY (id)
   );
 
 CREATE TABLE ingredients
   (id integer NOT NULL,
   ingredient VARCHAR(100),
+  FOREIGN KEY (id) REFERENCES recipes(id)
+);
+
+CREATE TABLE cusine
+  (id integer NOT NULL,
+  cuisine VARCHAR(30),
   FOREIGN KEY (id) REFERENCES recipes(id)
 );

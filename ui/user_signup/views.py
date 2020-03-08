@@ -9,6 +9,8 @@ from user_signup.query_recipes import query_recipes
 from django.http import HttpResponse
 import sqlite3
 import numpy as np
+from django.http import FileResponse
+
 
 
 def home(request):
@@ -61,8 +63,12 @@ class User_Dashboard(TemplateView):
         c = connection.cursor()
         c.execute(user_data_statement, results)
 
-        for diet in diets[0]:
-            c.execute(diet_statement, (diet, request.user.id))
+        if len(diets)>0:
+            for diet in diets[0]:
+                c.execute(diet_statement, (diet, request.user.id))
+        else:
+            c.execute(diet_statement, ("N/A", request.user.id))
+
 
         connection.commit()
         connection.close()
@@ -76,50 +82,89 @@ class MealGeneration(TemplateView):
         sql_statement = "SELECT * FROM user_signup_user_data WHERE user_id = ?"
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
+        print(request.user.id, "ID")
         c.execute(sql_statement, (request.user.id,))
         user_info = c.fetchone()
-
+        #print("all", c.fetchall())
         if len(user_info) == 0:
             user_info = ['']
         args = {'user': request.user, 'form':form, 'name':user_info[1]}
 
-        # recipes = query_recipes()
+
         # check to see if the recipes we extracted fufill user's budget
         # check to see if the recipes we extracted are not in the blacklisted recipes for that user
         # if not, regenerate recipes
         connection.commit()
         connection.close()
-        recipes = [(10, 'Pork Dumplings', 'https://www.allrecipes.com/recipe/14759/pork-dumplings/', 'https://images.media-allrecipes.com/userphotos/560x315/704866.jpg'),
-                    (27, 'Easy Lemon-Pepper Blackened Salmon', 'https://www.allrecipes.com/recipe/156814/easy-lemon-pepper-blackened-salmon/', 'https://images.media-allrecipes.com/userphotos/560x315/7249818.jpg')]
-        ingredients = ['apples', 'tomatoes', 'lunchmeat', 'pizza']
+
+        recipes, ingredients = query_recipes(user_info)
 
         request.session['recipes'] = recipes
         request.session['ingredients'] = ingredients
-
         filename = 'meals.html'
         generate_html_page(filename, recipes)
         return render(request, 'user_signup/'+filename, args)
 
     def post(self, request):
         print(request.user)
-        insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_id, user_id, reason) VALUES (?, ?, ?)"
+        #insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_id, user_id, reason) VALUES (?, ?, ?)"
+        insert_blacklist_statement = "UPDATE blacklisted_recipes SET reason = '%s' WHERE ID = (SELECT MAX(ID) FROM blacklisted_recipes)"%(request.POST['reason'])
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
         results = []
+        results.append("999999999999999")
         results.append(request.user.id)
         results.append(request.POST['reason'])
         print(results)
-        #c = c.execute(insert_blacklist_statement, )
+        sql_statement = "SELECT * FROM user_signup_user_data WHERE user_id = ?"
+        #connection = sqlite3.connect('db.sqlite3')
+        #c = connection.cursor()
+        print(request.user.id, "ID")
+        c.execute(sql_statement, (request.user.id,))
+        user_info = c.fetchone()
+        c = c.execute(insert_blacklist_statement )
+        connection.commit()
         generate_html_page('meals.html', request.session['recipes'])
         return redirect("/home/dashboard/meals/")
 
+def DownloadFile(request):
+    print(request)
+    # generating text file with ingredients
+    filename = 'grocery_list.txt'
+    with open(filename, 'w') as f:
+        for item in request.session.get('ingredients'):
+            #print(item[0])
+            f.write("%s\n" % item[0])
+
+    response = FileResponse(open(filename, 'rb'), as_attachment = True)
+    response['Content-Type']='text/html'
+    response['Content-Disposition'] = "attachment; filename=%s"%(filename)
+    return response
+
 def SaveRecipes(request):
     if request.method == "POST":
+        '''
         # generating text file with ingredients
-        with open('grocery_list.txt', 'w') as f:
-            for item in request.session.get('ingredients'):
-                f.write("%s\n" % item)
+        def xsendfile(request):
+            filename = 'grocery_list.txt'
+            with open(filename, 'w') as f:
+                for item in request.session.get('ingredients'):
+                    #print(item[0])
+                    f.write("%s\n" % item[0])
 
+            #content = FileWrapper(filename)
+            #response = HttpResponse(my_data, content_type='application/vnd.ms-excel')
+            #response = HttpResponse(filename)
+            response = FileResponse(open(filename, 'rb'), as_attachment = True)
+            #response = HttpResponse()
+            response['Content-Type']='text/html'
+            response['Content-Disposition'] = "attachment; filename=%s"%(filename)
+            #print(response)
+            #response['X-Sendfile']= smart_str(os.path.join(settings.MEDIA_ROOT, path))
+            return response
+        xsendfile(request)
+
+        '''
         # save the recipes to the database
         recipes = request.session.get('recipes')
         insert_into_user_recipes_state = "INSERT INTO user_recipes_rating (recipe_id, user_id, rating, week) VALUES (?, ?, ?, ?)"
@@ -138,6 +183,7 @@ def SaveRecipes(request):
 
         connection.commit()
         connection.close()
+
         return redirect("/home/dashboard")
 
 class DisplayPastRecipes(TemplateView):
@@ -180,13 +226,18 @@ class Change_User_Info(TemplateView):
 class Deselect_Tracker(TemplateView):
     def get(self, request):
         print("USER", request.user)
+        print("GET", request.GET)
         name = request.GET.get('name')
-        print("NAME", name)
-        # NEED TO STORE RECIPE NAME SOMEWHERE
-        #return render(request, self.template_name, {'form':form})
-    def post(self, request):
-        return
+        print("NAME", type(name))
 
+        insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_num, user_id, reason) VALUES (?, ?, ?)"
+
+        connection = sqlite3.connect('db.sqlite3')
+        c = connection.cursor()
+        c = c.execute(insert_blacklist_statement, (name, request.user.id, "Nothing"))
+        connection.commit()
+        #c.close()
+        #connection.close()
 
 def register(request):
     if request.method == 'POST':
