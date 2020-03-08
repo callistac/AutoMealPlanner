@@ -31,8 +31,7 @@ def generate_html_page(filename, recipes):
             <div class="container">
               <h1 class="jumbotron-heading">Your Weekly Meals, {{ user }}!</h1>
               <p class="lead text-muted">Your weekly meals have been generated below! You now have the option of either automatically generating your weekly grocery list based on the below recipes by pressing "Generate Grocery List", or you can press "Deselect Recipe" button if you want a new recipe. After deselecting a recipe, a short form will pop up so that you can let us know why you deselected it, we will refrain from showing you this recipe again based on your response.</p>
-                <button type="button" value="download" href='/dashboard/meals/download/' class='btn btn-primary btn-lg' > Generate Grocery List</button><br>
-
+            <button type="button" value='Download' onclick="window.location.href = '/home/dashboard/meals/download/';" class='btn btn-primary btn-lg' > Generate Grocery List</button><br>
             </div>
           </section>
 
