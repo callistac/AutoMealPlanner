@@ -398,8 +398,8 @@ def go(num_recipes_to_scrape, ingred_filename, ingred_code_filename, \
     Outputs:
         CSV file of the index
     '''
-    starting_url = "https://www.allrecipes.com/recipe/8711/island-chicken-with-fruit-salsa/"
-    #starting_url = "https://www.allrecipes.com/"
+    #starting_url = "https://www.allrecipes.com/recipe/8711/island-chicken-with-fruit-salsa/"
+    starting_url = "https://www.allrecipes.com/"
     limiting_domain = "www.allrecipes.com"
     generate_csvs(main_filename, ingred_filename, ingred_code_filename, \
             cat_filename)
