@@ -88,10 +88,6 @@ class MealGeneration(TemplateView):
             user_info = ['']
         args = {'user': request.user, 'form':form, 'name':user_info[1]}
 
-        query_blacklist = "SELECT recipe_num FROM blacklisted_recipes WHERE ID = (SELECT MAX(ID) FROM blacklisted_recipes)"
-        c.execute(query_blacklist)
-        black_id = c.fetchone()[0]
-
         try:
             query_blacklist = "SELECT recipe_num FROM blacklisted_recipes WHERE ID = (SELECT MAX(ID) FROM blacklisted_recipes)"
             c.execute(query_blacklist)
@@ -99,8 +95,7 @@ class MealGeneration(TemplateView):
             recipes, ingredients = query_recipes(user_info, blacklist = [black_id], past_recipes = request.session['recipes'], past_ingredients = request.session['ingredients'])
         except:
             recipes, ingredients = query_recipes(user_info, blacklist = [], past_recipes = None, past_ingredients = None)
-            print(ingredients)
-            
+
         request.session['recipes'] = recipes
         request.session['ingredients'] = ingredients
         filename = 'meals.html'
@@ -116,7 +111,6 @@ class MealGeneration(TemplateView):
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
         sql_statement = "SELECT * FROM user_signup_user_data WHERE user_id = ?"
-        print(request.user.id, "ID")
         c.execute(sql_statement, (request.user.id,))
         user_info = c.fetchone()
         c = c.execute(insert_blacklist_statement )
@@ -157,12 +151,10 @@ def DownloadFile(request):
 
     connection.commit()
     connection.close()
-    print(request)
     # generating text file with ingredients
     filename = 'grocery_list.txt'
     with open(filename, 'w') as f:
         for item in request.session.get('ingredients'):
-            #print(item[0])
             f.write("%s\n" % item[1])
 
     response = FileResponse(open(filename, 'rb'), as_attachment = True)
@@ -183,19 +175,24 @@ class DisplayPastRecipes(TemplateView):
         if len(user_info) == 0:
             user_info = ['']
         args = {'user': request.user, 'form':form, 'name':user_info[1]}
-        prev_week_state = 'SELECT * FROM user_recipes_rating WHERE user_id = ? ORDER BY week DESC LIMIT 7'
+        prev_week_state = 'SELECT recipe_id FROM user_recipes_rating WHERE user_id = ? ORDER BY week DESC LIMIT 7'
 
         c.execute(prev_week_state, (request.user.id,))
         past_recipes = c.fetchall()
-        print(past_recipes)
+
+        sql_recipes = "SELECT * FROM recipes WHERE recipe_num = ?"
+        previous_recipes = []
+        for recipe in past_recipes:
+            c.execute(sql_recipes, (recipe[0], ))
+            prev_recipe = c.fetchone()
+            previous_recipes.append(prev_recipe)
 
         connection.commit()
         connection.close()
 
         filename = 'past_meals.html'
-        generate_html_page(filename, past_recipes)
+        generate_html_page(filename, previous_recipes)
         return render(request, 'user_signup/'+filename, args)
-
 
 
 class Change_User_Info(TemplateView):
