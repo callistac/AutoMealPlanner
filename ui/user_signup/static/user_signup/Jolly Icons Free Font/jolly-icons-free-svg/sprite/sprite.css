@@ -1,0 +1,186 @@
+.jolly {
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-image: url(sprite.svg);
+	background-color: ;
+}
+.hdg-mobile {
+	width: 128px;
+	height: 128px;
+	background-position: 0 0;
+}
+.hdg-printer {
+	width: 128px;
+	height: 128px;
+	background-position: -144px 0;
+}
+.hdg-map-route {
+	width: 128px;
+	height: 128px;
+	background-position: -288px 0;
+}
+.hdg-pin {
+	width: 128px;
+	height: 128px;
+	background-position: -432px 0;
+}
+.hdg-mail {
+	width: 128px;
+	height: 128px;
+	background-position: -576px 0;
+}
+.hdg-paperplane {
+	width: 128px;
+	height: 128px;
+	background-position: -720px 0;
+}
+.hdg-settings {
+	width: 128px;
+	height: 128px;
+	background-position: -864px 0;
+}
+.hdg-gear {
+	width: 128px;
+	height: 128px;
+	background-position: -1008px 0;
+}
+.hdg-network {
+	width: 128px;
+	height: 128px;
+	background-position: -1152px 0;
+}
+.hdg-like-thumbs-up {
+	width: 128px;
+	height: 128px;
+	background-position: -1296px 0;
+}
+.hdg-globe {
+	width: 128px;
+	height: 128px;
+	background-position: -1440px 0;
+}
+.hdg-bomb {
+	width: 128px;
+	height: 128px;
+	background-position: -1584px 0;
+}
+.hdg-lightning {
+	width: 128px;
+	height: 128px;
+	background-position: -1728px 0;
+}
+.hdg-picture {
+	width: 128px;
+	height: 128px;
+	background-position: -1872px 0;
+}
+.hdg-cloud {
+	width: 128px;
+	height: 128px;
+	background-position: -2016px 0;
+}
+.hdg-line-chart {
+	width: 128px;
+	height: 128px;
+	background-position: -2160px 0;
+}
+.hdg-briefcase {
+	width: 128px;
+	height: 128px;
+	background-position: 0 -144px;
+}
+.hdg-checklist-todo {
+	width: 128px;
+	height: 128px;
+	background-position: -144px -144px;
+}
+.hdg-folder {
+	width: 128px;
+	height: 128px;
+	background-position: -288px -144px;
+}
+.hdg-bookmark {
+	width: 128px;
+	height: 128px;
+	background-position: -432px -144px;
+}
+.hdg-savings {
+	width: 128px;
+	height: 128px;
+	background-position: -576px -144px;
+}
+.hdg-shopping-cart-ecommerce {
+	width: 128px;
+	height: 128px;
+	background-position: -720px -144px;
+}
+.hdg-gifts-giftbox {
+	width: 128px;
+	height: 128px;
+	background-position: -864px -144px;
+}
+.hdg-coffee {
+	width: 128px;
+	height: 128px;
+	background-position: -1008px -144px;
+}
+.hdg-food-chicken-leg {
+	width: 128px;
+	height: 128px;
+	background-position: -1152px -144px;
+}
+.hdg-food-apple {
+	width: 128px;
+	height: 128px;
+	background-position: -1296px -144px;
+}
+.hdg-icecream {
+	width: 128px;
+	height: 128px;
+	background-position: -1440px -144px;
+}
+.hdg-trumpet {
+	width: 128px;
+	height: 128px;
+	background-position: -1584px -144px;
+}
+.hdg-pipe {
+	width: 128px;
+	height: 128px;
+	background-position: -1728px -144px;
+}
+.hdg-diamond-ruby {
+	width: 128px;
+	height: 128px;
+	background-position: -1872px -144px;
+}
+.hdg-face-robot {
+	width: 128px;
+	height: 128px;
+	background-position: -2016px -144px;
+}
+.hdg-social-facebook {
+	width: 128px;
+	height: 128px;
+	background-position: -2160px -144px;
+}
+.hdg-social-google-gplus {
+	width: 128px;
+	height: 128px;
+	background-position: 0 -288px;
+}
+.hdg-social-twitter-tweet-bird {
+	width: 128px;
+	height: 128px;
+	background-position: -144px -288px;
+}
+.hdg-social-dribbble {
+	width: 128px;
+	height: 128px;
+	background-position: -288px -288px;
+}
+.hdg-social-github-octocat {
+	width: 128px;
+	height: 128px;
+	background-position: -432px -288px;
+}

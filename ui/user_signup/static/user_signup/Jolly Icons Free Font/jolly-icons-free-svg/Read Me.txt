@@ -1,0 +1,7 @@
+The *SVG* folder contains the icons as separate SVG files.
+
+The *demo.html* lists the icons. To learn how to insert your icons as inline SVGs (with the <use> element), refer to the source of this HTML file. If you prefer to reference an external SVG instead of embedding it in the HTML, you will need to use javascript to fetch the SVG in order to make sure your SVGs will work fine in IE.
+
+You can ignore the *svgdefs.svg* file. It contains the same SVG <symbol> definitions as the ones you can find in the demo.html file.
+
+If you prefer using PNGs or CSS sprites, plese, refer to the sprite folder to see an example of generated sprites from the SVG source files.

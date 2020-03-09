@@ -1,0 +1,133 @@
+@font-face {
+	font-family: 'jolly-icons-free';
+	src:url('fonts/jolly-icons-free.eot?-3bqqk6');
+	src:url('fonts/jolly-icons-free.eot?#iefix-3bqqk6') format('embedded-opentype'),
+		url('fonts/jolly-icons-free.woff?-3bqqk6') format('woff'),
+		url('fonts/jolly-icons-free.ttf?-3bqqk6') format('truetype'),
+		url('fonts/jolly-icons-free.svg?-3bqqk6#jolly-icons-free') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.jolly {
+	font-family: 'jolly-icons-free';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.hdg-mobile:before {
+	content: "\21";
+}
+.hdg-printer:before {
+	content: "\22";
+}
+.hdg-map-route:before {
+	content: "\23";
+}
+.hdg-pin:before {
+	content: "\24";
+}
+.hdg-mail:before {
+	content: "\25";
+}
+.hdg-paperplane:before {
+	content: "\26";
+}
+.hdg-settings:before {
+	content: "\27";
+}
+.hdg-gear:before {
+	content: "\28";
+}
+.hdg-network:before {
+	content: "\29";
+}
+.hdg-like-thumbs-up:before {
+	content: "\2a";
+}
+.hdg-globe:before {
+	content: "\2b";
+}
+.hdg-bomb:before {
+	content: "\2c";
+}
+.hdg-lightning:before {
+	content: "\2d";
+}
+.hdg-picture:before {
+	content: "\2e";
+}
+.hdg-cloud:before {
+	content: "\2f";
+}
+.hdg-line-chart:before {
+	content: "\30";
+}
+.hdg-briefcase:before {
+	content: "\31";
+}
+.hdg-checklist-todo:before {
+	content: "\32";
+}
+.hdg-folder:before {
+	content: "\33";
+}
+.hdg-bookmark:before {
+	content: "\34";
+}
+.hdg-savings:before {
+	content: "\35";
+}
+.hdg-shopping-cart-ecommerce:before {
+	content: "\36";
+}
+.hdg-gifts-giftbox:before {
+	content: "\37";
+}
+.hdg-coffee:before {
+	content: "\38";
+}
+.hdg-food-chicken-leg:before {
+	content: "\39";
+}
+.hdg-food-apple:before {
+	content: "\3a";
+}
+.hdg-icecream:before {
+	content: "\3b";
+}
+.hdg-trumpet:before {
+	content: "\3c";
+}
+.hdg-pipe:before {
+	content: "\3d";
+}
+.hdg-diamond-ruby:before {
+	content: "\3e";
+}
+.hdg-face-robot:before {
+	content: "\3f";
+}
+.hdg-social-facebook:before {
+	content: "\40";
+}
+.hdg-social-google-gplus:before {
+	content: "\41";
+}
+.hdg-social-twitter-tweet-bird:before {
+	content: "\42";
+}
+.hdg-social-dribbble:before {
+	content: "\43";
+}
+.hdg-social-github-octocat:before {
+	content: "\44";
+}
