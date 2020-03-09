@@ -123,9 +123,7 @@ class Deselect_Tracker(TemplateView):
     def get(self, request):
         recipe_id = request.GET.get('name')
         print("NAME", (recipe_id))
-
         insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_num, user_id, reason) VALUES (?, ?, ?)"
-
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
         c = c.execute(insert_blacklist_statement, (recipe_id, request.user.id, "Nothing"))
@@ -166,7 +164,6 @@ def DownloadFile(request):
 class DisplayPastRecipes(TemplateView):
     def get(self, request):
         form = RateRecipe()
-        #form = Deselect()
         sql_statement = "SELECT * FROM user_signup_user_data WHERE user_id = ?"
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
@@ -175,7 +172,7 @@ class DisplayPastRecipes(TemplateView):
 
         if len(user_info) == 0:
             user_info = ['']
-
+        args = {'user': request.user, 'form':form, 'name':user_info[1]}
         prev_week_state = 'SELECT recipe_id FROM user_recipes_rating WHERE user_id = ? ORDER BY week DESC LIMIT 7'
 
         c.execute(prev_week_state, (request.user.id,))
@@ -192,10 +189,18 @@ class DisplayPastRecipes(TemplateView):
         connection.close()
 
         filename = 'past_meals.html'
-        args = {'user': request.user, 'form':form, 'name':user_info[1]}
         generate_html_page(filename, previous_recipes)
         return render(request, 'user_signup/'+filename, args)
 
+    def post(self, request):
+        insert_rating_statement = "UPDATE user_recipes_rating SET rating = %d WHERE user_id = %d"%(int(request.POST['rating'][-1]), request.user.id, )
+        connection = sqlite3.connect('db.sqlite3')
+        c = connection.cursor()
+        c = c.execute(insert_rating_statement)
+        connection.commit()
+        connection.close()
+
+        return redirect("/home/dashboard/past_recipes/")
 
 class Change_User_Info(TemplateView):
     template_name = 'user_signup/user_preferences.html'
@@ -206,7 +211,6 @@ class Change_User_Info(TemplateView):
     def post(self, request):
         update_info_statement = ""
         messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
-
 
 def register(request):
     if request.method == 'POST':

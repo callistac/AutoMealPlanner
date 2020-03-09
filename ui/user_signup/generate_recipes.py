@@ -39,10 +39,11 @@ def generate_html_page(filename, recipes):
         You now have the option of either automatically generating your weekly grocery \
         list based on the below recipes by pressing \"Generate Grocery List\", or you can press \"Deselect Recipe\" \
         button if you want a new recipe. After deselecting a recipe, a short form will pop up so that \
-        you can let us know why you deselected it, we will refrain from showing you this recipe again based on your response."
+        you can let us know why you deselected it, we will refrain from showing you this recipe again based on your response.\
+        If you would like to deselect all 7 recipes, refresh the page."
 
         header_old_meals = "Your past meals have been generated. Select generate grocery list to regenerate your grocery list from last week.\
-        If you would like to rate a recipe from last week to help us better learn what you like, please do so below the recipe."
+        If you would like to rate a recipe from last week to help us better learn what you like, please click \"Rate Recipe\" below the recipe."
 
         if filename == 'past_meals.html':
             file.write(description_html % (header_old_meals))
@@ -64,13 +65,16 @@ def generate_html_page(filename, recipes):
                 <li class="list-group-item">Cras justo odio</li>
                 <li class="list-group-item">Dapibus ac facilisis in</li>
               </ul>
-              <p>
+              <p class="align-items-center">
                 <a href=%s class="card-link">Link to recipe</a>
                 <br>
               </p>
             """
             file.write(html_body1 % (recipes[i][3], recipes[i][1], (i+1), recipes[i][4], recipes[i][2]))
-            file.write("<button href='/home/deselect?name=%s' class='btn btn-dark' data-toggle='modal' data-target='#myModal'>Deselect Recipe</button>"% (rec_ids[i]))
+            if filename == 'past_meals.html':
+                file.write("<button href='/home/deselect?name=%s' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>"% (rec_ids[i]))
+            else:
+                file.write("<button href='/home/deselect?name=%s' class='btn btn-dark' data-toggle='modal' data-target='#myModal'>Deselect Recipe</button>"% (rec_ids[i]))
             html_body3 = """
                 <br>
             </div>
