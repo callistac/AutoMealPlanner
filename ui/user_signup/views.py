@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from user_signup.forms import CustomForm, Deselect
+from user_signup.forms import CustomForm, Deselect, RateRecipe
 from django.views.generic import TemplateView
 from django.contrib import messages
 from user_signup.generate_recipes import generate_html_page
@@ -165,7 +165,8 @@ def DownloadFile(request):
 
 class DisplayPastRecipes(TemplateView):
     def get(self, request):
-        form = Deselect()
+        form = RateRecipe()
+        #form = Deselect()
         sql_statement = "SELECT * FROM user_signup_user_data WHERE user_id = ?"
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
@@ -174,7 +175,7 @@ class DisplayPastRecipes(TemplateView):
 
         if len(user_info) == 0:
             user_info = ['']
-        args = {'user': request.user, 'form':form, 'name':user_info[1]}
+
         prev_week_state = 'SELECT recipe_id FROM user_recipes_rating WHERE user_id = ? ORDER BY week DESC LIMIT 7'
 
         c.execute(prev_week_state, (request.user.id,))
@@ -191,6 +192,7 @@ class DisplayPastRecipes(TemplateView):
         connection.close()
 
         filename = 'past_meals.html'
+        args = {'user': request.user, 'form':form, 'name':user_info[1]}
         generate_html_page(filename, previous_recipes)
         return render(request, 'user_signup/'+filename, args)
 

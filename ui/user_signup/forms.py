@@ -1,6 +1,6 @@
 from django import forms
-from user_signup.models import User_Data, User_Diet, Deselect_Options
-from user_signup.models import BUDGET_CHOICES, LAZINESS_CHOICES, DIETARY_CHOICES
+from user_signup.models import User_Data, User_Diet, Deselect_Options, Rate_Recipes
+from user_signup.models import BUDGET_CHOICES, LAZINESS_CHOICES, DIETARY_CHOICES, RATING_CHOICES
 from django.forms import ModelForm
 
 class CustomForm(forms.ModelForm):
@@ -30,3 +30,9 @@ class Deselect(forms.ModelForm):
         model = Deselect_Options
         fields = ['reason']
         labels = {'reason': "Reason for deselecting recipe:"}
+
+class RateRecipe(forms.ModelForm):
+    class Meta:
+        model = Rate_Recipes
+        fields = ['rating']
+        labels = {'rating': "What would you rate this recipe on a scale from 1 to 5?"}

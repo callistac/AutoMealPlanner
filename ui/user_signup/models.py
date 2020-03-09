@@ -32,6 +32,14 @@ BLACKLIST_CHOICES = [
     ('option4', 'Prefer not to answer')
 ]
 
+RATING_CHOICES = [
+    ('rating1', '1 - It was disgusting'),
+    ('rating2', '2 - It was not good'),
+    ('rating3', '3 - It was decent'),
+    ('rating4', '4 - It was pretty good'),
+    ('rating5', '5 - It was excellent!')
+]
+
 # Create your models here.
 class User_Diet(models.Model):
     dietary_restrictions = MultiSelectField(choices = DIETARY_CHOICES)
@@ -56,6 +64,11 @@ class User_Data(models.Model):
 
 class Deselect_Options(models.Model):
     reason = models.CharField(max_length=500, default='', choices=BLACKLIST_CHOICES)
-
     def get_absolute_url(self):
         return reverse('/home/dashboard/meals/')
+
+
+class Rate_Recipes(models.Model):
+    rating = models.CharField(max_length=500, default='', choices=RATING_CHOICES)
+    def get_absolute_url(self):
+        return reverse('/home/dashboard/past_recipes/')

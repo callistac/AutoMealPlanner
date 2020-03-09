@@ -7,12 +7,6 @@ def generate_html_page(filename, recipes):
     rec_ids = tuple(rec_ids)
     print("IDSSSS", rec_ids)
 
-    #print(black_recipes)
-    #urls_img = c.execute(select_rand_recipe, ids)
-
-    #<form action='SaveResults/' method='POST'>
-    #{% csrf_token %}
-    #</form>
     num_days = len(recipes)
     with open('user_signup/templates/user_signup/'+filename, 'w') as file:
         beg_html = """
@@ -27,10 +21,13 @@ def generate_html_page(filename, recipes):
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         </head>
         <body>
+        """
+        file.write(beg_html)
+        description_html = """
           <section class="jumbotron text-center">
             <div class="container">
               <h1 class="jumbotron-heading">Your Weekly Meals, {{ user }}!</h1>
-              <p class="lead text-muted">Your weekly meals have been generated below! You now have the option of either automatically generating your weekly grocery list based on the below recipes by pressing "Generate Grocery List", or you can press "Deselect Recipe" button if you want a new recipe. After deselecting a recipe, a short form will pop up so that you can let us know why you deselected it, we will refrain from showing you this recipe again based on your response.</p>
+              <p class="lead text-muted"> %s </p>
             <button type="button" value='Download' onclick="window.location.href = '/home/dashboard/meals/download/';" class='btn btn-primary btn-lg' > Generate Grocery List</button><br>
             </div>
           </section>
@@ -38,7 +35,19 @@ def generate_html_page(filename, recipes):
         <div class="container-fluid">
         <div class="row flex-row flex-nowrap">
         """
-        file.write(beg_html)
+        header_new_meals = "Your weekly meals have been generated below! \
+        You now have the option of either automatically generating your weekly grocery \
+        list based on the below recipes by pressing \"Generate Grocery List\", or you can press \"Deselect Recipe\" \
+        button if you want a new recipe. After deselecting a recipe, a short form will pop up so that \
+        you can let us know why you deselected it, we will refrain from showing you this recipe again based on your response."
+
+        header_old_meals = "Your past meals have been generated. Select generate grocery list to regenerate your grocery list from last week.\
+        If you would like to rate a recipe from last week to help us better learn what you like, please do so below the recipe."
+
+        if filename == 'past_meals.html':
+            file.write(description_html % (header_old_meals))
+        else:
+            file.write(description_html % (header_new_meals))
 
         for i in range(num_days):
             html_body1 = """
