@@ -230,7 +230,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 233355|Utokia's Ginger Shrimp and Broccoli with Garlic|https://www.allrecipes.com/recipe/233355/utokias-ginger-shrimp-and-broccoli-with-garlic/|https://images.media-allrecipes.com/userphotos/250x250/1029026.jpg|4|None|None|None|50|4.4
 241571|Easy Roasted Potatoes|https://www.allrecipes.com/recipe/241571/easy-roasted-potatoes/|https://images.media-allrecipes.com/userphotos/560x315/3346075.jpg|6|15|40|55|21|4.74
 138051|Black Bean and Chickpea Hummus|https://www.allrecipes.com/recipe/138051/black-bean-and-chickpea-hummus/|https://images.media-allrecipes.com/userphotos/250x250/857692.jpg|8|10|None|10|62|4.03
-254342|Roasted Cauliflower "Rice"|https://www.allrecipes.com/recipe/254342/roasted-cauliflower-rice/|https://images.media-allrecipes.com/userphotos/560x315/5635485.jpg|8|20|27|47|41|4.45
+254342|Roasted Cauliflower Rice|https://www.allrecipes.com/recipe/254342/roasted-cauliflower-rice/|https://images.media-allrecipes.com/userphotos/560x315/5635485.jpg|8|20|27|47|41|4.45
 13894|Zucchini-Tomato Saute|https://www.allrecipes.com/recipe/13894/zucchini-tomato-saute/|https://images.media-allrecipes.com/userphotos/560x315/29515.jpg|6|20|25|45|73|4.17
 247194|The Best Dry-Roasted Chickpea Recipe |https://www.allrecipes.com/recipe/247194/the-best-dry-roasted-chickpea-recipe/|https://images.media-allrecipes.com/userphotos/560x315/3663248.jpg|4|10|44|54|55|4.58
 257457|Meyer Lemon Avocado Toast|https://www.allrecipes.com/recipe/257457/meyer-lemon-avocado-toast/|https://images.media-allrecipes.com/userphotos/560x315/4487253.jpg|2|10|3|13|36|4.79
@@ -1742,7 +1742,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 233233|Roasted Eggplant Lasagna|https://www.allrecipes.com/recipe/233233/roasted-eggplant-lasagna/|https://images.media-allrecipes.com/userphotos/560x315/1087308.jpg|6|25|60|105|21|4.23
 220870|Authentic Falafels|https://www.allrecipes.com/recipe/220870/authentic-falafels/|https://images.media-allrecipes.com/userphotos/560x315/4501457.jpg|6|30|10|580|19|4.48
 104850|Black Bean and Corn Quesadillas|https://www.allrecipes.com/recipe/104850/black-bean-and-corn-quesadillas/|https://images.media-allrecipes.com/userphotos/560x315/829340.jpg|8|10|30|40|1230|4.63
-13938|Connie's Zucchini "Crab" Cakes|https://www.allrecipes.com/recipe/13938/connies-zucchini-crab-cakes/|https://images.media-allrecipes.com/userphotos/560x315/733135.jpg|5|20|10|30|1139|4.49
+13938|Connie's Zucchini Crab Cakes|https://www.allrecipes.com/recipe/13938/connies-zucchini-crab-cakes/|https://images.media-allrecipes.com/userphotos/560x315/733135.jpg|5|20|10|30|1139|4.49
 11805|Mouse's Macaroni and Cheese|https://www.allrecipes.com/recipe/11805/mouses-macaroni-and-cheese/|https://images.media-allrecipes.com/userphotos/560x315/390253.jpg|6|15|35|50|950|4.47
 19591|Suki's Spinach and Feta Pasta|https://www.allrecipes.com/recipe/19591/sukis-spinach-and-feta-pasta/|https://images.media-allrecipes.com/userphotos/560x315/2613814.jpg|4|25|15|40|834|4.55
 247082|Slow Cooker Chicken Pepperoni|https://www.allrecipes.com/recipe/247082/slow-cooker-chicken-pepperoni/|https://images.media-allrecipes.com/userphotos/4477460.jpg|4|10|240|250|53|4.0
@@ -3025,7 +3025,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 25713|Best Italian Sausage Soup|https://www.allrecipes.com/recipe/25713/best-italian-sausage-soup/|https://images.media-allrecipes.com/userphotos/3219698.jpg|8|30|360|390|494|4.516194331983805
 76902|Italian Sausage Soup II|https://www.allrecipes.com/recipe/76902/italian-sausage-soup-ii/|https://images.media-allrecipes.com/userphotos/4778233.jpg|8|15|60|75|213|4.732394366197183
 25843|Hasenpfeffer (Rabbit Stew)|https://www.allrecipes.com/recipe/25843/hasenpfeffer-rabbit-stew/|https://images.media-allrecipes.com/userphotos/2086870.jpg|4|30|90|120|152|4.743421052631579
-255253|"OG" Zuppa Toscana Soup|https://www.allrecipes.com/recipe/255253/og-zuppa-toscana-soup/|https://images.media-allrecipes.com/userphotos/4461109.jpg|6|20|44|64|16|4.875
+255253|OG Zuppa Toscana Soup|https://www.allrecipes.com/recipe/255253/og-zuppa-toscana-soup/|https://images.media-allrecipes.com/userphotos/4461109.jpg|6|20|44|64|16|4.875
 234942|Almost Tuscan Sausage and Kale Soup|https://www.allrecipes.com/recipe/234942/almost-tuscan-sausage-and-kale-soup/|https://images.media-allrecipes.com/userphotos/4036073.jpg|6|15|30|45|82|4.853658536585366
 25658|Polish Sausage Soup|https://www.allrecipes.com/recipe/25658/polish-sausage-soup/|https://images.media-allrecipes.com/userphotos/767831.jpg|6|10|60|70|45|4.4
 230419|Pork Sweet Potato Stew|https://www.allrecipes.com/recipe/230419/pork-sweet-potato-stew/|https://images.media-allrecipes.com/userphotos/5829894.jpg|8|30|120|150|43|4.627906976744186
@@ -3376,7 +3376,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 18028|Potato Pancakes II|https://www.allrecipes.com/recipe/18028/potato-pancakes-ii/|https://images.media-allrecipes.com/userphotos/250x250/42626.jpg|3|5|10|15|163|4.09
 20020|American Frittata|https://www.allrecipes.com/recipe/20020/american-frittata/|https://images.media-allrecipes.com/userphotos/2392207.jpg|8|15|15|30|180|4.25
 18280|Early Morning Oven Roasted New Potatoes|https://www.allrecipes.com/recipe/18280/early-morning-oven-roasted-new-potatoes/|https://images.media-allrecipes.com/userphotos/560x315/1124275.jpg|4|10|20|30|124|4.61
-222014|"Pantry Raid" Chicken Enchilada Casserole|https://www.allrecipes.com/recipe/222014/pantry-raid-chicken-enchilada-casserole/|https://images.media-allrecipes.com/userphotos/836815.jpg|6|15|45|60|453|4.622516556291391
+222014|Pantry Raid Chicken Enchilada Casserole|https://www.allrecipes.com/recipe/222014/pantry-raid-chicken-enchilada-casserole/|https://images.media-allrecipes.com/userphotos/836815.jpg|6|15|45|60|453|4.622516556291391
 261196|Creamy Keto Cauliflower Risotto|https://www.allrecipes.com/recipe/261196/creamy-keto-cauliflower-risotto/|https://images.media-allrecipes.com/userphotos/560x315/4576977.jpg|4|15|14|29|58|4.79
 261032|Easy Keto Beef Tacos|https://www.allrecipes.com/recipe/261032/easy-keto-beef-tacos/|https://images.media-allrecipes.com/userphotos/560x315/4574623.jpg|4|20|18|50|19|4.34
 71141|Slow Cooker Root Vegetable Tagine|https://www.allrecipes.com/recipe/71141/slow-cooker-root-vegetable-tagine/|https://images.media-allrecipes.com/userphotos/560x315/3931264.jpg|8|50|540|590|42|3.55
@@ -3474,7 +3474,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 157836|Summer Grilled Cabbage|https://www.allrecipes.com/recipe/157836/summer-grilled-cabbage/|https://images.media-allrecipes.com/userphotos/560x315/5577526.jpg|8|10|30|40|40|4.54
 165649|Roasted Vegetable Medley|https://www.allrecipes.com/recipe/165649/roasted-vegetable-medley/|https://images.media-allrecipes.com/userphotos/560x315/249686.jpg|6|25|60|115|176|4.61
 230901|Easy Oven Brown Rice|https://www.allrecipes.com/recipe/230901/easy-oven-brown-rice/|https://images.media-allrecipes.com/userphotos/560x315/1954677.jpg|6|10|60|70|131|4.74
-221186|Lime Cilantro Cauliflower "Rice"|https://www.allrecipes.com/recipe/221186/lime-cilantro-cauliflower-rice/|https://images.media-allrecipes.com/userphotos/560x315/3512323.jpg|4|15|10|25|121|4.2
+221186|Lime Cilantro Cauliflower Rice|https://www.allrecipes.com/recipe/221186/lime-cilantro-cauliflower-rice/|https://images.media-allrecipes.com/userphotos/560x315/3512323.jpg|4|15|10|25|121|4.2
 87822|Stir-Fried Kale and Broccoli Florets|https://www.allrecipes.com/recipe/87822/stir-fried-kale-and-broccoli-florets/|https://images.media-allrecipes.com/userphotos/7248686.jpg|6|5|5|10|95|4.094736842105263
 22293|Orzo with Mushrooms and Walnuts|https://www.allrecipes.com/recipe/22293/orzo-with-mushrooms-and-walnuts/|https://images.media-allrecipes.com/userphotos/560x315/7033242.jpg|8|10|25|35|103|4.3
 20963|Oven Roasted Potatoes|https://www.allrecipes.com/recipe/20963/oven-roasted-potatoes/|https://images.media-allrecipes.com/userphotos/560x315/19781.jpg|4|15|30|45|1113|4.64
@@ -4138,7 +4138,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 16345|Lazy Katie's Taco Salad|https://www.allrecipes.com/recipe/16345/lazy-katies-taco-salad/|https://images.media-allrecipes.com/userphotos/560x315/1134075.jpg|8|10|10|20|67|4.33
 223010|Spicy Dorito® Taco Salad|https://www.allrecipes.com/recipe/223010/spicy-dorito-taco-salad/|https://images.media-allrecipes.com/userphotos/560x315/2387124.jpg|10|25|10|35|56|4.55
 24604|Corn Chip Salad|https://www.allrecipes.com/recipe/24604/corn-chip-salad/|https://images.media-allrecipes.com/userphotos/250x250/282742.jpg|12|20|10|90|63|4.49
-239831|Low-Carb "Tacos"|https://www.allrecipes.com/recipe/239831/low-carb-tacos/|https://images.media-allrecipes.com/userphotos/560x315/3884031.jpg|4|20|15|35|58|4.66
+239831|Low-Carb Tacos|https://www.allrecipes.com/recipe/239831/low-carb-tacos/|https://images.media-allrecipes.com/userphotos/560x315/3884031.jpg|4|20|15|35|58|4.66
 24812|Taco Salad with Ranch Dressing|https://www.allrecipes.com/recipe/24812/taco-salad-with-ranch-dressing/|https://images.media-allrecipes.com/userphotos/100841.jpg|6|15|15|30|67|4.3283582089552235
 14255|Joy's Taco Salad|https://www.allrecipes.com/recipe/14255/joys-taco-salad/|https://images.media-allrecipes.com/userphotos/560x315/435058.jpg|12|20|15|35|40|4.63
 47657|San Antonio Salad|https://www.allrecipes.com/recipe/47657/san-antonio-salad/|https://images.media-allrecipes.com/userphotos/560x315/5270753.jpg|6|15|10|25|40|4.58
@@ -4397,7 +4397,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 91353|Skewered Grilled Potatoes|https://www.allrecipes.com/recipe/91353/skewered-grilled-potatoes/|https://images.media-allrecipes.com/userphotos/560x315/1031640.jpg|8|20|20|100|100|4.37
 95559|CCRyder's Smoker Rib Rub|https://www.allrecipes.com/recipe/95559/ccryders-smoker-rib-rub/|https://images.media-allrecipes.com/userphotos/250x250/422659.jpg|36|10|None|10|64|4.86
 240076|Southern Style Dry Rub for Pork or Chicken|https://www.allrecipes.com/recipe/240076/southern-style-dry-rub-for-pork-or-chicken/|https://images.media-allrecipes.com/userphotos/560x315/3338976.jpg|20|10|None|10|19|4.68
-240710|Virgil's "Top Secret" Pork Chop Marinade|https://www.allrecipes.com/recipe/240710/virgils-top-secret-pork-chop-marinade/|https://images.media-allrecipes.com/userphotos/560x315/1911858.jpg|8|5|None|5|27|4.69
+240710|Virgil's Top Secret Pork Chop Marinade|https://www.allrecipes.com/recipe/240710/virgils-top-secret-pork-chop-marinade/|https://images.media-allrecipes.com/userphotos/560x315/1911858.jpg|8|5|None|5|27|4.69
 178274|Whiskey Marinade|https://www.allrecipes.com/recipe/178274/whiskey-marinade/|https://images.media-allrecipes.com/userphotos/560x315/4845630.jpg|5|5|None|5|78|4.64
 17729|Kathy's Award Winning Barbeque Sauce|https://www.allrecipes.com/recipe/17729/kathys-award-winning-barbeque-sauce/|https://images.media-allrecipes.com/userphotos/560x315/100492.jpg|16|20|60|80|137|4.64
 25455|Rosemary Garlic Rub|https://www.allrecipes.com/recipe/25455/rosemary-garlic-rub/|https://images.media-allrecipes.com/userphotos/560x315/2299823.jpg|4|5|None|5|60|4.66
@@ -5007,7 +5007,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 228605|Mom's Teriyaki Sauce Marinade|https://www.allrecipes.com/recipe/228605/moms-teriyaki-sauce-marinade/|https://images.media-allrecipes.com/userphotos/560x315/3635758.jpg|12|10|None|10|19|4.26
 261223|Homemade Teriyaki Sauce|https://www.allrecipes.com/recipe/261223/homemade-teriyaki-sauce/|https://images.media-allrecipes.com/userphotos/560x315/7573225.jpg|8|5|13|18|18|4.75
 237639|Spicy Spanish-Style Rice |https://www.allrecipes.com/recipe/237639/spicy-spanish-style-rice/|https://images.media-allrecipes.com/userphotos/560x315/2327236.jpg|8|10|25|45|39|4.49
-272494|Baked "Fried" Rice|https://www.allrecipes.com/recipe/272494/baked-fried-rice/|https://images.media-allrecipes.com/userphotos/560x315/6493028.jpg|6|20|40|70|16|4.7
+272494|Baked Fried Rice|https://www.allrecipes.com/recipe/272494/baked-fried-rice/|https://images.media-allrecipes.com/userphotos/560x315/6493028.jpg|6|20|40|70|16|4.7
 221351|German Hamburgers (Frikadellen)|https://www.allrecipes.com/recipe/221351/german-hamburgers-frikadellen/|https://images.media-allrecipes.com/userphotos/2065105.jpg|4|20|10|40|39|4.384615384615385
 90547|Shirazi Salad|https://www.allrecipes.com/recipe/90547/shirazi-salad/|https://images.media-allrecipes.com/userphotos/250x250/121111.jpg|6|15|None|15|36|4.17
 16170|Greek Salad IV|https://www.allrecipes.com/recipe/16170/greek-salad-iv/|https://images.media-allrecipes.com/userphotos/250x250/223297.jpg|6|10|None|10|18|4.41
@@ -5142,7 +5142,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 231287|Sausage, Potato and Kale Soup|https://www.allrecipes.com/recipe/231287/sausage-potato-and-kale-soup/|https://images.media-allrecipes.com/userphotos/970170.jpg|12|10|50|60|483|4.666666666666667
 239635|Quick Super-Delicious Zuppa Toscana|https://www.allrecipes.com/recipe/239635/quick-super-delicious-zuppa-toscana/|https://images.media-allrecipes.com/userphotos/560x315/4057992.jpg|6|15|45|60|55|4.89
 223044|Chef John's Minestrone Soup|https://www.allrecipes.com/recipe/223044/chef-johns-minestrone-soup/|https://images.media-allrecipes.com/userphotos/560x315/4425236.jpg|6|20|85|105|236|4.8
-277949|New Year's "Good Luck" Pasta Fazool|https://www.allrecipes.com/recipe/277949/new-years-good-luck-pasta-fazool/|https://images.media-allrecipes.com/userphotos/560x315/7558057.jpg|6|20|45|65|15|4.94
+277949|New Year's Good Luck Pasta Fazool|https://www.allrecipes.com/recipe/277949/new-years-good-luck-pasta-fazool/|https://images.media-allrecipes.com/userphotos/560x315/7558057.jpg|6|20|45|65|15|4.94
 236599|Chef John's Italian Sausage Chili|https://www.allrecipes.com/recipe/236599/chef-johns-italian-sausage-chili/|https://images.media-allrecipes.com/userphotos/560x315/1105025.jpg|6|20|90|110|31|4.71
 230790|Rosemary Tomato Leek Soup|https://www.allrecipes.com/recipe/230790/rosemary-tomato-leek-soup/|https://images.media-allrecipes.com/userphotos/1022844.jpg|6|15|75|90|17|4.764705882352941
 12908|Italian Halibut Chowder|https://www.allrecipes.com/recipe/12908/italian-halibut-chowder/|https://images.media-allrecipes.com/userphotos/250x250/345613.jpg|8|20|70|90|27|4.67
@@ -5515,7 +5515,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 234620|Mascarpone Mashed Potatoes|https://www.allrecipes.com/recipe/234620/mascarpone-mashed-potatoes/|https://images.media-allrecipes.com/userphotos/560x315/1051480.jpg|8|15|35|55|47|4.43
 233295|Fondant Potatoes|https://www.allrecipes.com/recipe/233295/fondant-potatoes/|https://images.media-allrecipes.com/userphotos/560x315/7186573.jpg|6|15|40|60|181|4.66
 233651|Oven-Baked Onion Rings |https://www.allrecipes.com/recipe/233651/oven-baked-onion-rings/|https://images.media-allrecipes.com/userphotos/560x315/1060973.jpg|4|15|15|30|38|4.16
-255019|"Special" Roasted Potatoes|https://www.allrecipes.com/recipe/255019/special-roasted-potatoes/|https://images.media-allrecipes.com/userphotos/560x315/3860018.jpg|6|None|None|None|69|4.72
+255019|Special Roasted Potatoes|https://www.allrecipes.com/recipe/255019/special-roasted-potatoes/|https://images.media-allrecipes.com/userphotos/560x315/3860018.jpg|6|None|None|None|69|4.72
 232849|Pan-Roasted Marble Potatoes|https://www.allrecipes.com/recipe/232849/pan-roasted-marble-potatoes/|https://images.media-allrecipes.com/userphotos/560x315/1019853.jpg|4|15|20|35|15|4.39
 234938|Fast and Easy Creamed Spinach|https://www.allrecipes.com/recipe/234938/fast-and-easy-creamed-spinach/|https://images.media-allrecipes.com/userphotos/560x315/1056332.jpg|6|15|20|35|164|4.75
 241554|Farro with Wild Mushrooms|https://www.allrecipes.com/recipe/241554/farro-with-wild-mushrooms/|https://images.media-allrecipes.com/userphotos/560x315/2332452.jpg|6|15|55|90|34|4.92
@@ -6659,7 +6659,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 173956|Grilled Pheasant Poppers|https://www.allrecipes.com/recipe/173956/grilled-pheasant-poppers/|https://images.media-allrecipes.com/userphotos/560x315/4047900.jpg|6|20|15|55|39|4.89
 240180|Grinch Kabobs|https://www.allrecipes.com/recipe/240180/grinch-kabobs/|https://images.media-allrecipes.com/userphotos/560x315/1668193.jpg|24|30|None|30|92|4.78
 188330|Ranch Pretzels and Goldfish|https://www.allrecipes.com/recipe/188330/ranch-pretzels-and-goldfish/|https://images.media-allrecipes.com/userphotos/229972.jpg|20|10|15|40|41|4.463414634146342
-220825|"Spa"ctacular Frozen Grapes|https://www.allrecipes.com/recipe/220825/spactacular-frozen-grapes/|https://images.media-allrecipes.com/userphotos/560x315/5225157.jpg|4|15|None|150|36|4.2
+220825|Spa-ctacular Frozen Grapes|https://www.allrecipes.com/recipe/220825/spactacular-frozen-grapes/|https://images.media-allrecipes.com/userphotos/560x315/5225157.jpg|4|15|None|150|36|4.2
 222436|Maple Kale Crisps|https://www.allrecipes.com/recipe/222436/maple-kale-crisps/|https://images.media-allrecipes.com/userphotos/560x315/1010008.jpg|6|10|10|20|30|4.37
 235537|Baked Apple Chips|https://www.allrecipes.com/recipe/235537/baked-apple-chips/|https://images.media-allrecipes.com/userphotos/560x315/4872526.jpg|8|10|120|130|16|4.23
 17159|Chicken Won Tons|https://www.allrecipes.com/recipe/17159/chicken-won-tons/|https://images.media-allrecipes.com/userphotos/882243.jpg|12|30|15|45|26|4.038461538461538
@@ -6713,7 +6713,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 212686|Leftover Turkey Spring Rolls with Cranberry Sweet and Sour Dipping Sauce|https://www.allrecipes.com/recipe/212686/leftover-turkey-spring-rolls-with-cranberry-sweet-and-sour-dipping-sauce/|https://images.media-allrecipes.com/userphotos/560x315/747365.jpg|25|45|30|75|35|4.42
 235556|Amazing Shrimp and Langostino Lobster Linguine|https://www.allrecipes.com/recipe/235556/amazing-shrimp-and-langostino-lobster-linguine/|https://images.media-allrecipes.com/userphotos/560x315/1068636.jpg|8|15|30|45|29|4.7
 235908|RITZ Spicy Asian Chicken Wings|https://www.allrecipes.com/recipe/235908/ritz-spicy-asian-chicken-wings/|https://images.media-allrecipes.com/userphotos/1090098.jpg|15|30|15|45|20|4.5
-235903|RITZ "Everything" Bites with Lox and Schmear|https://www.allrecipes.com/recipe/235903/ritz-everything-bites-with-lox-and-schmear/|https://images.media-allrecipes.com/userphotos/250x250/1078041.jpg|20|15|None|75|18|4.75
+235903|RITZ Everything Bites with Lox and Schmear|https://www.allrecipes.com/recipe/235903/ritz-everything-bites-with-lox-and-schmear/|https://images.media-allrecipes.com/userphotos/250x250/1078041.jpg|20|15|None|75|18|4.75
 205634|Dill Veggie Tuna Salad|https://www.allrecipes.com/recipe/205634/dill-veggie-tuna-salad/|https://images.media-allrecipes.com/userphotos/560x315/4472596.jpg|4|22|13|95|15|4.29
 26769|Deluxe Egg Rolls|https://www.allrecipes.com/recipe/26769/deluxe-egg-rolls/|https://images.media-allrecipes.com/userphotos/560x315/1018236.jpg|20|45|20|65|19|4.38
 89456|Southwest-Style Egg Rolls|https://www.allrecipes.com/recipe/89456/southwest-style-egg-rolls/|https://images.media-allrecipes.com/userphotos/560x315/2261141.jpg|8|15|5|20|91|4.42
@@ -10576,7 +10576,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 35468|Silver's Savory Chicken and Broccoli Casserole|https://www.allrecipes.com/recipe/35468/silvers-savory-chicken-and-broccoli-casserole/|https://images.media-allrecipes.com/userphotos/32118.jpg|6|20|20|40|220|4.168181818181818
 170742|Not Your Mama's Tuna Casserole|https://www.allrecipes.com/recipe/170742/not-your-mamas-tuna-casserole/|https://images.media-allrecipes.com/userphotos/250x250/624533.jpg|8|None|35|35|25|3.86
 254210|Spicy Sweet Pepper Poppers|https://www.allrecipes.com/recipe/254210/spicy-sweet-pepper-poppers/|https://images.media-allrecipes.com/userphotos/560x315/3658831.jpg|15|30|30|60|17|4.72
-246102|Cauliflower "Mac and Cheese" Bake|https://www.allrecipes.com/recipe/246102/cauliflower-mac-and-cheese-bake/|https://images.media-allrecipes.com/userphotos/560x315/3186342.jpg|6|20|None|45|27|4.3
+246102|Cauliflower Mac and Cheese Bake|https://www.allrecipes.com/recipe/246102/cauliflower-mac-and-cheese-bake/|https://images.media-allrecipes.com/userphotos/560x315/3186342.jpg|6|20|None|45|27|4.3
 255634|Cauliflower Almond Pizza Crust |https://www.allrecipes.com/recipe/255634/cauliflower-almond-pizza-crust/|https://images.media-allrecipes.com/userphotos/560x315/7720023.jpg|8|15|30|45|21|4.08
 22397|Sausage Smothered in Red Cabbage|https://www.allrecipes.com/recipe/22397/sausage-smothered-in-red-cabbage/|https://images.media-allrecipes.com/userphotos/1158520.jpg|5|30|30|60|180|4.488888888888889
 79136|Danish Christmas Red Cabbage|https://www.allrecipes.com/recipe/79136/danish-christmas-red-cabbage/|https://images.media-allrecipes.com/userphotos/560x315/6349.jpg|12|30|60|90|56|4.53
@@ -11043,7 +11043,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 89721|Swedish Meat Pies|https://www.allrecipes.com/recipe/89721/swedish-meat-pies/|https://images.media-allrecipes.com/userphotos/560x315/1031734.jpg|4|40|None|40|41|4.1
 14687|Army SOS Creamed Ground Beef|https://www.allrecipes.com/recipe/14687/army-sos-creamed-ground-beef/|https://images.media-allrecipes.com/userphotos/250x250/58569.jpg|6|10|20|30|793|4.13
 8525|Chicken Costa Brava|https://www.allrecipes.com/recipe/8525/chicken-costa-brava/|https://images.media-allrecipes.com/userphotos/1093599.jpg|10|None|None|None|179|4.5307262569832405
-244931|"Skinny" Chicken Tacos|https://www.allrecipes.com/recipe/244931/skinny-chicken-tacos/|https://images.media-allrecipes.com/userphotos/2599563.jpg|4|15|10|35|18|4.166666666666667
+244931|Skinny Chicken Tacos|https://www.allrecipes.com/recipe/244931/skinny-chicken-tacos/|https://images.media-allrecipes.com/userphotos/2599563.jpg|4|15|10|35|18|4.166666666666667
 238777|Sicilian Olive Chicken|https://www.allrecipes.com/recipe/238777/sicilian-olive-chicken/|https://images.media-allrecipes.com/userphotos/560x315/4512542.jpg|4|None|None|20|36|4.67
 35803|Big M's Spicy Lime Grilled Prawns|https://www.allrecipes.com/recipe/35803/big-ms-spicy-lime-grilled-prawns/|https://images.media-allrecipes.com/userphotos/250x250/782227.jpg|12|30|5|275|45|4.09
 256891|Deviled Lobster Tails|https://www.allrecipes.com/recipe/256891/deviled-lobster-tails/|https://images.media-allrecipes.com/userphotos/560x315/5293780.jpg|4|15|5|20|15|4.65
@@ -11692,7 +11692,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 12937|French Onion Soup With Browned Garlic|https://www.allrecipes.com/recipe/12937/french-onion-soup-with-browned-garlic/|https://images.media-allrecipes.com/userphotos/560x315/5263275.jpg|6|15|55|70|39|3.94
 23867|French Onion Soup VII|https://www.allrecipes.com/recipe/23867/french-onion-soup-vii/|https://images.media-allrecipes.com/userphotos/250x250/556420.jpg|6|10|30|40|40|4.3
 25750|French Onion Soup X|https://www.allrecipes.com/recipe/25750/french-onion-soup-x/|https://images.media-allrecipes.com/userphotos/560x315/965624.jpg|4|10|60|70|18|4.68
-230750|Green Bean "Almondine" with Garlic and Blue Cheese|https://www.allrecipes.com/recipe/230750/green-bean-almondine-with-garlic-and-blue-cheese/|https://images.media-allrecipes.com/userphotos/560x315/959601.jpg|6|20|82|102|42|4.68
+230750|Green Bean Almondine with Garlic and Blue Cheese|https://www.allrecipes.com/recipe/230750/green-bean-almondine-with-garlic-and-blue-cheese/|https://images.media-allrecipes.com/userphotos/560x315/959601.jpg|6|20|82|102|42|4.68
 228878|Scalloped Sweet Potatoes and Butternut Squash|https://www.allrecipes.com/recipe/228878/scalloped-sweet-potatoes-and-butternut-squash/|https://images.media-allrecipes.com/userphotos/560x315/7313983.jpg|6|20|55|75|18|4.17
 238941|Slow Cooker Butternut Squash Soup with Sausage|https://www.allrecipes.com/recipe/238941/slow-cooker-butternut-squash-soup-with-sausage/|https://images.media-allrecipes.com/userphotos/560x315/1341085.jpg|6|None|None|490|21|4.67
 211123|Cream of Chicken Soup From Scratch|https://www.allrecipes.com/recipe/211123/cream-of-chicken-soup-from-scratch/|https://images.media-allrecipes.com/userphotos/3095732.jpg|4|10|10|20|74|4.297297297297297
@@ -13304,7 +13304,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 25191|Quick Turkey and Rice|https://www.allrecipes.com/recipe/25191/quick-turkey-and-rice/|https://images.media-allrecipes.com/userphotos/560x315/3287150.jpg|6|10|20|30|20|3.6
 246840|Enchilada Spaghetti Squash Casserole|https://www.allrecipes.com/recipe/246840/enchilada-spaghetti-squash-casserole/|https://images.media-allrecipes.com/userphotos/560x315/4031468.jpg|10|20|80|110|15|4.65
 186033|Fried Mac and Cheese Balls|https://www.allrecipes.com/recipe/186033/fried-mac-and-cheese-balls/|https://images.media-allrecipes.com/userphotos/560x315/231432.jpg|8|40|30|430|60|4.36
-272461|"Instant" Mac and Cheese|https://www.allrecipes.com/recipe/272461/instant-mac-and-cheese/|https://images.media-allrecipes.com/userphotos/560x315/6493093.jpg|4|10|15|28|18|4.05
+272461|Instant Mac and Cheese|https://www.allrecipes.com/recipe/272461/instant-mac-and-cheese/|https://images.media-allrecipes.com/userphotos/560x315/6493093.jpg|4|10|15|28|18|4.05
 11718|College Student's Gourmet Pasta|https://www.allrecipes.com/recipe/11718/college-students-gourmet-pasta/|https://images.media-allrecipes.com/userphotos/250x250/364376.jpg|2|None|None|None|42|3.96
 25231|Bleu Cheese Macaroni|https://www.allrecipes.com/recipe/25231/bleu-cheese-macaroni/|https://images.media-allrecipes.com/userphotos/1105026.jpg|6|5|20|25|126|4.420634920634921
 11968|Macaroni and Cheese III|https://www.allrecipes.com/recipe/11968/macaroni-and-cheese-iii/|https://images.media-allrecipes.com/userphotos/2105565.jpg|6|15|10|35|49|4.122448979591836
@@ -14885,7 +14885,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 24150|Most Excellent Breakfast Casserole|https://www.allrecipes.com/recipe/24150/most-excellent-breakfast-casserole/|https://images.media-allrecipes.com/userphotos/2777171.jpg|9|45|45|890|61|3.901639344262295
 86932|Vegetarian Open Faced Sandwich|https://www.allrecipes.com/recipe/86932/vegetarian-open-faced-sandwich/|https://images.media-allrecipes.com/userphotos/560x315/421117.jpg|6|20|5|25|30|4.56
 234576|Grands!® Unsloppy Joes|https://www.allrecipes.com/recipe/234576/grands-unsloppy-joes/|https://images.media-allrecipes.com/userphotos/250x250/1050687.jpg|8|30|None|45|21|4.5
-254696|Pea and Pancetta Ramen "Risotto"|https://www.allrecipes.com/recipe/254696/pea-and-pancetta-ramen-risotto/|https://images.media-allrecipes.com/userphotos/3797883.jpg|4|5|15|20|19|3.5789473684210527
+254696|Pea and Pancetta Ramen Risotto|https://www.allrecipes.com/recipe/254696/pea-and-pancetta-ramen-risotto/|https://images.media-allrecipes.com/userphotos/3797883.jpg|4|5|15|20|19|3.5789473684210527
 24083|Lasagna Spinach Roll-Ups|https://www.allrecipes.com/recipe/24083/lasagna-spinach-roll-ups/|https://images.media-allrecipes.com/userphotos/560x315/4507669.jpg|8|25|40|65|37|4.21
 49510|Chickpeas in Tomato Sauce With Feta and Wine|https://www.allrecipes.com/recipe/49510/chickpeas-in-tomato-sauce-with-feta-and-wine/|https://images.media-allrecipes.com/userphotos/560x315/2796.jpg|4|10|30|45|82|4.43
 21789|Light Zucchini Casserole|https://www.allrecipes.com/recipe/21789/light-zucchini-casserole/|https://images.media-allrecipes.com/userphotos/560x315/849522.jpg|6|15|60|75|59|3.86
@@ -15771,7 +15771,7 @@ recipe_num|title|url|image|servings|prep_time|cook_time|total_time|n_reviews|avg
 73385|Coleslaw with Peas|https://www.allrecipes.com/recipe/73385/coleslaw-with-peas/|https://images.media-allrecipes.com/userphotos/560x315/752685.jpg|8|15|None|75|15|4.47
 215001|Kohlrabi Slaw|https://www.allrecipes.com/recipe/215001/kohlrabi-slaw/|https://images.media-allrecipes.com/userphotos/560x315/680246.jpg|8|25|None|85|40|4.59
 23800|Appalachian Slaw|https://www.allrecipes.com/recipe/23800/appalachian-slaw/|https://images.media-allrecipes.com/userphotos/560x315/834861.jpg|4|20|None|20|33|4.36
-219487|"Million Dollar" Chinese Cabbage Salad  |https://www.allrecipes.com/recipe/219487/million-dollar-chinese-cabbage-salad/|https://images.media-allrecipes.com/userphotos/560x315/3521407.jpg|10|15|15|40|28|4.52
+219487|Million Dollar Chinese Cabbage Salad  |https://www.allrecipes.com/recipe/219487/million-dollar-chinese-cabbage-salad/|https://images.media-allrecipes.com/userphotos/560x315/3521407.jpg|10|15|15|40|28|4.52
 223217|Carrot and Zucchini Casserole|https://www.allrecipes.com/recipe/223217/carrot-and-zucchini-casserole/|https://images.media-allrecipes.com/userphotos/975606.jpg|6|20|65|85|21|4.476190476190476
 14342|Grandma's Salad Dressing|https://www.allrecipes.com/recipe/14342/grandmas-salad-dressing/|https://images.media-allrecipes.com/userphotos/560x315/4543948.jpg|28|10|None|10|96|4.42
 14374|Poppy Seed Dressing II|https://www.allrecipes.com/recipe/14374/poppy-seed-dressing-ii/|https://images.media-allrecipes.com/userphotos/560x315/1928331.jpg|16|10|None|10|60|4.7
