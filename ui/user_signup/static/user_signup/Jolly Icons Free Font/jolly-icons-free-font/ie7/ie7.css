@@ -1,0 +1,108 @@
+.hdg-mobile {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x21;');
+}
+.hdg-printer {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x22;');
+}
+.hdg-map-route {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x23;');
+}
+.hdg-pin {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x24;');
+}
+.hdg-mail {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x25;');
+}
+.hdg-paperplane {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x26;');
+}
+.hdg-settings {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x27;');
+}
+.hdg-gear {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x28;');
+}
+.hdg-network {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x29;');
+}
+.hdg-like-thumbs-up {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2a;');
+}
+.hdg-globe {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2b;');
+}
+.hdg-bomb {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2c;');
+}
+.hdg-lightning {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2d;');
+}
+.hdg-picture {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2e;');
+}
+.hdg-cloud {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x2f;');
+}
+.hdg-line-chart {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x30;');
+}
+.hdg-briefcase {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x31;');
+}
+.hdg-checklist-todo {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x32;');
+}
+.hdg-folder {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x33;');
+}
+.hdg-bookmark {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x34;');
+}
+.hdg-savings {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x35;');
+}
+.hdg-shopping-cart-ecommerce {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x36;');
+}
+.hdg-gifts-giftbox {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x37;');
+}
+.hdg-coffee {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x38;');
+}
+.hdg-food-chicken-leg {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x39;');
+}
+.hdg-food-apple {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x3a;');
+}
+.hdg-icecream {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x3b;');
+}
+.hdg-trumpet {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x3c;');
+}
+.hdg-pipe {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x3d;');
+}
+.hdg-diamond-ruby {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x3e;');
+}
+.hdg-face-robot {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x3f;');
+}
+.hdg-social-facebook {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x40;');
+}
+.hdg-social-google-gplus {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x41;');
+}
+.hdg-social-twitter-tweet-bird {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x42;');
+}
+.hdg-social-dribbble {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x43;');
+}
+.hdg-social-github-octocat {
+	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#x44;');
+}

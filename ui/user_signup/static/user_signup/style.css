@@ -1,3 +1,9 @@
 body {
   background-color: lightblue;
 }
+
+.responsive {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
