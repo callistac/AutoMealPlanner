@@ -129,14 +129,25 @@ class Deselect_Tracker(TemplateView):
         c = c.execute(insert_blacklist_statement, (recipe_id, request.user.id, "Nothing"))
         connection.commit()
 
+class Rating(TemplateView):
+    def get(self, request):
+        recipe_id = request.GET.get('name')
+        request.session['recipe_number'] = recipe_id
+        print("RECIPENUM1", recipe_id)
+        insert_rating = "INSERT INTO rated_recipes (recipe_num, user_id) VALUES (?,?)"
+        connection = sqlite3.connect('db.sqlite3')
+        c = connection.cursor()
+        c = c.execute(insert_rating, (recipe_id, request.user.id))
+        connection.commit()
+
 
 def DownloadFile(request):
     # save the recipes to the database
     recipes = request.session.get('recipes')
-    insert_into_user_recipes_state = "INSERT INTO user_recipes_rating (recipe_id, user_id, rating, week) VALUES (?, ?, ?, ?)"
+    insert_into_user_recipes_state = "INSERT INTO user_past_recipes (recipe_id, user_id, week) VALUES (?, ?, ?)"
     connection = sqlite3.connect('db.sqlite3')
     c = connection.cursor()
-    prev_week_state = 'SELECT week FROM user_recipes_rating WHERE user_id = ? ORDER BY week DESC'
+    prev_week_state = 'SELECT week FROM user_past_recipes WHERE user_id = ? ORDER BY week DESC'
     c.execute(prev_week_state, (request.user.id,))
     last_week = c.fetchone()
 
@@ -145,7 +156,7 @@ def DownloadFile(request):
     else:
         current_week = last_week[0] + 1
     for recipe in recipes:
-        c.execute(insert_into_user_recipes_state, (recipe[0], request.user.id, None, current_week))
+        c.execute(insert_into_user_recipes_state, (recipe[0], request.user.id, current_week))
 
     connection.commit()
     connection.close()
@@ -164,6 +175,9 @@ def DownloadFile(request):
 class DisplayPastRecipes(TemplateView):
     def get(self, request):
         form = RateRecipe()
+        recipe_id = request.GET.get('name')
+        request.session['recipe_num'] = recipe_id
+        print("RECIPE_ID", recipe_id)
         sql_statement = "SELECT * FROM user_signup_user_data WHERE user_id = ?"
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
@@ -173,7 +187,7 @@ class DisplayPastRecipes(TemplateView):
         if len(user_info) == 0:
             user_info = ['']
         args = {'user': request.user, 'form':form, 'name':user_info[1]}
-        prev_week_state = 'SELECT recipe_id FROM user_recipes_rating WHERE user_id = ? ORDER BY week DESC LIMIT 7'
+        prev_week_state = 'SELECT recipe_id FROM user_past_recipes WHERE user_id = ? ORDER BY week DESC LIMIT 7'
 
         c.execute(prev_week_state, (request.user.id,))
         past_recipes = c.fetchall()
@@ -193,7 +207,10 @@ class DisplayPastRecipes(TemplateView):
         return render(request, 'user_signup/'+filename, args)
 
     def post(self, request):
-        insert_rating_statement = "UPDATE user_recipes_rating SET rating = %d WHERE user_id = %d"%(int(request.POST['rating'][-1]), request.user.id, )
+        print("POSTTTTT", request.POST)
+        print("REFCIPE??????", request.GET.get('recipe_number'))
+        #insert_rating_statement = "UPDATE user_recipes_rating SET rating = %d WHERE user_id = %d"%(int(request.POST['rating'][-1]), request.user.id, )
+        insert_rating_statement = "UPDATE rated_recipes SET rating = %d WHERE id = (SELECT MAX(id) FROM rated_recipes)"%(int(request.POST['rating'][-1]),)
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
         c = c.execute(insert_rating_statement)

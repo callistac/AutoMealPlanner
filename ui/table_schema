@@ -64,15 +64,22 @@ CREATE TABLE blacklisted_recipes (
     reason varchar(500) NOT NULL,
     FOREIGN KEY(recipe_num) REFERENCES recipes(recipe_num),
     FOREIGN KEY(user_id) REFERENCES auth_user(id));
-______________
 
-CREATE TABLE user_recipes_rating (
+CREATE TABLE user_past_recipes (
     id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
     recipe_id integer NOT NULL,
     user_id integer NOT NULL,
-    rating integer,
     week integer NOT NULL
 );
+
+CREATE TABLE rated_recipes (
+    id integer NOT NULL PRIMARY KEY AUTOINCREMENT,
+    recipe_num integer NOT NULL,
+    user_id integer NOT NULL,
+    rating integer
+);
+______________
+
 
 
 

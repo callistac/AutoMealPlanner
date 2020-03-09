@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 chicken wings
 flour
 salt
@@ -64,3 +65,53 @@ pepper
 basil
 egg
 hamburger
+=======
+egg
+flour
+milk
+cooking oil
+white sugar
+baking powder
+salt
+vanilla extract
+flour
+white sugar
+baking powder
+baking soda
+salt
+buttermilk
+milk
+egg
+butter
+flour
+egg
+milk
+water
+salt
+butter
+thick slices bread
+egg
+milk
+ground cinnamon
+ground nutmeg (optional)
+vanilla extract
+salt
+condensed cream of mushroom soup
+dry onion soup mix
+water
+pot roast
+thinly sliced Scotch fillet (chuck eye steaks)
+soy sauce
+white sugar
+sesame seeds
+sesame oil
+diced shallots
+garlic
+mirin (Japanese sweet wine)
+rump roast
+beef broth
+condensed French onion soup
+beer
+French rolls
+butter
+>>>>>>> master
