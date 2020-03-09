@@ -72,7 +72,7 @@ def generate_html_page(filename, recipes):
             """
             file.write(html_body1 % (recipes[i][3], recipes[i][1], (i+1), recipes[i][4], recipes[i][2]))
             if filename == 'past_meals.html':
-                file.write("<button href='/home/deselect?name=%s' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>"% (rec_ids[i]))
+                file.write("<button href='/home/rating?name=%s' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>"% (rec_ids[i]))
             else:
                 file.write("<button href='/home/deselect?name=%s' class='btn btn-dark' data-toggle='modal' data-target='#myModal'>Deselect Recipe</button>"% (rec_ids[i]))
             html_body3 = """

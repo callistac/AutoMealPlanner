@@ -17,7 +17,8 @@ urlpatterns = [
     path('user_preferences/', views.Change_User_Info.as_view(), name='user_preferences'),
     path('deselect/', views.Deselect_Tracker.as_view(), name='deselect'),
     path('dashboard/meals/download/', views.DownloadFile, name='download_file'),
-    path('dashboard/past_recipes/', views.DisplayPastRecipes.as_view(), name='past_recipes')
+    path('dashboard/past_recipes/', views.DisplayPastRecipes.as_view(), name='past_recipes'),
+    path('rating/', views.Rating.as_view(), name='rating')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # path('login/new_user/user_info/', views.User_Info.as_view(), name = 'user_entry'),
