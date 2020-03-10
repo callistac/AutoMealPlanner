@@ -10,10 +10,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         </head>
         <body>
-
+        
           <section class="jumbotron text-center">
             <div class="container">
-              <h1 class="jumbotron-heading">Your Weekly Meals, {{ user }}!</h1>
+              <h1 class="jumbotron-heading">Your Past Meals, {{ user }}!</h1>
               <p class="lead text-muted"> Your past meals have been generated. Select generate grocery list to regenerate your grocery list from last week.        If you would like to rate a recipe from last week to help us better learn what you like, please click "Rate Recipe" below the recipe. </p>
             <button type="button" value='Download' onclick="window.location.href = '/home/dashboard/meals/download/';" class='btn btn-primary btn-lg' > Generate Grocery List</button><br>
             </div>
@@ -21,25 +21,24 @@
 
         <div class="container-fluid">
         <div class="row flex-row flex-nowrap">
-
+        
             <div class="card-deck">
 
             <div class="card" style="width: 30rem;">
-              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/560x315/969627.jpg alt="Card image cap">
+              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/522687.jpg alt="Card image cap">
             <div class="card-body">
-            <h5 class='card-title'>Buttermilk Pancakes II, Day 1 </h5>
+            <h5 class='card-title'>Cornbread Stuffing With Sausage, Day 1 </h5>
 
             <p class="card-text">12 Servings</p>
             </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
+
               </ul>
               <p class="align-items-center">
-                <a href=https://www.allrecipes.com/recipe/24530/buttermilk-pancakes-ii/ class="card-link">Link to recipe</a>
+                <a href=https://www.allrecipes.com/recipe/24741/cornbread-stuffing-with-sausage/ class="card-link">Link to recipe</a>
                 <br>
               </p>
-            <button href='/home/rating?name=24530' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
+            <button href='/home/rating?name=24741' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
                 <br>
             </div>
               <!-- Modal -->
@@ -75,25 +74,77 @@
 
             <br><br><br>
 
-
+            
             <div class="card-deck">
 
             <div class="card" style="width: 30rem;">
-              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/3876059.jpg alt="Card image cap">
+              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/560x315/7425369.jpg alt="Card image cap">
             <div class="card-body">
-            <h5 class='card-title'>Awesome Korean Steak, Day 2 </h5>
+            <h5 class='card-title'>Tater Tot Taco Casserole, Day 2 </h5>
+
+            <p class="card-text">8 Servings</p>
+            </div>
+              <ul class="list-group list-group-flush">
+
+              </ul>
+              <p class="align-items-center">
+                <a href=https://www.allrecipes.com/recipe/218573/tater-tot-taco-casserole/ class="card-link">Link to recipe</a>
+                <br>
+              </p>
+            <button href='/home/rating?name=218573' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
+                <br>
+            </div>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Please share why you are deselecting this recipe.</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                        {% for field in form %}
+                              <label>{{ field.label_tag }}</label>
+                              <div class="col">{{ field }}</div>
+                        {% endfor %}
+                        </div>
+                      <br><br>
+                      <button type="submit" class="btn btn-dark">Submit</button>
+                    </div>
+                    </form>
+                  </div>
+
+              </div>
+              </div>
+            </div>
+
+            <br><br><br>
+
+            
+            <div class="card-deck">
+
+            <div class="card" style="width: 30rem;">
+              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/560x315/1430553.jpg alt="Card image cap">
+            <div class="card-body">
+            <h5 class='card-title'>Zucchini Slice, Day 3 </h5>
 
             <p class="card-text">6 Servings</p>
             </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
+
               </ul>
               <p class="align-items-center">
-                <a href=https://www.allrecipes.com/recipe/42964/awesome-korean-steak/ class="card-link">Link to recipe</a>
+                <a href=https://www.allrecipes.com/recipe/13895/zucchini-slice/ class="card-link">Link to recipe</a>
                 <br>
               </p>
-            <button href='/home/rating?name=42964' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
+            <button href='/home/rating?name=13895' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
                 <br>
             </div>
               <!-- Modal -->
@@ -129,241 +180,24 @@
 
             <br><br><br>
 
-
+            
             <div class="card-deck">
 
             <div class="card" style="width: 30rem;">
-              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/1104956.jpg alt="Card image cap">
+              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/5474513.jpg alt="Card image cap">
             <div class="card-body">
-            <h5 class='card-title'>Easy Slow Cooker French Dip, Day 3 </h5>
-
-            <p class="card-text">9 Servings</p>
-            </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-              </ul>
-              <p class="align-items-center">
-                <a href=https://www.allrecipes.com/recipe/16239/easy-slow-cooker-french-dip/ class="card-link">Link to recipe</a>
-                <br>
-              </p>
-            <button href='/home/rating?name=16239' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
-                <br>
-            </div>
-              <!-- Modal -->
-              <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <form action="" method="post">
-                    {% csrf_token %}
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="exampleModalLabel">Please share why you are deselecting this recipe.</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                        {% for field in form %}
-                              <label>{{ field.label_tag }}</label>
-                              <div class="col">{{ field }}</div>
-                        {% endfor %}
-                        </div>
-                      <br><br>
-                      <button type="submit" class="btn btn-dark">Submit</button>
-                    </div>
-                    </form>
-                  </div>
-
-              </div>
-              </div>
-            </div>
-
-            <br><br><br>
-
-
-            <div class="card-deck">
-
-            <div class="card" style="width: 30rem;">
-              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/250x250/1088987.jpg alt="Card image cap">
-            <div class="card-body">
-            <h5 class='card-title'>French Toast I, Day 4 </h5>
-
-            <p class="card-text">3 Servings</p>
-            </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-              </ul>
-              <p class="align-items-center">
-                <a href=https://www.allrecipes.com/recipe/7016/french-toast-i/ class="card-link">Link to recipe</a>
-                <br>
-              </p>
-            <button href='/home/rating?name=7016' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
-                <br>
-            </div>
-              <!-- Modal -->
-              <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <form action="" method="post">
-                    {% csrf_token %}
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="exampleModalLabel">Please share why you are deselecting this recipe.</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                        {% for field in form %}
-                              <label>{{ field.label_tag }}</label>
-                              <div class="col">{{ field }}</div>
-                        {% endfor %}
-                        </div>
-                      <br><br>
-                      <button type="submit" class="btn btn-dark">Submit</button>
-                    </div>
-                    </form>
-                  </div>
-
-              </div>
-              </div>
-            </div>
-
-            <br><br><br>
-
-
-            <div class="card-deck">
-
-            <div class="card" style="width: 30rem;">
-              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/1992077.jpg alt="Card image cap">
-            <div class="card-body">
-            <h5 class='card-title'>Waffles I, Day 5 </h5>
-
-            <p class="card-text">6 Servings</p>
-            </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-              </ul>
-              <p class="align-items-center">
-                <a href=https://www.allrecipes.com/recipe/22180/waffles-i/ class="card-link">Link to recipe</a>
-                <br>
-              </p>
-            <button href='/home/rating?name=22180' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
-                <br>
-            </div>
-              <!-- Modal -->
-              <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <form action="" method="post">
-                    {% csrf_token %}
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="exampleModalLabel">Please share why you are deselecting this recipe.</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                        {% for field in form %}
-                              <label>{{ field.label_tag }}</label>
-                              <div class="col">{{ field }}</div>
-                        {% endfor %}
-                        </div>
-                      <br><br>
-                      <button type="submit" class="btn btn-dark">Submit</button>
-                    </div>
-                    </form>
-                  </div>
-
-              </div>
-              </div>
-            </div>
-
-            <br><br><br>
-
-
-            <div class="card-deck">
-
-            <div class="card" style="width: 30rem;">
-              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/1132784.jpg alt="Card image cap">
-            <div class="card-body">
-            <h5 class='card-title'>Awesome Slow Cooker Pot Roast, Day 6 </h5>
-
-            <p class="card-text">12 Servings</p>
-            </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-              </ul>
-              <p class="align-items-center">
-                <a href=https://www.allrecipes.com/recipe/16066/awesome-slow-cooker-pot-roast/ class="card-link">Link to recipe</a>
-                <br>
-              </p>
-            <button href='/home/rating?name=16066' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
-                <br>
-            </div>
-              <!-- Modal -->
-              <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
-
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <form action="" method="post">
-                    {% csrf_token %}
-                    <div class="modal-header">
-                        <h3 class="modal-title" id="exampleModalLabel">Please share why you are deselecting this recipe.</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                        {% for field in form %}
-                              <label>{{ field.label_tag }}</label>
-                              <div class="col">{{ field }}</div>
-                        {% endfor %}
-                        </div>
-                      <br><br>
-                      <button type="submit" class="btn btn-dark">Submit</button>
-                    </div>
-                    </form>
-                  </div>
-
-              </div>
-              </div>
-            </div>
-
-            <br><br><br>
-
-
-            <div class="card-deck">
-
-            <div class="card" style="width: 30rem;">
-              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/29332.jpg alt="Card image cap">
-            <div class="card-body">
-            <h5 class='card-title'>Basic Crepes, Day 7 </h5>
+            <h5 class='card-title'>Festival-Style Grilled Italian Sausage Sandwiches, Day 4 </h5>
 
             <p class="card-text">4 Servings</p>
             </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
+
               </ul>
               <p class="align-items-center">
-                <a href=https://www.allrecipes.com/recipe/16383/basic-crepes/ class="card-link">Link to recipe</a>
+                <a href=https://www.allrecipes.com/recipe/143146/festival-style-grilled-italian-sausage-sandwiches/ class="card-link">Link to recipe</a>
                 <br>
               </p>
-            <button href='/home/rating?name=16383' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
+            <button href='/home/rating?name=143146' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
                 <br>
             </div>
               <!-- Modal -->
@@ -399,10 +233,170 @@
 
             <br><br><br>
 
+            
+            <div class="card-deck">
 
+            <div class="card" style="width: 30rem;">
+              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/560x315/963651.jpg alt="Card image cap">
+            <div class="card-body">
+            <h5 class='card-title'>Healthier Creamy Au Gratin Potatoes, Day 5 </h5>
+
+            <p class="card-text">4 Servings</p>
+            </div>
+              <ul class="list-group list-group-flush">
+
+              </ul>
+              <p class="align-items-center">
+                <a href=https://www.allrecipes.com/recipe/219443/healthier-creamy-au-gratin-potatoes/ class="card-link">Link to recipe</a>
+                <br>
+              </p>
+            <button href='/home/rating?name=219443' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
+                <br>
+            </div>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Please share why you are deselecting this recipe.</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                        {% for field in form %}
+                              <label>{{ field.label_tag }}</label>
+                              <div class="col">{{ field }}</div>
+                        {% endfor %}
+                        </div>
+                      <br><br>
+                      <button type="submit" class="btn btn-dark">Submit</button>
+                    </div>
+                    </form>
+                  </div>
+
+              </div>
+              </div>
+            </div>
+
+            <br><br><br>
+
+            
+            <div class="card-deck">
+
+            <div class="card" style="width: 30rem;">
+              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/560x315/4369995.jpg alt="Card image cap">
+            <div class="card-body">
+            <h5 class='card-title'>Overnight Eggnog French Toast, Day 6 </h5>
+
+            <p class="card-text">6 Servings</p>
+            </div>
+              <ul class="list-group list-group-flush">
+
+              </ul>
+              <p class="align-items-center">
+                <a href=https://www.allrecipes.com/recipe/217954/overnight-eggnog-french-toast/ class="card-link">Link to recipe</a>
+                <br>
+              </p>
+            <button href='/home/rating?name=217954' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
+                <br>
+            </div>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Please share why you are deselecting this recipe.</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                        {% for field in form %}
+                              <label>{{ field.label_tag }}</label>
+                              <div class="col">{{ field }}</div>
+                        {% endfor %}
+                        </div>
+                      <br><br>
+                      <button type="submit" class="btn btn-dark">Submit</button>
+                    </div>
+                    </form>
+                  </div>
+
+              </div>
+              </div>
+            </div>
+
+            <br><br><br>
+
+            
+            <div class="card-deck">
+
+            <div class="card" style="width: 30rem;">
+              <img class="card-img-top" src=https://images.media-allrecipes.com/userphotos/771712.jpg alt="Card image cap">
+            <div class="card-body">
+            <h5 class='card-title'>Mushroom Chicken in Sour Cream Sauce, Day 7 </h5>
+
+            <p class="card-text">6 Servings</p>
+            </div>
+              <ul class="list-group list-group-flush">
+
+              </ul>
+              <p class="align-items-center">
+                <a href=https://www.allrecipes.com/recipe/217272/mushroom-chicken-in-sour-cream-sauce/ class="card-link">Link to recipe</a>
+                <br>
+              </p>
+            <button href='/home/rating?name=217272' class='btn btn-success' data-toggle='modal' data-target='#myModal'>Rate Recipe</button>
+                <br>
+            </div>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Please share why you are deselecting this recipe.</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                        {% for field in form %}
+                              <label>{{ field.label_tag }}</label>
+                              <div class="col">{{ field }}</div>
+                        {% endfor %}
+                        </div>
+                      <br><br>
+                      <button type="submit" class="btn btn-dark">Submit</button>
+                    </div>
+                    </form>
+                  </div>
+
+              </div>
+              </div>
+            </div>
+
+            <br><br><br>
+
+            
 
         </div>
         </div>
         </body>
         </html>
         {% endblock %}
+        
