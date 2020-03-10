@@ -1,3 +1,71 @@
+<<<<<<< HEAD
+chicken wings
+flour
+salt
+cayenne
+hot sauce
+garlic powder
+butter
+salt
+sugar
+peanut butter
+banana
+baking powder
+flour
+canola oil
+milk
+vanilla
+egg
+mild salsa
+canola oil
+pork loin
+dry mustard
+salt
+Worcestershire sauce
+maple syrup
+vinegar
+pork baby back ribs
+ketchup
+brown sugar
+sausages
+olive oil
+bow tie pasta
+garlic
+cabbage
+butter
+Parmesan cheese
+salt
+bell peppers
+Johnsonville Italian Mild Sausage Links
+mozzarella cheese
+butter
+olive oil
+Parmesan cheese
+olives
+mushrooms
+pizza sauce
+refrigerated bread dough
+provolone cheese
+cornmeal
+Italian sausage
+tomatoes
+salt
+Parmesan cheese
+mozzarella cheese
+onion
+oregano
+zucchini
+ricotta cheese
+brown sugar
+garlic
+cayenne
+tomato paste
+parsley
+pepper
+basil
+egg
+hamburger
+=======
 egg
 flour
 milk
@@ -46,3 +114,4 @@ condensed French onion soup
 beer
 French rolls
 butter
+>>>>>>> master
