@@ -31,14 +31,16 @@ brands = ["Kellogg's", "General Mills", "Malt-O-Meal", "Nestlé", "Quaker Oats",
             "King Arthur Flour", "valley", "Boars Head", "Boar's Head", 
             "Sassy Cow Creamery", "Alessi", "chopped", ", Laney Honey", 
             "Wildflower ", "Gia Russa Pasta Sauce", "Spice Hunter", "Genova", 
-            "Cento", "Solid Pack Light", "Solid Light"]
+            "Cento", "Solid Pack Light", "Solid Light", "Perdue", "CF Burger",
+            "Applegate Naturals", "Farmer Focus ", "Free Range", " Boneless ",
+            " Skinless "]
 #when seperating the words in an ingredient, 
 #do not match to products with words in cantmatchon
 cantmatchon = ["black", "white", "sliced", "large", "head", "extract", 
                 "chopped", "cooking"] 
 #rewording very common ingredients that can't match to the actual product
-commonfailures = ["brown sugar"]
-shouldmatch = ["sugar%brown"]
+commonfailures = ["brown sugar", "cream", "beef"]
+shouldmatch = ["sugar%brown", "Heavy Whipping Cream", "ground beef"]
 
 #MOVE THIS FN TO A UTILS FILE
 def remove_from_string(remove, string, removeposition = ""):
@@ -181,12 +183,11 @@ def find_product(recipe_ingredient):
 				    cleanproduct = remove_from_string(",", cleanproduct)
 
 		    jaroval = jellyfish.jaro_winkler(arg_list[0], cleanproduct)
-		    #if jaroval > 0.5:
-		    #print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
+		    if jaroval > 0.5:
+		      print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
 		    if jaroval > matchscore:
 			    matchscore = jaroval
 			    bestmatch = product
-
 
     db.close()
     return bestmatch
