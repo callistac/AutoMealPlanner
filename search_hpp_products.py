@@ -183,8 +183,8 @@ def find_product(recipe_ingredient):
 				    cleanproduct = remove_from_string(",", cleanproduct)
 
 		    jaroval = jellyfish.jaro_winkler(arg_list[0], cleanproduct)
-		    if jaroval > 0.5:
-		      print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
+		    #if jaroval > 0.5:
+		    #  print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
 		    if jaroval > matchscore:
 			    matchscore = jaroval
 			    bestmatch = product
