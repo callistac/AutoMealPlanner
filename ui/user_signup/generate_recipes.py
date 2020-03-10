@@ -26,7 +26,7 @@ def generate_html_page(filename, recipes):
         description_html = """
           <section class="jumbotron text-center">
             <div class="container">
-              <h1 class="jumbotron-heading">Your Weekly Meals, {{ user }}!</h1>
+              <h1 class="jumbotron-heading">%s, {{ user }}!</h1>
               <p class="lead text-muted"> %s </p>
             <button type="button" value='Download' onclick="window.location.href = '/home/dashboard/meals/download/';" class='btn btn-primary btn-lg' > Generate Grocery List</button><br>
             </div>
@@ -46,9 +46,9 @@ def generate_html_page(filename, recipes):
         If you would like to rate a recipe from last week to help us better learn what you like, please click \"Rate Recipe\" below the recipe."
 
         if filename == 'past_meals.html':
-            file.write(description_html % (header_old_meals))
+            file.write(description_html % ('Your Past Meals', header_old_meals))
         else:
-            file.write(description_html % (header_new_meals))
+            file.write(description_html % ('Your Weekly Meals', header_new_meals))
 
         for i in range(num_days):
             html_body1 = """
@@ -62,8 +62,7 @@ def generate_html_page(filename, recipes):
             <p class="card-text">%s Servings</p>
             </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
+
               </ul>
               <p class="align-items-center">
                 <a href=%s class="card-link">Link to recipe</a>
