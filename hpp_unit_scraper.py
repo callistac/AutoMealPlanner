@@ -1,3 +1,8 @@
+'''
+CS 122 Winter '20 Group project.
+Small program for finding the units in the HPP Produce data to utilize them to
+rescrape in a more consistent way.
+'''
 import csv
 import re
 
