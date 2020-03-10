@@ -105,8 +105,6 @@ class MealGeneration(TemplateView):
         return render(request, 'user_signup/'+filename, args)
 
     def post(self, request):
-        print(request.user)
-        #insert_blacklist_statement = "INSERT INTO blacklisted_recipes (recipe_id, user_id, reason) VALUES (?, ?, ?)"
         insert_blacklist_statement = "UPDATE blacklisted_recipes SET reason = '%s' WHERE ID = (SELECT MAX(ID) FROM blacklisted_recipes)"%(request.POST['reason'])
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
@@ -133,7 +131,6 @@ class Rating(TemplateView):
     def get(self, request):
         recipe_id = request.GET.get('name')
         request.session['recipe_number'] = recipe_id
-        print("RECIPENUM1", recipe_id)
         insert_rating = "INSERT INTO rated_recipes (recipe_num, user_id) VALUES (?,?)"
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
@@ -142,7 +139,6 @@ class Rating(TemplateView):
 
 
 def DownloadFile(request):
-    # save the recipes to the database
     recipes = request.session.get('recipes')
     insert_into_user_recipes_state = "INSERT INTO user_past_recipes (recipe_id, user_id, week) VALUES (?, ?, ?)"
     connection = sqlite3.connect('db.sqlite3')
@@ -177,7 +173,6 @@ class DisplayPastRecipes(TemplateView):
         form = RateRecipe()
         recipe_id = request.GET.get('name')
         request.session['recipe_num'] = recipe_id
-        print("RECIPE_ID", recipe_id)
         sql_statement = "SELECT * FROM user_signup_user_data WHERE user_id = ?"
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
@@ -207,16 +202,12 @@ class DisplayPastRecipes(TemplateView):
         return render(request, 'user_signup/'+filename, args)
 
     def post(self, request):
-        print("POSTTTTT", request.POST)
-        print("REFCIPE??????", request.GET.get('recipe_number'))
-        #insert_rating_statement = "UPDATE user_recipes_rating SET rating = %d WHERE user_id = %d"%(int(request.POST['rating'][-1]), request.user.id, )
         insert_rating_statement = "UPDATE rated_recipes SET rating = %d WHERE id = (SELECT MAX(id) FROM rated_recipes)"%(int(request.POST['rating'][-1]),)
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
         c = c.execute(insert_rating_statement)
         connection.commit()
         connection.close()
-
         return redirect("/home/dashboard/past_recipes/")
 
 class Change_User_Info(TemplateView):
@@ -226,8 +217,38 @@ class Change_User_Info(TemplateView):
         return render(request, self.template_name, {'form':form})
 
     def post(self, request):
-        update_info_statement = ""
+        connection = sqlite3.connect('db.sqlite3')
+        c = connection.cursor()
+
+        for key, value in request.POST.lists():
+            print(key)
+            print(value)
+            operator = " = %s"
+            if key == 'csrfmiddlewaretoken':
+                pass
+            elif key == 'firstname':
+                field = 'firstname'
+            elif key == 'lastname':
+                field = 'lastname'
+            elif key == 'email':
+                field == 'email'
+            elif key == 'zip':
+                operator = " = %d"
+                field == 'zip'
+            elif key == 'budget':
+                field = 'budget'
+            elif key == 'laziness':
+                field = 'laziness'
+            elif key == 'dietary_restrictions':
+                field = 'dietary_restrictions'
+
+            update_statement = "UPDATE user_signup_user_data SET " + field + operator + "WHERE id = %d"%(value, request.user.id)
+            c = c.execute(update_statement)
+            connection.commit()
+            
+        connection.close()
         messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
+        return redirect("/home/dashboard")
 
 def register(request):
     if request.method == 'POST':
