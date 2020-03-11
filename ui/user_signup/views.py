@@ -134,7 +134,6 @@ class Rating(TemplateView):
         c = c.execute(insert_rating, (recipe_id, request.user.id))
         connection.commit()
 
-
 def DownloadFile(request):
     recipes = request.session.get('recipes')
     insert_into_user_recipes_state = "INSERT INTO user_past_recipes (recipe_id, user_id, week) VALUES (?, ?, ?)"
@@ -218,8 +217,6 @@ class Change_User_Info(TemplateView):
         c = connection.cursor()
 
         for key, value in request.POST.lists():
-            print(key)
-            print(value)
             if key == 'csrfmiddlewaretoken':
                 pass
             else:

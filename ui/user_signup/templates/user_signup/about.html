@@ -9,83 +9,75 @@
 </head>
 
 <main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Meet the Team!</h1>
+      <p class="lead text-muted"> We are a group of astrophysics majors who decided to take CS 122 at UChicago because we are masochists. Life of the mind, ya know.
+              Really though, we enjoy problem solving and expanding our skills so we can be ~employable~.
+              Ok, in reality, Callista is at fault here for cunningly convincing us to take this class.
+              But here's the final product! From regular expression to SQL, django to Jaro-Winkler distances, we used it all!
+      </p>
+      <br>
 
-      <div class="container marketing">
-        <h2>What is this tool I have stumbled upon??</h2>
-        <br>
-        <p>
-          Humans are inherently lazy creatures. Meal prepping for the week can require a lot
-          of work, more than you'd probably want to put in considering your hectic,
-          crazy life at UChicago--it's just one more thing you have to worry about
-          on top of your SOSC essay and math pset and RSO meeting and research work.
-          <br><br>
-          And that's why we created the Automatic Meal Planner, a tool that generates random recipes for you
-          based on your preferences, such as any dietary restrictions or budget limitations.
-          If you dislikes a given recipe, you can deselect it from your weekly view
-          and tell us why so we will only show that meal again if appropriate based on your
-          response. You can also view your past recipes and rate them so we can get a sense
-          of what you like, and also automatically create a grocery list for your weekly recipes.
-          <br><br>
-          All you have to do is sign up and tell us a little about your preferences, and
-          your meals will be ready with the click of a button!
-          <br>
+      <div class="row">
+        <div class="col-lg-3">
+          {% load static %}
+          <img style="object-fit:cover; border-radius:50%;" src="{% static 'user_signup/callista.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Callista Christ</h2>
+          <p>4rd Year, Astrophysics & Physics </p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3">
+          {% load static %}
+          <img style="object-fit:cover; border-radius:50%;" src="{% static 'user_signup/katya.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Katya Gozman</h2>
+          <p>4th Year, Astrophysics </p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3">
+          {% load static %}
+          <img style="object-fit:cover; border-radius:50%;" src="{% static 'user_signup/melissa.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Melissa Merz</h2>
+          <p>3rd Year, Astrophysics</p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-3">
+          {% load static %}
+          <img style="object-fit:cover; border-radius:50%;" src="{% static 'user_signup/dylan.jpg' %}" alt="Generic placeholder image" width="140" height="140">
+          <h2>Dylan Sukay</h2>
+          <p>3rd Year, Astrophysics</p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+    </div>
 
-        </p>
 
-        <br>
+  </section>
+  <div class="container">
+  <hr class="featurette-divider">
 
-
-
-        <h2>Meet the Team!</h2>
-        <br>
-        <p>We are a group of astrophysics majors who decided to take CS 122 at UChicago because we are masochists.
-          Life of the mind, ya know.
-          <br><br>
-        Really though, we enjoy problem solving and expanding our skills so we can be ~employable~
-          <br><br>
-        Ok, in reality, Callista is at fault here for cunningly convincing us to take this class.
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">What is this tool I have stumbled upon? <span class="text-muted">It'll blow your mind.</span></h2>
+      <p class="lead">   Humans are inherently lazy creatures. Meal prepping for the week can require a lot
+        of work, more than you'd probably want to put in considering your hectic,
+        crazy life at UChicago--it's just one more thing you have to worry about
+        on top of your SOSC essay and math pset and RSO meeting and research work.
         <br><br>
-        But here's the final product! From regular expression to SQL, django to Jaro-Winkler distances, we used it all!
-        </p>
+        And that's why we created the Automatic Meal Planner, a tool that generates random recipes for you
+        based on your preferences, such as any dietary restrictions or budget.
+        If you dislike a given recipe, you can deselect it from your weekly view
+        and tell us why so we will only show that meal again if appropriate based on your
+        response. You can also view your past recipes and rate them so we can get a sense
+        of what you like, and also automatically create a grocery list for your weekly recipes. Sign up today
+        and your meals will be ready with the click of a button!
+      </p>
+      <br><br>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-fluid mx-auto" data-src="holder.js/550x500/auto" alt="500x500" style="width: 550px; height: 500px;" src="{% static 'user_signup/meals_pic.jpg' %}" data-holder-rendered="true">
+    </div>
+  </div>
+  </div>
 
-        <br>
-        <!-- Three columns of text below the carousel -->
-        <div class="row">
-          <div class="col-lg-3">
-            {% load static %}
-            <img style="object-fit:cover; border-radius:50%;" src="{% static 'user_signup/callista.jpg' %}" alt="Generic placeholder image" width="140" height="140">
-            <h2>Callista Christ</h2>
-            <p>4rd Year, Astrophysics & Physics </p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-3">
-            {% load static %}
-            <img style="object-fit:cover; border-radius:50%;" src="{% static 'user_signup/katya.jpg' %}" alt="Generic placeholder image" width="140" height="140">
-            <h2>Katya Gozman</h2>
-            <p>4th Year, Astrophysics </p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-3">
-            {% load static %}
-            <img style="object-fit:cover; border-radius:50%;" src="{% static 'user_signup/melissa.jpg' %}" alt="Generic placeholder image" width="140" height="140">
-            <h2>Melissa Merz</h2>
-            <p>3rd Year, Astrophysics</p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-3">
-            {% load static %}
-            <img style="object-fit:cover; border-radius:50%;" src="{% static 'user_signup/dylan.jpg' %}" alt="Generic placeholder image" width="140" height="140">
-            <h2>Dylan Sukay</h2>
-            <p>3rd Year, Astrophysics</p>
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
-
-
-
-        <!-- /END THE FEATURETTES -->
-
-      </div><!-- /.container -->
 
     </main>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
 
 </html>
 {% endblock %}

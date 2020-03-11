@@ -23,7 +23,7 @@
     You can log in here!
   </p>
   <h2>Log in</h2>
-  <form method="post">
+  <form class="form-signin" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Login</button>
@@ -35,7 +35,7 @@
     Don't have an account? <a href="new_user">&nbspSign Up</a>
   </div>
   <div class="d-flex justify-content-center">
-    <a href="#">Forgot your password?</a>
+    <br>
   </div>
 </div>
 

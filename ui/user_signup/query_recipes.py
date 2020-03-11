@@ -20,7 +20,7 @@ def query_recipes(user_info, blacklist, past_recipes, past_ingredients):
         prep_time = 60
     else:
         prep_time = 90
-    print("PREPTIME", (prep_time))
+
     if past_recipes is None:
 
         sql_recipes = "SELECT * FROM recipes WHERE prep_time <= ? AND (recipe_num not in \
@@ -29,10 +29,7 @@ def query_recipes(user_info, blacklist, past_recipes, past_ingredients):
         SELECT recipe_num FROM rated_recipes WHERE user_id = ? AND \
         (rating = 1 OR rating = 2))) ORDER BY RANDOM() LIMIT 7;"
 
-        #sql_recipes = "SELECT * FROM recipes WHERE prep_time <= ? ORDER BY RANDOM() LIMIT 7;"
         c.execute(sql_recipes, [prep_time, user_info[7], user_info[7]])
-        #c.execute(sql_recipes, [prep_time,])
-
         recipes = c.fetchall()
         ids = tuple([x[0] for x in recipes])
         c.execute("select recipe_ingred.recipe_num, ingred_codes.name from ingred_codes join recipe_ingred ON recipe_ingred.ingredient_id = ingred_codes.ingredient_id where recipe_num in {}".format(ids))
@@ -45,9 +42,6 @@ def query_recipes(user_info, blacklist, past_recipes, past_ingredients):
         (reason = 'option1' OR reason = 'option2')) OR (\
         SELECT recipe_num FROM rated_recipes WHERE user_id = ? AND \
         (rating = 1 OR rating = 2))) ORDER BY RANDOM() LIMIT 1;"
-
-        #sql_recipes = "SELECT * FROM recipes WHERE prep_time <= ? ORDER BY RANDOM() LIMIT 1;"
-        #c.execute(sql_recipes, [prep_time,])
 
         c.execute(sql_recipes, [prep_time, user_info[7], user_info[7]])
         new_recipe = c.fetchone()
