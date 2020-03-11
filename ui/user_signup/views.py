@@ -63,12 +63,9 @@ class User_Dashboard(TemplateView):
         c = connection.cursor()
         c.execute(user_data_statement, results)
 
-        if len(diets)>0:
+        if len(diets)> 0:
             for diet in diets[0]:
                 c.execute(diet_statement, (diet, request.user.id))
-        else:
-            c.execute(diet_statement, ("N/A", request.user.id))
-
 
         connection.commit()
         connection.close()
@@ -240,6 +237,10 @@ class Change_User_Info(TemplateView):
                     field = 'laziness'
                 elif key == 'dietary_restrictions':
                     field = 'dietary_restrictions'
+                    for diet in value:
+                        print(diet)
+                        #update_diet_statement = "UPDATE user_diet SET dietary_restrictions = '%s' WHERE user_id = '%s'"%(value[0], request.user.id)
+
 
                 update_statement = "UPDATE user_signup_user_data SET " + field + " = '%s' WHERE user_id = '%s'"%(value[0], request.user.id)
                 c = c.execute(update_statement)

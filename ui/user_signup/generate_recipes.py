@@ -61,9 +61,6 @@ def generate_html_page(filename, recipes):
 
             <p class="card-text">%s Servings</p>
             </div>
-              <ul class="list-group list-group-flush">
-
-              </ul>
               <p class="align-items-center">
                 <a href=%s class="card-link">Link to recipe</a>
                 <br>

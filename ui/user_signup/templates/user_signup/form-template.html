@@ -1,14 +1,37 @@
 
 {% block body %}
 
-  {% for field in form %}
-      <div class="form-group">
-          <div>
-              <span class="text-danger la">{{ field.errors }}</span>
-          </div>
-          <label>{{ field.label_tag }}</label>
-          <div class="col">{{ field }}</div>
-      </div>
-  {% endfor %}
 
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        {% for field in form %}
+            <div class="form-group">
+                <div>
+                    <span class="text-danger la">{{ field.errors }}</span>
+                </div>
+
+                <div class="col-sm-15">
+                  <b>{{ field.label_tag }}</b>  {{ field }}
+                </div>
+            </div>
+        {% endfor %}
+
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <div class="card border-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">Effort section</div>
+            <div class="card-body text-primary">
+              <h5 class="card-title">Effort: how much time are you willing to put into meal preparation?</h5>
+              <p class="card-text">An effort of "1" corresponds to a maximum meal prep time of 15 minutes, "2" corresponding to 35 minutes
+                , "3" corresponding to 45 minutes, "4" corresponding to 60 minutes, and "5" 90 minutes.</p>
+            </div>
+          </div>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
 {% endblock %}
