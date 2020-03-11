@@ -1,9 +1,0 @@
-Migrations and Models:
-1) Define new model in models.py
-2) python manage.py makemigrations <name of app>
-3) python manage.py migrate
-4) Check sqlite3 if table now exists
-  a) If NOT: make sure you delete any line in your sql database in
-    django_migrations that have app name in it (delete from django_migrations where app = "name of app")
-  b) delete migrations folder 
-  c) try again
