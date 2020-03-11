@@ -4,8 +4,10 @@
 <br>
 <br>
 <div class="container">
-  <h1>Logged out</h1>
-  <h2>You have logged out.</h2>
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">You have successfully logged out.</h1>
+    <p class="lead">See you soon! :)</p>
+  </div>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
