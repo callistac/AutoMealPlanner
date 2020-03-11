@@ -7,9 +7,10 @@ from django.contrib import messages
 from user_signup.generate_recipes import generate_html_page
 from user_signup.query_recipes import query_recipes
 from django.http import HttpResponse
+from django.http import FileResponse
 import sqlite3
 import numpy as np
-from django.http import FileResponse
+import user_signup.make_grocery_list
 
 
 
@@ -152,11 +153,16 @@ def DownloadFile(request):
 
     connection.commit()
     connection.close()
+
+
+    print(request.session.get('ingredients'))
+    #make_grocery_list.estimate_grocery_price()
     # generating text file with ingredients
     filename = 'grocery_list.txt'
     with open(filename, 'w') as f:
         for item in request.session.get('ingredients'):
             f.write("%s\n" % item[1])
+
 
     response = FileResponse(open(filename, 'rb'), as_attachment = True)
     response['Content-Type']='text/html'
@@ -233,12 +239,14 @@ class Change_User_Info(TemplateView):
                 elif key == 'laziness':
                     field = 'laziness'
                 elif key == 'dietary_restrictions':
+                    delete_old_restrictions = "DELETE FROM user_diet WHERE user_id = ?"
+                    c.execute(delete_old_restrictions, (request.user.id,))
                     field = 'dietary_restrictions'
                     for diet in value:
-                        print(diet)
-                        #update_diet_statement = "UPDATE user_diet SET dietary_restrictions = '%s' WHERE user_id = '%s'"%(value[0], request.user.id)
-
-
+                        diet_statement = "INSERT INTO user_diet (dietary_restrictions, user_id) VALUES (?, ?)"
+                        c.execute(diet_statement, (diet, request.user.id))
+                    connection.commit()
+                    break
                 update_statement = "UPDATE user_signup_user_data SET " + field + " = '%s' WHERE user_id = '%s'"%(value[0], request.user.id)
                 c = c.execute(update_statement)
                 connection.commit()
