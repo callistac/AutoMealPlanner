@@ -202,7 +202,7 @@ class DisplayPastRecipes(TemplateView):
         return render(request, 'user_signup/'+filename, args)
 
     def post(self, request):
-        insert_rating_statement = "UPDATE rated_recipes SET rating = %d WHERE id = (SELECT MAX(id) FROM rated_recipes)"%(int(request.POST['rating'][-1]),)
+        insert_rating_statement = "UPDATE rated_recipes SET rating = '%d' WHERE id = (SELECT MAX(id) FROM rated_recipes)"%(int(request.POST['rating'][-1]),)
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
         c = c.execute(insert_rating_statement)
@@ -223,19 +223,17 @@ class Change_User_Info(TemplateView):
         for key, value in request.POST.lists():
             print(key)
             print(value)
-            operator = " = %s"
             if key == 'csrfmiddlewaretoken':
                 pass
             else:
-                elif key == 'firstname':
+                if key == 'firstname':
                     field = 'firstname'
                 elif key == 'lastname':
                     field = 'lastname'
                 elif key == 'email':
-                    field == 'email'
+                    field = 'email'
                 elif key == 'zip':
-                    operator = " = %s"
-                    field == 'zip'
+                    field = 'zip'
                 elif key == 'budget':
                     field = 'budget'
                 elif key == 'laziness':
@@ -243,9 +241,9 @@ class Change_User_Info(TemplateView):
                 elif key == 'dietary_restrictions':
                     field = 'dietary_restrictions'
 
-            update_statement = "UPDATE user_signup_user_data SET " + field + operator + "WHERE id = %d"%(value, request.user.id)
-            c = c.execute(update_statement)
-            connection.commit()
+                update_statement = "UPDATE user_signup_user_data SET " + field + " = '%s' WHERE user_id = '%s'"%(value[0], request.user.id)
+                c = c.execute(update_statement)
+                connection.commit()
 
         connection.close()
         messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
