@@ -226,26 +226,27 @@ class Change_User_Info(TemplateView):
             operator = " = %s"
             if key == 'csrfmiddlewaretoken':
                 pass
-            elif key == 'firstname':
-                field = 'firstname'
-            elif key == 'lastname':
-                field = 'lastname'
-            elif key == 'email':
-                field == 'email'
-            elif key == 'zip':
-                operator = " = %d"
-                field == 'zip'
-            elif key == 'budget':
-                field = 'budget'
-            elif key == 'laziness':
-                field = 'laziness'
-            elif key == 'dietary_restrictions':
-                field = 'dietary_restrictions'
+            else:
+                elif key == 'firstname':
+                    field = 'firstname'
+                elif key == 'lastname':
+                    field = 'lastname'
+                elif key == 'email':
+                    field == 'email'
+                elif key == 'zip':
+                    operator = " = %s"
+                    field == 'zip'
+                elif key == 'budget':
+                    field = 'budget'
+                elif key == 'laziness':
+                    field = 'laziness'
+                elif key == 'dietary_restrictions':
+                    field = 'dietary_restrictions'
 
             update_statement = "UPDATE user_signup_user_data SET " + field + operator + "WHERE id = %d"%(value, request.user.id)
             c = c.execute(update_statement)
             connection.commit()
-            
+
         connection.close()
         messages.add_message(request, messages.SUCCESS, 'You have changed your preferences!')
         return redirect("/home/dashboard")
