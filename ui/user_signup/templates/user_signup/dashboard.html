@@ -52,8 +52,15 @@ window.setTimeout(function() {
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
-    <h4> Please fill out your information below to finish the creation of your account </h4>
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="display-4">Additional Information</h1>
+      <p class="lead">
+        Before you can begin generating recipes, please fill out the following information to give
+        us a better idea of the types of meals you like! Your account will not be complete until
+        you submit this form. This information can be changed at anytime when you are logged into your account. </p>
     <br>
+    </div>
+
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% include 'user_signup/form-template.html' %}

@@ -22,8 +22,12 @@ LAZINESS_CHOICES = [
 DIETARY_CHOICES = [
     ('Vegetarian', 'Vegetarian'),
     ('Vegan', 'Vegan'),
-    ('Peanut', 'Peanut')
-    ]
+    ('Nuts', 'Nuts'),
+    ('Dairy', 'Dairy'),
+    ('Kosher', 'Kosher'),
+    ('Gluten free', 'Gluten free'),
+    ('Pescatarian', 'Pescatarian'),
+    ('Halal', 'Halal')]
 
 BLACKLIST_CHOICES = [
     ('option1', 'Does not fulfill my dietary restrictions'),
