@@ -12,7 +12,6 @@ import re
 # Use this filename for the database
 DATA_DIR = os.path.dirname(__file__)
 DATABASE_FILENAME = os.path.join(DATA_DIR+"/../", "db.sqlite3")
-
 #brands contains the names of brands and other words we want to ignore
 brands = ["Kellogg's", "General Mills", "Malt-O-Meal", "Nestlé", "Quaker Oats",
             "Post Foods", "Frito Lay", "Oreo", "Campbell's", "Cheerios",
@@ -106,6 +105,7 @@ def find_product(recipe_ingredient):
     output: bestmatches (list): names of products that correspond
                                 to recipe_ingredients
     '''
+
     db = sqlite3.connect(DATABASE_FILENAME)
     c = db.cursor()
     query_string, arg_list = generate_query_string(recipe_ingredient)
