@@ -175,7 +175,7 @@ def estimate_grocery_price(grocery_list):
             total_price += item_price
 
         elif price != "None":
-            if quantity != "None":
+            if quantity != "None" and len(quantity.split()) > 1:
                 try:
                     s_quant = UREG(quantity)
 
