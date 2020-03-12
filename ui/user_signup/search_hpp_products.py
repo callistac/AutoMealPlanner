@@ -11,7 +11,7 @@ import re
 
 # Use this filename for the database
 DATA_DIR = os.path.dirname(__file__)
-DATABASE_FILENAME = os.path.join(DATA_DIR+"/ui/", "db.sqlite3")
+DATABASE_FILENAME = os.path.join(DATA_DIR+"/../", "db.sqlite3")
 
 #brands contains the names of brands and other words we want to ignore
 brands = ["Kellogg's", "General Mills", "Malt-O-Meal", "Nestlé", "Quaker Oats",

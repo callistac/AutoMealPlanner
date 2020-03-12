@@ -10,7 +10,7 @@ from django.http import HttpResponse
 from django.http import FileResponse
 import sqlite3
 import numpy as np
-import user_signup.make_grocery_list
+import user_signup.make_grocery_list as mgl
 
 
 
@@ -151,12 +151,22 @@ def DownloadFile(request):
     for recipe in recipes:
         c.execute(insert_into_user_recipes_state, (recipe[0], request.user.id, current_week))
 
-    connection.commit()
-    connection.close()
 
 
+    recip_ids = tuple([x[0] for x in recipes])
     print(request.session.get('ingredients'))
-    #make_grocery_list.estimate_grocery_price()
+    grocery_list = "select recipes.servings, recipe_ingred.amount, recipe_ingred.unit,  \
+    ingred_codes.name from recipe_ingred join recipes join ingred_codes on\
+    recipe_ingred.recipe_num = recipes.recipe_num and recipe_ingred.ingredient_id = ingred_codes.ingredient_id\
+    where recipes.recipe_num in {}".format(recip_ids)
+    c.execute(grocery_list)
+    #print("the restuling stufsf", c.fetchall())
+    ingreds = c.fetchall()
+    print(ingreds)
+    ingreds = mgl.make_grocery_list(ingreds)
+    #print(ingreds)
+    prices = mgl.estimate_grocery_price(ingreds)
+    print(prices)
     # generating text file with ingredients
     filename = 'grocery_list.txt'
     with open(filename, 'w') as f:
@@ -167,6 +177,8 @@ def DownloadFile(request):
     response = FileResponse(open(filename, 'rb'), as_attachment = True)
     response['Content-Type']='text/html'
     response['Content-Disposition'] = "attachment; filename=%s"%(filename)
+    connection.commit()
+    connection.close()
     return response
 
 

@@ -3,7 +3,7 @@
 '''
 import pint
 import math
-import search_hpp_products as shp
+import user_signup.search_hpp_products as shp
 
 UREG = pint.UnitRegistry(system = "US")
 

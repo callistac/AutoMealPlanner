@@ -78,6 +78,13 @@ CREATE TABLE rated_recipes (
     user_id integer NOT NULL,
     rating integer
 );
+
+CREATE TABLE hpp_products(
+product varchar(500),
+ price_per_pound varchar(500),
+ quant varchar(500),
+ price_per_thing varchar(500)
+ );
 ______________
 
 
