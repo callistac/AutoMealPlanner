@@ -3,7 +3,7 @@
 '''
 import pint
 import math
-import user_signup.search_hpp_products as shp
+import search_hpp_products as shp
 
 UREG = pint.UnitRegistry(system = "US")
 
@@ -18,8 +18,19 @@ TINY_UNITS = ["dash", "dashe", "leaf", "leave", "pinch", "pinche"]
 SMALL_UNITS = ["bulb", "clove", "packet", "sheet", "sprig"]
 
 #units corresponding to medium weights -- will be equated to 1 ounce per unit
-MEDIUM_UNITS = ["slice", "loaf", "bunch", "bunche", "box", "package", "packet", \
-        "stick"]
+MEDIUM_UNITS = ["slice", "bunch", "bunche", "packet", "stick"]
+
+#units corresponding to large weights -- will be equated to 10 ounces per unit
+LARGE_UNITS = ["loaf", "box", "package"]
+
+
+def convert_mass_to_volume(mass):
+    '''
+
+    '''
+    density = UREG("1g / cm**3")
+
+    return (mass/density).to_reduced_units()
 
 
 def make_grocery_list(ingredient_list):
@@ -33,13 +44,53 @@ def make_grocery_list(ingredient_list):
         amount = ingredient[1]
         unit = ingredient[2]
         name = ingredient[3]
+        if unit in TINY_UNITS:
+            amount *= 0.01
+            unit = "ounce"
+
+        elif unit in SMALL_UNITS:
+            amount *= 0.15
+            unit = "ounce"
+
+        elif unit in MEDIUM_UNITS:
+            unit = "ounce"
+
+        elif unit in LARGE_UNITS:
+            amount *= 10
+            unit = "ounce"
+
+        elif unit not in VALID_UNITS:
+            unit = "None"
 
         if name not in ingredients.keys():
-            ingredients[name] = {"recipe_servings": servings, "amount": amount, \
+            ingredients[name] = {"servings": servings, "amount": amount, \
                     "unit": unit}
 
-        elif name in ingredients.keys() and ingredients[name]["unit"] == unit:
+        elif ingredients[name]["unit"] == unit:
             ingredients[name]["amount"] += amount
+            ingredients[name]["servings"] += servings
+
+        elif ingredients[name]["unit"] == "None" or unit == "None":
+            #no good way to convert between an item with no units and an item
+            #with units, so we'll assume the one with units is better or more
+            #useful for calculating price, so we use the number of servings of
+            #each to find the total number required
+            ing_servings = ingredients[name]["servings"]
+
+            if unit == "None":
+                ing_amount = ingredients[name]["amount"]
+                amount_per_serving = ing_amount / ing_servings
+                total_servings = ing_servings + servings
+
+            else:
+                amount_per_serving = amount / servings
+                total_servings = ing_servings + servings
+                ingredients[name]["unit"] = unit
+
+            total_amount = total_servings * amount_per_serving
+
+            ingredients[name]["amount"] = total_amount
+            ingredients[name]["servings"] = total_servings
 
         else:
             ing_amount = ingredients[name]["amount"]
@@ -47,6 +98,13 @@ def make_grocery_list(ingredient_list):
 
             quant1 = UREG(str(ing_amount) + ing_unit)
             quant2 = UREG(str(amount) + unit)
+
+            if quant1.dimensionality != quant2.dimensionality:
+                if quant1.dimensionality == {'[mass]': 1.0}:
+                    quant1 = convert_mass_to_volume(quant1)
+
+                elif quant2.dimensionality == {'[mass]': 1.0}:
+                    quant2 = convert_mass_to_volume(quant2)
 
             ingredients[name]["amount"] = (quant1 + quant2).magnitude
 
@@ -63,7 +121,7 @@ def estimate_grocery_price(grocery_list):
     for item in grocery_list:
         amount = grocery_list[item]["amount"]
         unit = grocery_list[item]["unit"]
-        rec_servings = grocery_list[item]["recipe_servings"]
+        rec_servings = grocery_list[item]["servings"]
 
         if unit in VALID_UNITS:
             g_quant = UREG(str(amount) + unit)
@@ -96,32 +154,24 @@ def estimate_grocery_price(grocery_list):
             quantity = "None"
             price = "None"
 
-        if price_per_pound != "None" and g_quant.dimensionality == \
-                {'[mass]': 1.0}:
-            s_quant = UREG('1 / pound')
-            raw_amount = (g_quant * s_quant).to_reduced_units().magnitude
-            item_price = float(price_per_pound) * raw_amount / rec_servings
+        #these items are bought by the pound instead of in fixed
+        #amounts, so the raw price is the same as the total price (per serving)
+        if price_per_pound != "None":
+            if g_quant.dimensionality == {'[mass]': 1.0}:
+                s_quant = UREG('1 pound')
+                raw_amount = (g_quant / s_quant).to_reduced_units().magnitude
 
-            #since this type of item is bought by the pound instead of in fixed
-            #amounts, the raw price is the same as the total price
-            raw_price += item_price
-            total_price += item_price
+            elif g_quant.dimensionality == {'[length]': 3.0}:
+                s_vol = convert_mass_to_volume(UREG('1 pound'))
+                raw_amount = (g_quant / s_vol).to_reduced_units().magnitude
 
-        elif price_per_pound != "None" and g_quant.dimensionality == \
-                {'[length]': 3.0}:
-            s_quant = UREG('1 / pound')
+            else:
+                #not enough information to determine how much to buy, so we have
+                #to assume one pound is enough
+                raw_amount = 1
 
-            #it would be difficult or imposible to get an accurate density for
-            #each product, so we assume that every product is the density of
-            #water so we can find a (relatively) accurate price
-            density = UREG("1g / cm**3")
-            s_vol = (s_quant * density).to_reduced_units()
-            raw_amount = (s_vol * g_quant).to_reduced_units().magnitude
-            item_price = float(price_per_pound) * raw_amount / rec_servings
-
-            #since this type of item is bought by the pound instead of in fixed
-            #amounts, the raw price is the same as the total price
-            raw_price += item_price
+            item_price = float(price_per_pound) * raw_amount
+            raw_price += item_price / rec_servings
             total_price += item_price
 
         elif price != "None":
@@ -130,41 +180,31 @@ def estimate_grocery_price(grocery_list):
                     s_quant = UREG(quantity)
 
                 except:
-                    s_quant = float(quantity)
+                    s_quant = UREG(str(quantity) + "dimensionless")
+
             else:
-                s_quant = 1.0
+                s_quant = UREG("1 dimensionless")
 
-            if type(s_quant) == int or type(s_quant) == float:
-                #when we don't have units
-                raw_price += float(price)
-                total_price += float(price)
-
-            elif g_quant.dimensionality == s_quant.dimensionality:
+            if g_quant.dimensionality == s_quant.dimensionality:
                 raw_amount = (g_quant / s_quant).to_reduced_units().magnitude
-                raw_price += float(price) * raw_amount / rec_servings
-                total_amount = math.ceil(raw_amount)
-                total_price += float(price) * total_amount / rec_servings
 
             elif g_quant.dimensionality == {'[length]': 3.0} and \
                     s_quant.dimensionality == {'[mass]': 1.0}:
-                density = UREG("1g / cm**3")
-                s_vol = (density / s_quant).to_reduced_units()
-                raw_amount = (s_vol * g_quant).to_reduced_units().magnitude
-                raw_price += float(price) * raw_amount / rec_servings
-                total_amount = math.ceil(raw_amount)
-                total_price += float(price) * total_amount / rec_servings
+                s_vol = convert_mass_to_volume(s_quant)
+                raw_amount = (g_quant / s_vol).to_reduced_units().magnitude
 
             elif g_quant.dimensionality == {'[mass]': 1.0} and \
                     s_quant.dimensionality == {'[length]': 3.0}:
-                density = UREG("1g / cm**3")
-                g_vol = (g_quant / density).to_reduced_units()
+                g_vol = convert_mass_to_volume(s_quant)
                 raw_amount = (s_quant / g_vol).to_reduced_units().magnitude
-                raw_price += float(price) * raw_amount / rec_servings
-                total_amount = math.ceil(raw_amount)
-                total_price += float(price) * total_amount / rec_servings
 
             else:
-                raw_price += float(price)
-                total_price += float(price)
+                #not enough information to determine how much to buy, so we have
+                #to assume one unit's worth is enough
+                raw_amount = 1
+
+            raw_price += float(price) * raw_amount / rec_servings
+            total_amount = math.ceil(raw_amount)
+            total_price += float(price) * total_amount
 
     return (round(raw_price, 2), round(total_price, 2))
