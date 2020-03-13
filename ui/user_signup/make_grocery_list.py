@@ -3,13 +3,13 @@
 '''
 import pint
 import math
-import user_signup.search_hpp_products as shp
+import search_hpp_products as shp
 
 UREG = pint.UnitRegistry(system = "US")
 
 #measurement units which pint will recognize
 VALID_UNITS = ["cup", "gallon", "tablespoon", "teaspoon", "pint", "quart", \
-        "ounce", "fluid ounce", "fluid_ounce", "pound", "fluidounce"]
+        "ounce", "fluid_ounce", "pound"]
 
 #units corresponding to tiny weights -- will be equated to 0.01 ounces per unit
 TINY_UNITS = ["dash", "dashe", "leaf", "leave", "pinch", "pinche"]
@@ -44,7 +44,10 @@ def make_grocery_list(ingredient_list):
         amount = ingredient[1]
         unit = ingredient[2]
         name = ingredient[3]
-        if unit in TINY_UNITS:
+        if str(amount) == 'nan' and unit != "None":
+            amount = 1
+
+        elif unit in TINY_UNITS:
             amount *= 0.01
             unit = "ounce"
 
@@ -62,7 +65,8 @@ def make_grocery_list(ingredient_list):
         elif unit not in VALID_UNITS:
             unit = "None"
 
-        if name not in ingredients.keys():
+        if name not in ingredients.keys() or \
+                str(ingredients[name]["amount"]) == "nan":
             ingredients[name] = {"servings": servings, "amount": amount, \
                     "unit": unit}
 
@@ -124,19 +128,19 @@ def estimate_grocery_price(grocery_list):
         rec_servings = grocery_list[item]["servings"]
 
         if unit in VALID_UNITS:
-            g_quant = UREG(str(amount) + unit)
+            g_quant = UREG(str(amount) + " " + unit)
 
         elif unit == "fluid ounce" or unit == "fluidounce":
-            g_quant = UREG(str(amount) + "fluid_ounce")
+            g_quant = UREG(str(amount) + " fluid_ounce")
 
         elif unit in TINY_UNITS:
-            g_quant = UREG(str(amount * 0.01) + "ounce")
+            g_quant = UREG(str(amount * 0.01) + " ounce")
 
         elif unit in SMALL_UNITS:
-            g_quant = UREG(str(amount * 0.15) + "ounce")
+            g_quant = UREG(str(amount * 0.15) + " ounce")
 
         elif unit in MEDIUM_UNITS:
-            g_quant = UREG(str(amount) + "ounce")
+            g_quant = UREG(str(amount) + " ounce")
 
         elif not unit:
             g_quant = UREG(str(amount) + " dimensionless")
@@ -148,6 +152,10 @@ def estimate_grocery_price(grocery_list):
 
         if product:
             name, price_per_pound, quantity, price = product
+
+            split = quantity.split()
+            if len(split) > 1 and split[1] == "fluid":
+                quantity = split[0] + " fluid_ounce"
         else:
             name = "None"
             price_per_pound = "None"
@@ -180,7 +188,7 @@ def estimate_grocery_price(grocery_list):
                     s_quant = UREG(quantity)
 
                 except:
-                    s_quant = UREG(str(quantity) + "dimensionless")
+                    s_quant = UREG(str(quantity) + " dimensionless")
 
             else:
                 s_quant = UREG("1 dimensionless")
