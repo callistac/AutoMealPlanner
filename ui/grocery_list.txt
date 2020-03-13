@@ -1,54 +1,61 @@
-lime juice
-salt
-cilantro
-chicken bouillon
-rice
-water
-onion
-tomato sauce
-Tortilla chips
-red beans
-ground beef
-Cheddar cheese
-sour cream
-taco seasoning
-avocado
-stewed tomatoes
-water
-onion
-salt
-green beans
-instant rice
-pepper
-water
-egg
-oil
-soy sauce
-salt
-pepper
-creamy salad dressing
-peas
-deluxe American cheese, diced
-pimentos
-water
-jasmine rice
-canola oil
-diced pineapple
-fully cooked luncheon meat (e.g. Spam)
-oyster sauce
-sliced Chinese sweet pork sausage (lup cheong)
-egg
-garlic powder
-scallions
-blue cheese
-cream cheese
-walnuts
-garlic
-bacon
-white wine
+cinnamon
 olive oil
-scallops
+Greek yogurt
 pepper
-prosciutto
-toothpicks
-(12.75, 225.4)
+ketchup
+cumin
+skewers
+kosher salt
+lemon juice
+hot chili flakes
+garlic
+paprika
+chicken thighs
+soy milk
+whole wheat flour
+soy flour
+cinnamon
+sugar
+pecans
+vanilla
+salt
+rye flour
+baking powder
+water
+tofu
+hot chile peppers
+eggplant
+cilantro
+garlic
+oil
+lime juice
+basil
+onion
+brown sugar
+red bell pepper
+salt
+mayonnaise
+bread
+cream
+ground chicken
+orzo
+butter
+olive oil
+salt
+onion
+spinach
+mascarpone cheese
+blue cheese
+salt
+corn
+sugar
+water
+ketchup
+mayonnaise
+sugar
+oil
+vinegar
+salt
+onion
+pepper
+(15.68, 160.98)
