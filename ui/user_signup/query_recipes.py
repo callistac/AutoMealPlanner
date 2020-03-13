@@ -28,7 +28,15 @@ def query_recipes(user_info, blacklist, past_recipes, past_ingredients):
     '''
     connection = sqlite3.connect('db.sqlite3')
     c = connection.cursor()
-
+    c.execute("SELECT dietary_restrictions FROM user_diet WHERE user_id = ?", (user_info[7], ))
+    diet_rest = c.fetchall()
+    print("DIETARYYY", diet_rest)
+    query = "(SELECT recipe_num FROM recipe_cats WHERE"
+    for i, restriction in enumerate(diet_rest):
+        query += " recipe_cats.category = '%s' OR"%(restriction[0])
+    query = query[:-3]
+    query += ")"
+    print("QUERY", query)
     # finding prep-time for how lazy the user input into our form for that week
     if user_info[6] == '1':
         prep_time = 15
@@ -43,7 +51,7 @@ def query_recipes(user_info, blacklist, past_recipes, past_ingredients):
 
     # if a user has never generated past recipes before
     if past_recipes is None:
-        sql_recipes = "SELECT * FROM recipes WHERE prep_time <= ? AND (recipe_num not in \
+        sql_recipes = "SELECT * FROM recipes WHERE prep_time <= ? AND (recipes.recipe_num IN" + query + ") AND (recipe_num not in \
         (SELECT recipe_num FROM blacklisted_recipes WHERE user_id = ? AND \
         (reason = 'option1' OR reason = 'option2')) OR (\
         SELECT recipe_num FROM rated_recipes WHERE user_id = ? AND \
@@ -59,7 +67,7 @@ def query_recipes(user_info, blacklist, past_recipes, past_ingredients):
 
     # if a user has generated past recipes before (i.e. potentially has blacklisted or rated recipes)
     else:
-        sql_recipes = "SELECT * FROM recipes WHERE prep_time <= ? AND (recipe_num not in \
+        sql_recipes = "SELECT * FROM recipes WHERE prep_time <= ? AND (recipes.recipe_num IN" + query + ") AND (recipe_num not in \
         (SELECT recipe_num from blacklisted_recipes where user_id = ? AND \
         (reason = 'option1' OR reason = 'option2')) OR (\
         SELECT recipe_num FROM rated_recipes WHERE user_id = ? AND \

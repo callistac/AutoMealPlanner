@@ -1,85 +1,105 @@
 
-***Buffalo Chicken Wings III***
-hot sauce
-butter
-tomato sauce
-cayenne
-chili powder
-chicken wings
-
-***Jessica's Red Beans and Rice***
-jalapeno
-onion
-bell peppers
-bay leaf
-beef sausage
-Cajun seasoning
-garlic and herb seasoning, or more to taste
-hot chili flakes
-chicken bouillon
-water
-cooked rice
-tomatoes
-red beans
-salt
-
-***Jalapeno Popper Quesadillas***
-shredded Mexican cheese blend
-butter
-tortillas
-cream cheese
-Tortilla chips
-jalapeno
-
-***Beef Enchilada Bake***
-VELVEETA(R), cut up
-ground beef
-corn tortilla
-RO*TEL Diced Tomatoes and Green Chilies, undrained
-creamed corn
-
-***Chopped Cashew Salad***
-edamame
-crumbled feta cheese with herbs
-grape tomatoes
-lemon pepper
-cashews
-yellow bell pepper
-red bell pepper
-avocado
-diced orange bell pepper
-grapes
-olive oil
-wine vinegar
-dried basil
-salt
-
-***Slow Cooker Mediterranean Beef with Artichokes***
-Greek olives
-cumin
-onion
-bay leaf
-grapeseed oil
-oregano
-parsley
-basil
-cubed beef
-garlic
-chopped artichoke hearts
-tomatoes
-tomato sauce
-beef broth
-
-***Sweet Potatoes with Sausage and Peppers***
-Italian sausage
+***Quick Black Beans and Rice***
+garlic powder
 onion
 oil
-cumin
-sweet potato
-red bell pepper
-garlic
-salsa
+oregano
+instant brown rice
+stewed tomatoes
+black beans, undrained
+
+***Grilled Romaine Salad***
+pepper
+balsamic vinegar
+olive oil
+rosemary
+thyme
+shallots
+brown sugar
+sugar
+romaine hearts
+plum tomato
 salt
 
-Your raw price per serving is $28.85 
-Your total estimated price is $269.48
+***Marrakesh Vegetable Curry***
+almonds
+sea salt
+cayenne
+eggplant
+onion
+bell peppers
+zucchini
+sweet potato
+red bell pepper
+orange juice
+curry powder
+cinnamon
+turmeric
+carrot
+raisins
+garlic
+olive oil
+spinach
+chickpeas
+
+***Wicked Good Veggie Chili***
+cinnamon
+textured vegetable protein
+onion
+bell peppers
+cilantro
+scallions
+water
+honey
+pepper
+salt
+carrot
+chili powder
+cayenne
+cumin
+olive oil
+garlic
+sour cream
+red beans
+tomatoes
+
+***Mild Coconut Tofu Curry***
+cashews
+hot chili flakes
+sugar
+lemon grass
+onion
+potato
+curry powder
+salt
+firm tofu
+olive oil
+garlic
+fresh ginger
+water
+coconut milk
+
+***Mesclun and Mango Salad with Ginger Carrot Dressing***
+rice vinegar
+lime juice
+baby greens
+mangos
+carrot
+fresh ginger
+sesame oil
+sesame seed
+
+***Mint Pesto Pasta***
+pine nuts
+olive oil
+garlic
+ricotta cheese
+Parmesan cheese
+tomato
+mint
+linguine
+basil
+salt
+
+Your raw price per serving is $16.07 
+Your total estimated price is $215.94
