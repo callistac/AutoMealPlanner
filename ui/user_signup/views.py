@@ -207,11 +207,8 @@ def DownloadFile(request):
     WHERE recipes.recipe_num IN {}".format(recip_ids)
     c.execute(grocery_list)
     ingreds = c.fetchall()
-    #print(ingreds)
     grocery_ingreds = mgl.make_grocery_list(ingreds)
-    #print(ingreds)
     prices = mgl.estimate_grocery_price(grocery_ingreds)
-
 
     # writes/saves ingredients and price to a text file
     recipes = []

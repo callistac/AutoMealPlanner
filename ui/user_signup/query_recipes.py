@@ -30,14 +30,18 @@ def query_recipes(user_info, blacklist, past_recipes, past_ingredients):
     c = connection.cursor()
     c.execute("SELECT dietary_restrictions FROM user_diet WHERE user_id = ?", (user_info[7], ))
     diet_rest = c.fetchall()
-    print("DIETARYYY", diet_rest)
+
     query = "(SELECT recipe_num FROM recipe_cats WHERE"
-    for i, restriction in enumerate(diet_rest):
+    for restriction in diet_rest:
+        if restriction[0] == 'Dairy Free':
+            query += " recipe_cats.category = 'Dairy-Free' OR"
+        if restriction[0] == 'Gluten Free':
+            query += " recipe_cats.category = 'Gluten-Free' OR"
         query += " recipe_cats.category = '%s' OR"%(restriction[0])
     query = query[:-3]
     query += ")"
-    print("QUERY", query)
-    # finding prep-time for how lazy the user input into our form for that week
+
+    # finding prep-time for the laziness the user input into our form for that week
     if user_info[6] == '1':
         prep_time = 15
     elif user_info[6] == '2':

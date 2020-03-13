@@ -23,8 +23,8 @@ class CustomForm(forms.ModelForm):
         }
 
         widgets = {
-        'dietary_restrictions': forms.CheckboxSelectMultiple(choices = ['Vegetarian', 'Vegan', 'Nuts'
-        'Dairy', 'Kosher', 'Gluten free', 'Pescatarian','Halal']),
+        'dietary_restrictions': forms.CheckboxSelectMultiple(choices = ['Vegetarian', 'Vegan',
+        'Dairy Free', 'Kosher', 'Gluten free']),
         'laziness': forms.Select(choices=LAZINESS_CHOICES),
         'budget': forms.Select(choices=BUDGET_CHOICES)
         }
