@@ -1,63 +1,20 @@
 """
+CMSC Winter '20
 Grocery JSON Webscrapping Step
-Written by Dylan Sukay
 Sources:
 For learning how to conviently access the data in the infinite scroll
 https://ianlondon.github.io/blog/web-scraping-discovering-hidden-apis/
 """
-
 import requests
 import json
 import re
 import csv
 import bs4
+import url_util as util
 try:
     from urllib.parse import urlparse
 except ImportError:
     from urlparse import urlparse
-
-#from pa2
-def get_request(url):
-    '''
-    Open a connection to the specified URL and if successful
-    read the data.
-
-    Inputs:
-        url: must be an absolute URL
-
-    Outputs:
-        request object or None
-
-    Examples:
-        get_request("http://www.cs.uchicago.edu")
-    '''
-
-    if is_absolute_url(url):
-        try:
-            r = requests.get(url)
-            if r.status_code == 404 or r.status_code == 403:
-                r = None
-        except Exception:
-            # fail on any kind of error
-            r = None
-    else:
-        r = None
-
-    return r
-
-
-#from pa2
-def read_request(request):
-    '''
-    Return data from request object.  Returns result or "" if the read
-    fails.
-    '''
-
-    try:
-        return request.text.encode('iso-8859-1')
-    except Exception:
-        print("read failed: " + request.url)
-        return ""
 
 def remove_from_string(remove, string, removeposition = ""):
     removeobj = re.search(remove, string)
@@ -72,40 +29,31 @@ def remove_from_string(remove, string, removeposition = ""):
 
     return string
 
-#from pa2
-def is_absolute_url(url):
-    '''
-    Is url an absolute URL?
-    '''
-    if url == "":
-        return False
-    return urlparse(url).netloc != ""
-
 #hyde park produce json file link
 hpp_url0 = "https://www.mercato.com/shop/products/hyde-park-produce?offset="
 hpp_url1 =  "&ajax=true&productCategoryId=&resetFilters=false&national" +\
             "Shipping=false&deliveryOrPickup=true"
 
+#All the units lists were generated with HPP_unit_scrapper
+strings_to_remove =  ["C&amp;W ", "&amp"]
+
+list_of_units = [' Count', ' Pound', ' LB', ' Pint',' lb', ' Gallon', ' oz', 
+                ' oz.', ' Pounds', ' Quart',  ' Liter', ' Liters', ' Gallons',
+                ' Grams',' Ounce', ' Ounces', ' Fluid Ounces', ' Pints', 
+                ' Milliliters', ' ct', ' Each', ' Jumbo Eggs', ' Large Eggs', 
+                ' Extra Large Eggs', ' Pack'] 
+units_to_remove = [' ct', ' Each', ' Count', ' Extra Large Eggs',
+                    ' Jumbo Eggs', ' Large Eggs', 'Pack']
+units_to_convert = {" LB":" Pound", " lb":" pound", 
+                    " Fluid Ounces":" fluid_ounces", "oz": " oz"}
+undesirableendings = ["-", " ", ",", "."]
+
 with open("hpp_products.csv", 'w') as csvfile:
     csvfile.write("Product|PricePerPound|Quant|PricePerThing\n")
     csvfile.close()
 
-strings_to_remove =  ["C&amp;W ", "&amp"]
-#All the units lists were generated with HPP_unit_scrapper
-strings_to_remove =  ["C&amp;W ", "&amp"]
-list_of_units = [' Count', ' Pound', ' LB', ' Pint',' lb', ' Gallon', ' oz', ' oz.', 
-                ' Pounds', ' Quart',  ' Liter', ' Liters', ' Gallons',
-                ' Grams',' Ounce', ' Ounces', ' Fluid Ounces', ' Pints', ' Milliliters', 
-                ' ct', ' Each', ' Jumbo Eggs', ' Large Eggs', 
-                ' Extra Large Eggs'] 
-units_to_remove = [' ct', ' Each', ' Count', ' Extra Large Eggs',
-                    ' Jumbo Eggs', ' Large Eggs']
-units_to_convert = {" LB":" Pound", " lb":" pound", 
-                    " Fluid Ounces":" fluid_ounces"}
-undesirableendings = ["-", " ", ",", "."]
-
 remaining = 1 #products left to find, this number will update in the while loop
-n = 0 #product we are currently on
+n = 0 #product we are currently on, used when we have to fetch new json
 while remaining > 0:
     json_url = (hpp_url0 + "{}" + hpp_url1).format(n)
     raw = requests.get(json_url).text
@@ -127,10 +75,10 @@ while remaining > 0:
         checkiffulltitle = re.findall(".*\.\.\.", nameandquant)
         if checkiffulltitle != []:
             product_url = re.findall("https://www.*", product)[0]
-            request = get_request(product_url[0:-1]) 
+            request = util.get_request(product_url[0:-1]) 
             #get_request(...) ends with " since it was a string in the json, 
             #we have to remove that or it will go to an error page.
-            request_html = read_request(request)
+            request_html = util.read_request(request)
             soup = bs4.BeautifulSoup(request_html, "html.parser")
             nameandquant0 = str(soup.find_all("h1",
                 class_="product-detail-info__main-text"))
@@ -140,14 +88,12 @@ while remaining > 0:
 
         #replace &amp; with &
         nameandquant = re.sub(r'&amp;', '&', nameandquant)
-        price = re.sub(r'&amp;', '&', price)
         for string in strings_to_remove:
             nameandquant = remove_from_string(string, nameandquant)
             price = remove_from_string(string, price)
 
         name = ""
-        priceperquant = ""
-        priceclean = ""
+        #extract name and quantity from namandquant
         for unit in list_of_units:
             quants = re.findall("\d*"+unit+"|\d*\.\d*"+unit+"|\d/\d"+unit,
                                     nameandquant)
@@ -157,77 +103,62 @@ while remaining > 0:
                     if len(quant) > len(foundquant):
                         foundquant = quant
                 quantity = foundquant
+
+                #remove the quantituy from the name
                 name = remove_from_string(quantity, nameandquant)
                 name = remove_from_string(" - ", name)
 
+                #clean up the quanitity; get rid units pint doesn't recognize,
+                #make sure all units are lowercase, not empty strings, etc.
+                for unit in units_to_remove:
+                    quantity = remove_from_string(unit, quantity)
+
+                quantunit = re.findall("\w*\s+\w*|\w+", quantity)
+                if quantunit:
+                    if quantunit[0] in units_to_convert:
+                        new_unit = units_to_convert[quantunit[0]]
+                        quantity = remove_from_string(quantunit[0], quantity) \
+                                        + new_unit
+
+                quantity = quantity.lower()
+
+                if quantity == "":
+                    quantity = None
+
+        priceperquant = ""
+        #remove the quanity from priceperquant, since it is always pounds
         for unit in ['/lb', '/LB', " per lb", " per LB"]:
             priceperquantlist = re.findall("\$\d*\.\d*"+unit, price)
             if priceperquantlist !=[]:
                 priceperquant = re.findall("\d*\.\d*", priceperquantlist[0])[0]
 
-        pricecleanlist = re.findall("\$\d*\.\d*"+" each", price)
-        if len(pricecleanlist) > 0:
-            priceclean = re.findall("\$\d*\.\d*" + " each", 
-                                        pricecleanlist[0])[0]
-
-        if name != "":
+        if name:
             while name[len(name)-1] in undesirableendings:
+                print("yeah the ending sucked")
                 name = name[0:(len(name)-1)]
         else:
             while nameandquant[len(nameandquant)-1] in undesirableendings:
                 nameandquant = nameandquant[0:(len(nameandquant)-1)]
 
-        if type(priceclean) == list:
-            priceclean = remove_from_string("each", priceclean[0])
-        else:
-            priceclean = remove_from_string("each", str(priceclean))
+        #remove dollar sign, each if it there, and random spaces from price
+        price = re.findall("\d*\.\d*", price)[0]
 
-        if type(price) == list:
-            price = remove_from_string("each", price[0])
-        else:
-            price = remove_from_string("each", price)
-
+        #save to productlist depending on what info we scrapped
         if name != "" and priceperquant != "":
             productlist = [name, priceperquant, quantity, None]
-        elif name != "" and priceclean != "":
-            productlist = [name, None, quantity, priceclean]
         elif name != "":
             productlist = [name, None, quantity, price]
         elif priceperquant != "":
             productlist = [nameandquant, priceperquant, None, None]
-        elif priceclean != "":
-            productlist = [nameandquant, None, None, priceclean]
         else:
             productlist = [nameandquant, None, None, price]
-
-        
-        if productlist[1]:
-            productlist[1]  = re.findall("\d*\.\d*", productlist[1])[0]
-
-        if productlist[2]:
-            for unit in units_to_remove:
-                productlist[2] = remove_from_string(unit, productlist[2])
-            
-            unit = re.findall("\w*\s+\w*|\w+", productlist[2])
-            if unit:
-                if unit[0] in units_to_convert:
-                    new_unit = units_to_convert[unit[0]]
-                    productlist[2] = (remove_from_string(unit[0], 
-                        productlist[2]) + new_unit)
-            productlist[2] = productlist[2].lower()
-            if productlist[2] == "":
-                productlist[2] = None
-
-        if productlist[3]:
-            productlist[3] = re.findall("\d*\.\d*", productlist[3])[0]
 
         with open("hpp_products.csv", 'a') as csvfile:
             csvfile.write(str(productlist[0])+ "|" +str(productlist[1])+ "|"+\
                 str(productlist[2])+ "|"+str(productlist[3]) + "\n")
             csvfile.close()
-        n += 1
-        productlist = []
+
+        n += 1 #increment the number of products looked at
 
     remaining = data['remaining']
     print("remaining items: " + str(remaining))
-
