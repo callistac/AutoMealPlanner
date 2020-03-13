@@ -18,10 +18,11 @@ Red Delicious Apples|0.99|None|None
 Valencia Oranges|0.79|None|None
 Navel Oranges|0.89|None|None
 Sweet Potatoes|0.89|None|None
+Red Onion (Loose)|0.59|None|None
 Plum Tomatoes|0.79|None|None
 Loose Idaho Potatoes|0.59|None|None
-Honey Crisp Apples|1.29|None|None
 Bartlett Pears|0.79|None|None
+Honey Crisp Apples|1.29|None|None
 Avocados|None|None|0.79
 Baby Red Potato|0.69|None|None
 Red Beet|0.59|None|None
@@ -31,7 +32,6 @@ Sauders Amish Eggs|None|12|1.79
 Cucumbers|0.79|None|None
 Spanish Onion (Loose)|0.49|None|None
 Organic Bananas Bunch (~5 Bananas)|0.89|None|None
-Red Onion (Loose)|0.59|None|None
 Sweet Corn|None|None|0.79
 Garlic Bulbs (Loose)|3.49|None|None
 Green Onions|None|None|0.59
@@ -86,6 +86,7 @@ Serrano Pepper|1.49|None|None
 Organic Beef Ribeye Steak, Sommers Organic|19.58|2|None
 Tanimura & Antle Celery Hearts|None|4|1.49
 PRE Grassfed Ground Beef 95/5|None|16 oz.|10.21
+Organic Lacinato Kale|None|None|2.49
 Black Lady Finger Grapes|2.49|None|None
 Raw Pecan Nuts|5.99|None|None
 Furlani Three Cheese Texas Toast|None|None|3.49
@@ -105,7 +106,6 @@ Mint|13.99|None|None
 Organic Valley - Raw Cheddar Cheese|None|None|5.49
 Egg Salad|5.09|None|None
 Tuna Salad|6.09|None|None
-Organic Lacinato Kale|None|None|2.49
 Yukon Potatoes (5 LB.)|None|5 pounds|3.99
 Beef Salami|7.66|None|None
 Extra Firm Tofu|None|None|2.03
@@ -113,7 +113,6 @@ Black Seedless Grapes|3.49|None|None
 Sanabel Bakery Fresh Pita Bread|None|10|2.02
 Tilapia (Farmed, USA)|8.99|None|None
 Pomegranate|None|None|5.49
-Fresh Boston Lettuce|None|None|0.99
 Gerber's Amish Farm Whole Fryer|2.24|None|None
 Crab Salad|6.09|None|None
 Sweet Anise / Fennel|None|None|2.29
@@ -128,6 +127,7 @@ Dill Pickles|None|None|0.89
 Nina Genuine Italian Peeled Tomatoes|None|None|2.75
 Medici Cinnamon Raisin Sandwich Bread|None|None|5.10
 Sassy Cow Creamery Whole Milk|None|1 quart|1.73
+Fresh Boston Lettuce|None|None|0.99
 Sassy Cow Creamery Heavy Whipping Cream|None|1 pint|2.65
 Sassy Cow Creamery Half & Half|None|1 quart|1.73
 Poblano Peppers|1.49|None|None
@@ -188,12 +188,13 @@ Pure Maple Syrup, Dodd's Sugar Shack|None|8 oz.|9.70
 Button Mushroom|None|8 ounces|1.79
 Medici Whole Wheat Sandwich Bread|None|None|5.10
 Ruprecht Boneless Thin Pork Chops|10.28|None|None
-Organic Valley Organic Grade A Medium Brown Eggs - 18 Pack|None|None|5.69
+Organic Valley Organic Grade A Medium Brown Eggs|None|18 |5.69
 Larry's No Spring Chicken Sandwich|None|None|7.99
 Organic Breakfast Blend Equal Exchange Fair Trade Coffee Beans|12.26|None|None
 Eiffel Tower Camembert Cheese (7oz)|None|None|5.99
 Medici Demi Ciabatta|None|None|1.83
 Hyde Park Hot Giardiniera|None|16 oz.|5.09
+Equal Exchange Organic Mexican Vienna Coffee|12.26|None|None
 Bee Sweet Clementines Bags|None|3 pound|4.99
 Farmer Focus Organic Free Range Chicken Drumsticks|5.59|None|None
 Cabot Cheese, 5 Cheese Italian|None|None|3.06
@@ -282,7 +283,7 @@ Sassy Cow Creamery 1% Lowfat Milk|None|1 gallon|7.15
 Sassy Cow Creamery Skim Milk|None|1 gallon|4.08
 PRE Grassfed Beef Top Sirloin Steak|None|None|9.19
 Teriyaki Glazed Turkey Meatballs|6.12|None|None
-Sesame Bagels, Pack of 6, Today's Temptations|None|None|4.08
+Sesame Bagels, of 6, Today's Temptations|None| |4.08
 Assorted Baklava, Nazareth Sweets, Small|None|None|5.10
 Assorted Baklava, Nazareth Sweets, Large|None|None|9.19
 Asian Smoke Tofu with Chili, Phoenix Bean|None|None|6.12
@@ -305,7 +306,6 @@ Organic Mind, Body and Soul Equal Exchange Fair Trade Coffee Beans|12.26|None|No
 Boar's Head Baby Swiss|8.68|None|None
 Boar's Head Classic Lower Sodium Chicken|9.70|None|None
 Grated Romano Cheese|7.15|None|None
-Equal Exchange Organic Mexican Vienna Coffee|12.26|None|None
 Organic Honduran Harvest Moon Equal Exchange Fair Trade Coffee Beans|12.26|None|None
 Organic Midnight Sun Equal Exchange Fair Trade Coffee Beans|12.26|None|None
 Boar's Head Smoked Gruyere|8.68|None|None
@@ -395,6 +395,7 @@ Chobani Lowfat Greek Yogurt with Strawberry Banana on the Bottom|None|5.3 ounces
 Organic Bartlett Pears|1.59|None|None
 Martinellis Gold Medal 100% Juice, Pure, Apple, Unfiltered|None|1.5 liters|7.15
 Yellow Onions  Bags|None|3 pound|0.79
+Original Bagel Bagels, Plain|None|6|3.06
 Granny Smith Apples|0.99|None|None
 Honeycrisp Apples|None|None|0.69
 RW Knudsen 100% Juice,  Cranberry Nectar|None|32 ounces|4.59
@@ -417,7 +418,6 @@ Spinach Cello|None|10 ounces|2.49
 Organic Granny Smith Apples|1.49|None|None
 Red Plums|1.79|None|None
 Chobani Non-Fat Greek Yogurt with Mango on the Bottom|None|5.3 ounces|1.01
-Perdue Turkey, Ground|None|16 ounces|5.10
 Todays Temptations Bread, California Sourdough|None|28 ounces|3.99
 Tanimura & Antle Lettuce, Butter, Hydroponic|None|1|1.49
 White Mushrooms|2.49|None|None
@@ -432,10 +432,9 @@ Brownberry Whole Grains Nutty Almond Bread|None|None|3.89
 Taylor Organic Baby Spinach|None|5 ounces|3.06
 Mr Q Cumber Cucumber Beverage, Sparkling|None|7 ounces|1.32
 Nongshim Soup, Noodle, Shin Bowl, Gourmet Spicy|None|3.03 ounces|1.19
-Oasis Baba Ghannouj|None|8 ounces|3.57
-Original Bagel Bagels, Plain|None|6|3.06
-Snack Factory Cinnamon Sugar Pretzel Crisps|None|7.2 ounces|3.06
 Andrew & Everett Cheese, Mozzarella, Thin Sliced|None|7 ounces|4.49
+Oasis Baba Ghannouj|None|8 ounces|3.57
+Snack Factory Cinnamon Sugar Pretzel Crisps|None|7.2 ounces|3.06
 Organic Gala Apples|1.29|None|None
 Uptons Naturals Seitan, Chorizo, in Crumbles|None|8 ounces|3.98
 Boars Head Bacon, Naturally Smoked, Extra Thick Cut|None|12 ounces|5.92
@@ -445,6 +444,7 @@ Bonelli Olive Oil, Extra Virgin|None|17 ounces|6.49
 Original Bagel Everything|None|6|3.06
 Organic Bunch Celery|0.79|None|None
 Barilla Marinara Sauce|None|None|3.06
+Muir Glen Organic Pasta Sauce, Chunky Tomato & Herb|None|25.5 ounces|4.69
 Follow Your Heart Cheese Alternative, Dairy Free, Mozzarella Style|None|10|4.59
 Lactaid Milk, Fat Free|None|1 quart|2.69
 Puckered Pickle Barrel Select Deli Spears, Crunchy, Kosher|None|32 ounces|5.61
@@ -468,7 +468,7 @@ BelGioioso Ricotta con Latte, Whole Milk|None|16 ounces|3.88
 Natures Path Flax Plus Organic Red Berry Crunch Cereal|None|10.6 ounces|5.61
 Loose Carrots|0.69|None|None
 Green Leaf Lettuce|None|None|0.99
-San Pellegrino Sparkling Beverage, Pomegranate & Orange - 6 Pack|None|None|6.38
+San Pellegrino Sparkling Beverage, Pomegranate & Orange|None|6 |6.38
 Dynasty Rice, Jasmine|None|32 ounces|3.06
 Chobani Blended with Lemon & Cream Whole Milk Greek Yogurt|None|5.3 ounces|1.01
 Red Cabbage|0.59|None|None
@@ -519,7 +519,6 @@ Barilla Campanelle, No. 99|None|1 pound|2.03
 RW Knudsen 100% Juice, No Sugar Added, Organic, Tomato|None|32 ounces|3.67
 Greek Gods Yogurt, Greek Style, Traditional Plain|None|24 ounces|4.69
 Roland Soba Noodles, Organic, Buckwheat|None|12.8 ounces|2.85
-Amys Soup, Organic, Tuscan Bean & Rice|None|14.1 ounces|4.39
 Alessi Vinegar, White Balsamic, Raspberry Blush|None|8.5 ounces|3.67
 Barilla Spaghetti, Thick, No. 7|None|1 pound|2.03
 Bobs Red Mill Gluten Free Cake Mix, Vanilla|None|19 ounces|3.88
@@ -532,7 +531,6 @@ Xochitl Corn Chips, White, Sea Salt, Mexican Style|None|12 ounces|5.09
 Phils Eggs, Cage Free, Large|None|12|3.67
 Organic Green Bell Pepper|2.49|None|None
 Muir Glen Organic Whole Peeled Tomatoes|None|28 ounces|3.57
-Muir Glen Organic Pasta Sauce, Chunky Tomato & Herb|None|25.5 ounces|4.69
 Joe Tea Half Lemon Tea & Half Lemonade|None|20 ounces|2.19
 Simply Orange 100% Juice, Orange, Pulp Free|None|59 ounces|5.79
 Brownberry Whole Grains Bread, 12 Grain|None|24 ounces|3.88
@@ -546,6 +544,7 @@ Rambutan|4.99|None|None
 De Cecco Angel Hair Pasta, No. 9|None|1 pound|1.99
 Black Radish|1.79|None|None
 Earthbound Farm Organic Green Peas|None|10 ounces|3.06
+Perdue Turkey, Ground|None|16 ounces|5.10
 Organic Mustard Greens|None|None|1.79
 Earthbound Farm Organic Blueberries|None|10 ounces|5.10
 Haagen Dazs Ice Cream, White Chocolate Raspberry Truffle|None|14 ounces|5.10
@@ -595,7 +594,6 @@ Cruz De Malta Herbal Tea, Traditional Yerba Mate|None|17.6 ounces|7.15
 Haagen Dazs Ice Cream, Caramel Cone|None|14 ounces|5.10
 Florida's Natural Premium Orange Juice No Pulp|None|59 ounces|5.10
 Spice Supreme Oregano Leaves|None|0.75 ounces|1.01
-El Milagro Tortilla Chips, Mexican Kitchen Style|None|16 ounces|3.57
 Oregano|13.99|None|None
 Montchevre Fresh Goat Cheese, Natural|None|4 ounces|3.57
 Lightlife Meatless Smart Deli Veggie Turkey Slices|None|5.5 ounces|4.08
@@ -658,7 +656,7 @@ Entenmanns Cake, Chocolate Fudge|None|19 ounces|6.64
 Parsnips|1.79|None|None
 Dannon Yogurt, Whole Milk, Plain|None|32 ounces|4.08
 La Preferida Hot Sauce, Louisiana Style|None|6 ounces|1.11
-Entenmanns Donuts, Classic, Variety Pack|None|8|5.61
+Entenmanns Donuts, Classic, Variety8 Each|None| |5.61
 Lightlife Gimme Lean Veggie Sausage|None|14 ounces|5.41
 Alessi Neapolitan Bean Soup, Pasta Fazool|None|6 ounces|3.06
 Greek Gods Yogurt, Greek, Honey|None|24 ounces|4.69
@@ -722,6 +720,7 @@ LaCroix Water, Sparkling, Natural Lemon Flavored|None|6|5.82
 Forager Cashewgurt, Organic, Vanilla Bean|None|5.3 ounces|1.83
 Cabot Whipped Cream, Sweetened, Light|None|7 ounces|3.06
 Organic Valley Lactose Free Fat Free Milk|None|0.5 gallons|5.99
+El Milagro Tortilla Chips, Mexican Kitchen Style|None|16 ounces|3.57
 Red Leaf Lettuce|None|None|0.99
 Tates Bake Shop Cookies, White Chocolate, Macadamia Nut|None|7 ounces|5.09
 Supreme Choice Ocean Perch, Boneless, Fillets|None|16 ounces|5.20
@@ -765,7 +764,6 @@ Boars Head Frankfurters, Beef, Skinless|None|12.5 ounces|5.10
 Maya Kaimal Tikka Masala Mild Indian Simmer Sauce|None|12.5 ounces|6.12
 Peanut Butter & Co Peanut Butter, Crunch Time|None|16 ounces|5.10
 Ruffles Potato Chips Sour Cream & Onion|None|8.5 ounces|4.39
-Brownberryry Honey Whole Wheat Bread|None|None|3.89
 Huy Fong Chili Paste, Ground Fresh, Sambal Oelek|None|18 ounces|5.82
 La Preferida Taco Seasoning|None|1.25 ounces|0.91
 Better than Bouillon Vegetable Base, Seasoned, Premium|None|8 ounces|5.10
@@ -813,6 +811,7 @@ Dannon Yogurt, Lowfat, Fruit on the Bottom, Strawberry|None|5.3 ounces|1.01
 Boars Head Sausage, Dry, Hot Sopressata|None|9 ounces|7.15
 Amys Organic Soup, Summer Corn & Vegetable|None|14.5 ounces|4.08
 Amys Organic Soup, Black Bean Vegetable|None|14.5 ounces|4.08
+Amys Soup, Organic, Tuscan Bean & Rice|None|14.1 ounces|4.39
 Sweet Baby Rays Barbecue Sauce, Original, Squeezable|None|18 ounces|3.57
 BelGioioso Freshly Shaved Parmesan Cheese|None|5 ounces|3.36
 Mestemacher Bread, Natural Pumpernickel|None|17.6 ounces|4.08
@@ -876,6 +875,7 @@ Muir Glen Organic Pasta Sauce, Tomato Basil|None|25.5 ounces|4.69
 Barilla Orzo|None|1 pound|2.03
 Bonne Maman Preserves, Cherry|None|13 ounces|5.10
 Naked Protein Smoothie, Double Berry|None|15.2 ounces|4.08
+Brownberryry Honey Whole Wheat Bread|None|None|3.89
 Barilla Spaghetti, Gluten Free|None|12 ounces|3.36
 Cento Artichoke Hearts, Quartered & Marinated|None|12 ounces|4.08
 Hodgson Mill Yeast, Active Dry|None|0.31 ounces|0.40
@@ -896,7 +896,7 @@ Haagen Dazs Ice Cream, Chocolate|None|14 ounces|5.10
 Organic Valley Organic Whole Milk|None|0.5 gallons|5.49
 Bubbies Bread & Butter Chips|None|33 ounces|7.15
 Alessi Pine Nuts|None|1.75 ounces|5.31
-Cento Tuna, Solid Pack Light|None|5 ounces|2.75
+Cento Tuna, Solid Light5 Ounces|None| |2.75
 Stonefire Naan, Tandoor Baked, Original|None|8.8 ounces|2.65
 Simply Apple 100% Juice, Pure Pressed, Apple|None|59 ounces|5.79
 Tasty Bite Basmati Rice, Organic|None|8.8 ounces|2.55
@@ -1056,7 +1056,7 @@ Ghirardelli Chocolate Bar, Unsweetened|None|4 ounces|3.77
 Kerrygold Butter, Pure Irish|None|8 ounces|4.08
 Simply Grapefruit 100% Juice, Pure Squeezed, Grapefruit|None|59 ounces|5.79
 Lightlife Smart Dogs Veggie Hot Dogs, Meatless|None|8|5.10
-San Pellegrino Sparkling Beverage, Orange, 6 Pack|None|11.15 ounces|6.38
+San Pellegrino Sparkling Beverage, Orange11.15 Ounces|None|6 |6.38
 Perfect Pasta Meat Tortellini|None|None|5.10
 Perfect Pasta Tortellini, Classic Cheese|None|12 ounces|5.10
 Briannas Dressing, Home Style, Real French Vinaigrette|None|12 ounces|4.09
@@ -1213,7 +1213,7 @@ Campbells Tomato Juice|None|11.5 ounces|1.01
 Kedem Tea Biscuits|None|4.2 ounces|0.91
 Rold Gold Pretzels, Original, Tiny Twists|None|16 ounces|3.36
 Ka Me Hoisin Sauce|None|8 ounces|3.36
-Cento Tuna, Solid Pack Light|None|3 ounces|2.03
+Cento Tuna, Solid Light3 Ounces|None| |2.03
 Carrs Cookies, English Tea, Ginger Lemon Cremes|None|7.05 ounces|4.08
 Boars Head Gourmaise, Cajun Style|None|9 ounces|4.08
 Ghirardelli Premium Baking Chips Bittersweet Chocolate|None|10 ounces|5.72
@@ -1489,7 +1489,7 @@ Newmans Own Lemonade & Iced Tea, Half & Half|None|59 ounces|2.99
 Athenos Crumbled Cheese, Feta, Traditional|None|4 ounces|3.06
 Cascadian Farm Organic Dark Chocolate Almond Granola|None|13.25 ounces|5.41
 Udis Gluten Free Soft & Delicious White Sandwich Bread|None|12 ounces|6.43
-San Pellegrino Sparkling Beverage, Lemon - 6 Pack|None|None|6.38
+San Pellegrino Sparkling Beverage, Lemon|None|6 |6.38
 Athenos Cheese Chunk, Feta, Traditional|None|8 ounces|5.51
 Barrys Tea Tea, Gold Blend, Bags|None|40|4.08
 Carrs Crackers, Poppy & Sesame|None|6.5 ounces|4.08
@@ -1588,7 +1588,7 @@ The Laughing Cow Spreadable Cheese Wedges, Creamy Swiss, Garlic & Herb|None|8|4.
 Bonne Maman Preserves, Fig|None|13 ounces|5.10
 Fiorucci Genoa Salami with Wine|None|None|3.77
 BelGioioso Mozzarella, Fresh|None|16 ounces|6.64
-McCanns Oatmeal, Irish, Instant, Variety Pack|None|10|5.82
+McCanns Oatmeal, Irish, Instant, Variety10 Each|None| |5.82
 McCann's Quick Cooking Rolled Oats Irish Oatmeal|None|16 ounces|6.02
 King Arthur Flour Flour, Bread, Unbleached|None|5 pounds|7.15
 Frontera Salsa, Chipotle Roasted Tomatillo + Garlic, Hot|None|16 ounces|4.08
@@ -1632,7 +1632,7 @@ Bigelow Herbal Tea, Pomegranate Pizzazz, Caffeine Free, Bags|None|20|3.57
 Bahlsen Wafer Rolls, Milk Chocolate|None|3.5 ounces|3.06
 Dynasty Mustard, Chinese-Style, Extra Hot|None|4 ounces|1.73
 Ka Me Oyster Sauce|None|7.1 ounces|3.36
-El Milagro Blancas Tortillas, Corn, Family Pack|None|3|1.52
+El Milagro Blancas Tortillas, Corn, Family3 Each|None| |1.52
 Lawrys Spices & Seasonings, Sloppy Joes|None|1.5 ounces|1.52
 Earth Balance Buttery Sticks, Vegan|None|4|5.20
 Earth Balance Buttery Spread, Whipped, Organic|None|13 ounces|5.10
@@ -1654,7 +1654,7 @@ Frontera Indigo Bluecorn Tortilla Chips|None|10 ounces|3.36
 Kitchen Basics Stock, for Cooking, Original Beef|None|32 ounces|3.36
 Twinings Black Tea, Lady Grey, Bags|None|1.41 ounces|3.57
 Boars Head Mustard, Delicatessen Style, White Wine & Horseradish|None|9.5 ounces|4.08
-Twinings Classics Black Tea, Variety Pack, Bags|None|1.06 ounces|3.57
+Twinings Classics Black Tea, Variety, Bags1.06 Ounces|None| |3.57
 Twinings Black Tea, Darjeeling, Bags|None|20|3.57
 Cabot Cheese, Premium Natural, Pepper Jack|None|8 ounces|2.96
 Frontera Lime & Sea Salt Tortilla Chips|None|None|3.36
@@ -1705,7 +1705,7 @@ Bobs Red Mill Coconut, Flaked, Unsweetened, Unsulfured|None|12 ounces|5.10
 Silk Creamer, Hazelnut|None|1 pint|2.24
 Bahlsen Wafer Crisps, Afrika, Dark Chocolate|None|4.6 ounces|4.08
 San J Tamari, Gluten Free|None|1.25 pounds|2.65
-Activia Yogurt, Lowfat, Mixed Berry - 4 Pack|None|None|3.36
+Activia Yogurt, Lowfat, Mixed Berry|None|4 |3.36
 Wholesome Blue Agave, Organic, Raw|None|11.75 ounces|6.12
 Haagen Dazs Ice Cream, Chocolate|None|28 ounces|8.17
 Manischewitz Egg Noodles, Wide|None|12 ounces|2.55
@@ -2192,7 +2192,7 @@ Lundberg Organic Rice Cakes, Brown Rice, Salt-Free|None|8.5 ounces|4.69
 Bobs Red Mill Sorghum, Whole Grain|None|24 ounces|4.09
 Lee Kum Kee Mayo, Sriracha|None|15 ounces|5.00
 Stonyfield YoKids Organic Lowfat Starwberry & Banana StrawberryYogurt|None|25 ounces|5.10
-Stonyfield Farm Organic Yogurt, Lowfat, Kids, 6 Pack|None|6|5.10
+Stonyfield Farm Organic Yogurt, Lowfat, Kids, 6 Each|None|6 |5.10
 PB2 PB2, with Premium Chocolate|None|6.5 ounces|5.61
 Barilla Mostaccioli, No. 71|None|1 pound|2.03
 Kind Healthy Grains Cinnamon Oat Clusters with Flax Seeds|None|None|6.74
@@ -2345,7 +2345,7 @@ Lifeway Kefir Cultured Milk Smoothie, Lowfat, Raspberry|None|8 ounces|1.32
 Lifeway Kefir Cultured Milk Smoothie, Lowfat, Strawberry Banana|None|8 ounces|1.32
 Lifeway Kefir, Organic, Raspberry|None|32 ounces|5.10
 Lifeway Organic Strawberry Kefir|None|32 ounces|5.10
-Lundberg Rice Cakes, Organic, Honey Nut - 1 Pack|None|None|4.69
+Lundberg Rice Cakes, Organic, Honey Nut|None|1 |4.69
 Maple Hill Creamery Cream on Top Vanilla Yogurt|None|32 ounces|6.02
 Natures Path Organic Flax Plus Waffles|None|7.4 ounces|3.88
 Organic Valley Cheese Spread, Neufchatel|None|8 ounces|3.06
