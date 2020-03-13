@@ -207,15 +207,27 @@ def DownloadFile(request):
     WHERE recipes.recipe_num IN {}".format(recip_ids)
     c.execute(grocery_list)
     ingreds = c.fetchall()
-    ingreds = mgl.make_grocery_list(ingreds)
-    prices = mgl.estimate_grocery_price(ingreds)
+    #print(ingreds)
+    grocery_ingreds = mgl.make_grocery_list(ingreds)
+    #print(ingreds)
+    prices = mgl.estimate_grocery_price(grocery_ingreds)
+
 
     # writes/saves ingredients and price to a text file
+    recipes = []
     filename = 'grocery_list.txt'
     with open(filename, 'w') as f:
-        for item in request.session.get('ingredients'):
-            f.write("%s\n" % item[1])
-        f.write(str(prices))
+        for item in ingreds:
+            print(item)
+            recipe = item[4]
+            if recipe not in recipes:
+                recipes.append(recipe)
+                f.write("***%s***\n" % item[4])
+                f.write("%s\n" % item[3])
+            else:
+                f.write("%s\n" % item[3])
+
+        f.write("Your raw price per serving is $%s \nYour total estimated price is $%s" %(prices[0], prices[1]))
 
     response = FileResponse(open(filename, 'rb'), as_attachment = True)
     response['Content-Type']='text/html'
