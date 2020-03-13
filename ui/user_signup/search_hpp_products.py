@@ -12,6 +12,7 @@ import re
 # Use this filename for the database
 DATA_DIR = os.path.dirname(__file__)
 DATABASE_FILENAME = os.path.join(DATA_DIR+"/../", "db.sqlite3")
+
 #brands contains the names of brands and other words we want to ignore
 brands = ["Kellogg's", "General Mills", "Malt-O-Meal", "Nestlé", "Quaker Oats",
             "Post Foods", "Frito Lay", "Oreo", "Campbell's", "Cheerios",
@@ -66,7 +67,6 @@ def match_ingredient_to_product(ingredient):
                 query_string (string): SQL query string
                 arg_list (list): arguments for the SQL query
     """
-    #query_string = "SELECT Ingredients FROM Recipes WHERE Name LIKE ?;"
     query_string = "SELECT * FROM HPP_Products WHERE Product LIKE ?;"
     if ingredient in commonfailures:
         for n in range(len(commonfailures)):
@@ -164,12 +164,10 @@ def find_product(recipe_ingredient):
 		    for brand in brands:
 			    if re.findall(brand, cleanproduct) != []:
 				    cleanproduct = remove_from_string(brand, cleanproduct)
-				    #cleanproduct = remove_from_string(, cleanproduct)
 				    cleanproduct = remove_from_string(",", cleanproduct)
 			    if re.findall(brand, arg_list[0][1:len(arg_list[0])-1]):
 				    cleanarg = remove_from_string(brand, cleanarg)
 		    jaroval = jellyfish.jaro_winkler(cleanarg, cleanproduct)
-		    #print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
 		    if jaroval > matchscore:
 			    matchscore = jaroval
 			    bestmatch = product
@@ -183,8 +181,7 @@ def find_product(recipe_ingredient):
 				    cleanproduct = remove_from_string(",", cleanproduct)
 
 		    jaroval = jellyfish.jaro_winkler(arg_list[0], cleanproduct)
-		    #if jaroval > 0.5:
-		    #  print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
+
 		    if jaroval > matchscore:
 			    matchscore = jaroval
 			    bestmatch = product

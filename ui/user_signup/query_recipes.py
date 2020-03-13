@@ -8,8 +8,28 @@ import sqlite3
 import numpy as np
 
 def query_recipes(user_info, blacklist, past_recipes, past_ingredients):
+    '''
+    Queries recipes based on user preferences (how long they would like to spend on meal prep, Weekly budget, etc.).
+    This query also does not display recipes that a user has blacklisted (i.e. the recipe displayed
+    does not fulfill their dietary restrictions or it looks disgusting- option 1 or 2) or if they have rated
+    any past recipes poorly (i.e. rating 1 or 2). If a user is blacklisting (deselecting) a recipe, we will just
+    perform a query for that one recipe and will keep the others the same.
+
+    Input:
+        user_info (list) -> user_info[6] is the "effort" the person is willing to put into meal prep for that week
+        blacklist (list) -> list of ID for a recipe that they are blacklisting (i.e. we just want to perform a query
+                            for that one recipe)
+        past_recipes (list) -> either None if the user has never generated recipes yet or a list of the user's past menu
+                                generation
+        past_ingredients (list) -> either None if the user has never generated recipes yet or a list of the user's
+                                    ingredients based on their past recipes
+    Output:
+        returns queried recipes and ingredients for that week
+    '''
     connection = sqlite3.connect('db.sqlite3')
     c = connection.cursor()
+
+    # finding prep-time for how lazy the user input into our form for that week
     if user_info[6] == '1':
         prep_time = 15
     elif user_info[6] == '2':
@@ -21,8 +41,8 @@ def query_recipes(user_info, blacklist, past_recipes, past_ingredients):
     else:
         prep_time = 90
 
+    # if a user has never generated past recipes before
     if past_recipes is None:
-
         sql_recipes = "SELECT * FROM recipes WHERE prep_time <= ? AND (recipe_num not in \
         (SELECT recipe_num FROM blacklisted_recipes WHERE user_id = ? AND \
         (reason = 'option1' OR reason = 'option2')) OR (\
@@ -32,11 +52,13 @@ def query_recipes(user_info, blacklist, past_recipes, past_ingredients):
         c.execute(sql_recipes, [prep_time, user_info[7], user_info[7]])
         recipes = c.fetchall()
         ids = tuple([x[0] for x in recipes])
-        c.execute("select recipe_ingred.recipe_num, ingred_codes.name from ingred_codes join recipe_ingred ON recipe_ingred.ingredient_id = ingred_codes.ingredient_id where recipe_num in {}".format(ids))
+        c.execute("SELECT recipe_ingred.recipe_num, ingred_codes.name FROM ingred_codes JOIN \
+         recipe_ingred ON recipe_ingred.ingredient_id = ingred_codes.ingredient_id WHERE recipe_num in {}".format(ids))
         ingred = c.fetchall()
         return recipes, ingred
-    else:
 
+    # if a user has generated past recipes before (i.e. potentially has blacklisted or rated recipes)
+    else:
         sql_recipes = "SELECT * FROM recipes WHERE prep_time <= ? AND (recipe_num not in \
         (SELECT recipe_num from blacklisted_recipes where user_id = ? AND \
         (reason = 'option1' OR reason = 'option2')) OR (\
@@ -47,7 +69,8 @@ def query_recipes(user_info, blacklist, past_recipes, past_ingredients):
         new_recipe = c.fetchone()
         index = past_recipes.index([x for x in past_recipes if blacklist[0] in x][0])
         past_recipes[index] = (list(new_recipe))
-        c.execute("select recipe_ingred.recipe_num, ingred_codes.name from ingred_codes join recipe_ingred ON recipe_ingred.ingredient_id = ingred_codes.ingredient_id where recipe_num = ?", (new_recipe[0],))
+        c.execute("SELECT recipe_ingred.recipe_num, ingred_codes.name FROM ingred_codes JOIN\
+         recipe_ingred ON recipe_ingred.ingredient_id = ingred_codes.ingredient_id WHERE recipe_num = ?", (new_recipe[0],))
         new_ingred = [list(x) for x in c.fetchall()]
         ingred_no_blacklist = [y for y in past_ingredients if blacklist[0] not in y]
         ingred_no_blacklist += new_ingred

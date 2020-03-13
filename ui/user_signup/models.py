@@ -44,7 +44,6 @@ RATING_CHOICES = [
     ('rating5', '5 - It was excellent!')
 ]
 
-# Create your models here.
 class User_Diet(models.Model):
     dietary_restrictions = MultiSelectField(choices = DIETARY_CHOICES)
 
@@ -53,6 +52,9 @@ class User_Diet(models.Model):
 
 
 class User_Data(models.Model):
+    '''
+    Model that displays user information that helps us query recipes the user will like
+    '''
     firstname = models.CharField(max_length=500, default='')
     lastname = models.CharField(max_length=500, default='')
     email = models.EmailField(max_length=500, default='')
@@ -67,12 +69,18 @@ class User_Data(models.Model):
 
 
 class Deselect_Options(models.Model):
+    '''
+    Model that captures why users are deselecting a recipe
+    '''
     reason = models.CharField(max_length=500, default='', choices=BLACKLIST_CHOICES)
     def get_absolute_url(self):
         return reverse('/home/dashboard/meals/')
 
 
 class Rate_Recipes(models.Model):
+    '''
+    Model that captures users' ratings of recipes
+    '''
     rating = models.CharField(max_length=500, default='', choices=RATING_CHOICES)
     def get_absolute_url(self):
         return reverse('/home/dashboard/past_recipes/')

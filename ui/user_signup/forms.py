@@ -4,6 +4,9 @@ from user_signup.models import BUDGET_CHOICES, LAZINESS_CHOICES, DIETARY_CHOICES
 from django.forms import ModelForm
 
 class CustomForm(forms.ModelForm):
+    '''
+    Form that displays users' preferences on the html page
+    '''
     class Meta:
         model = User_Data
 
@@ -27,12 +30,18 @@ class CustomForm(forms.ModelForm):
         }
 
 class Deselect(forms.ModelForm):
+    '''
+    Form that displays users' reasons for deselecting a recipe
+    '''
     class Meta:
         model = Deselect_Options
         fields = ['reason']
         labels = {'reason': "Reason for deselecting recipe:"}
 
 class RateRecipe(forms.ModelForm):
+    '''
+    Form that displays users' ratings of recipes
+    '''
     class Meta:
         model = Rate_Recipes
         fields = ['rating']

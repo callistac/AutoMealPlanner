@@ -2,10 +2,24 @@ import sqlite3
 import re
 
 def generate_html_page(filename, recipes):
+    '''
+    Function that generates either the newly generated meals html page or
+    generates the past meals html file. Also loads in the popup form to either
+    allow the user to select a reason as to why they are deselecting a recipe
+    or allow them to rate a recipe they have tried in the past week.
+
+    Input:
+        filename (string) - either meals.html or past_meals.html
+        recipes (list) - list of recipes randomly queried (or queried from the
+        past_recipes table if filename = past_meals.html)
+
+    Output:
+        writes html file either to templates/user_signup/meals.html or
+        to templates/user_signup/past_meals.html
+    '''
     ids = ()
     rec_ids = [x[0] for x in recipes]
     rec_ids = tuple(rec_ids)
-    print("IDSSSS", rec_ids)
 
     num_days = len(recipes)
     with open('user_signup/templates/user_signup/'+filename, 'w') as file:
@@ -40,7 +54,9 @@ def generate_html_page(filename, recipes):
         list based on the below recipes by pressing \"Generate Grocery List\", or you can press \"Deselect Recipe\" \
         button if you want a new recipe. After deselecting a recipe, a short form will pop up so that \
         you can let us know why you deselected it, we will refrain from showing you this recipe again based on your response.\
-        If you would like to deselect all 7 recipes, refresh the page."
+        If you would like to deselect all 7 recipes, refresh the page. Save the ingredients to your computer by\
+        selecting \"Generate Grocery List\"; you can find an estimated price for your groceries that week at the\
+        bottom of the text file. Enjoy!"
 
         header_old_meals = "Your past meals have been generated. Select generate grocery list to regenerate your grocery list from last week.\
         If you would like to rate a recipe from last week to help us better learn what you like, please click \"Rate Recipe\" below the recipe."

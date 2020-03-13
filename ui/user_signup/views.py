@@ -218,15 +218,16 @@ def DownloadFile(request):
     filename = 'grocery_list.txt'
     with open(filename, 'w') as f:
         for item in ingreds:
-            print(item)
             recipe = item[4]
             if recipe not in recipes:
+                f.write('\n')
                 recipes.append(recipe)
                 f.write("***%s***\n" % item[4])
                 f.write("%s\n" % item[3])
             else:
                 f.write("%s\n" % item[3])
 
+        f.write('\n')
         f.write("Your raw price per serving is $%s \nYour total estimated price is $%s" %(prices[0], prices[1]))
 
     response = FileResponse(open(filename, 'rb'), as_attachment = True)
