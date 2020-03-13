@@ -44,6 +44,8 @@ def make_grocery_list(ingredient_list):
         amount = ingredient[1]
         unit = ingredient[2]
         name = ingredient[3]
+        recipe_num = ingredient[4]
+
         if str(amount) == 'nan' and unit != "None":
             amount = 1
 
@@ -68,7 +70,7 @@ def make_grocery_list(ingredient_list):
         if name not in ingredients.keys() or \
                 str(ingredients[name]["amount"]) == "nan":
             ingredients[name] = {"servings": servings, "amount": amount, \
-                    "unit": unit}
+                    "unit": unit, "recipe_num" : recipe_num}
 
         elif ingredients[name]["unit"] == unit:
             ingredients[name]["amount"] += amount

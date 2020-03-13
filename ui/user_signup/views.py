@@ -154,19 +154,19 @@ def DownloadFile(request):
 
 
     recip_ids = tuple([x[0] for x in recipes])
-    print(request.session.get('ingredients'))
+    #print(request.session.get('ingredients'))
     grocery_list = "select recipes.servings, recipe_ingred.amount, recipe_ingred.unit,  \
-    ingred_codes.name from recipe_ingred join recipes join ingred_codes on\
+    ingred_codes.name, recipes.title from recipe_ingred join recipes join ingred_codes on\
     recipe_ingred.recipe_num = recipes.recipe_num and recipe_ingred.ingredient_id = ingred_codes.ingredient_id\
     where recipes.recipe_num in {}".format(recip_ids)
     c.execute(grocery_list)
     #print("the restuling stufsf", c.fetchall())
     ingreds = c.fetchall()
-    print(ingreds)
-    ingreds = mgl.make_grocery_list(ingreds)
     #print(ingreds)
+    ingreds = mgl.make_grocery_list(ingreds)
+    print(ingreds)
     prices = mgl.estimate_grocery_price(ingreds)
-    print(prices)
+    #print(prices)
     # generating text file with ingredients
     filename = 'grocery_list.txt'
     with open(filename, 'w') as f:
