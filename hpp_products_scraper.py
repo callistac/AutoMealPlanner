@@ -134,7 +134,6 @@ while remaining > 0:
 
         if name:
             while name[len(name)-1] in undesirableendings:
-                print("yeah the ending sucked")
                 name = name[0:(len(name)-1)]
         else:
             while nameandquant[len(nameandquant)-1] in undesirableendings:
