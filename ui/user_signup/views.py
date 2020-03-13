@@ -172,6 +172,7 @@ def DownloadFile(request):
     with open(filename, 'w') as f:
         for item in request.session.get('ingredients'):
             f.write("%s\n" % item[1])
+        f.write(str(prices))
 
 
     response = FileResponse(open(filename, 'rb'), as_attachment = True)
