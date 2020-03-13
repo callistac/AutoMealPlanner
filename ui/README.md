@@ -1,6 +1,7 @@
 *Managed by Katya Gozman and Callista Christ*
 
-*** Note: see table_schema file for information on the SQL tables we used for project and their respective schema ***
+*** Note: see table_schema file for information on the SQL tables we used for project and their respective schema, all tables are saved to the db.sqlite3 database in the ui folder ***
+*** Note 2: all html webpage files are listed in templates/user_signup. 'base_html' file is applied to all of the corresponding html files ***
 
 This django web interface allows our user to interact with our automated meal algorithm. Our web interface prompts a user to create an account with us, and encrypts their password as well as makes sure that their username is not already taken by another user. It also checks to make sure their password is not a commonly used/bad password such as  "password1234".
 
