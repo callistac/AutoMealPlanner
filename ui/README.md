@@ -19,4 +19,5 @@ We will update their information in the database accordingly.
 Check out our home page (http://127.0.0.1:8000/home/) or about page (http://127.0.0.1:8000/home/about/) to learn more about this project!
 
 *We did not have time to actually implement anything with regards to the weekly budget of a user. In the future, we would set it so that the user would be given a week of recipes where the total cost would be less than their budget, but given our current implementation we found this unfeasible to do within the time constraints.
+
 %If a user has multiple dietary restrictions, the system will current chose recipes that fulfill at least one of them. Like user budget, we did not have time to create a system to get recipes that fill all dietary restrictions given time constraints, and even so, the numer of recipes would be greatly limited for the user (there are only so many recipes that are listed as vegetarian and kosher in the categories at the same time for example). If a recipe doesn't meet a restriction, the user can always blacklist the recipe.
