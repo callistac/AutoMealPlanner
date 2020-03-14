@@ -356,7 +356,7 @@ def register(request):
         else:
             # if the inps ut is valid either due to unmatching passwords or username already taken
             form = UserCreationForm()
-            messages.add_message(request, messages.SUCCESS, 'Input is invalid!')
+            messages.add_message(request, messages.ERROR, 'Input is invalid!')
             args = {'form':form}
             return render(request, 'user_signup/new_user.html', args)
     else:
