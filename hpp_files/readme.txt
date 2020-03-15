@@ -1,5 +1,7 @@
 *Managed by Dylan Sukay*
 
+if you'd like to run these files they need to be put back into the main directory, the paths do not work as is.
+
 hpp_products_scraper.py -> ran in the terminal using the command "python hpp_products_scrapper.py". Scrapes all the items in HPP Produce's website and saves them to hpp_products.csv. Ideally, it gets the product info from the json sent to the browser to update the websites infinite scroll, but about ~30% it has to visit the individual product page to get the full name of the item.
 
 hpp_products.csv -> the Product info is saved here. It goes in 4 columns (Name, Price Per Pound, Quantity, and Price). When there isn't info to put into a certain column (e.g. the product does not have a price per pound) there is a None. Price per Pound and Price are integers (no excess info like $ or /LB is saved) and Name and Quantity are strings. This is imported into a SQL table that can be queried by our django webserver, so this file is not used again after that.
