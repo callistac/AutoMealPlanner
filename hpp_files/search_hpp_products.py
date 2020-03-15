@@ -8,11 +8,10 @@ import sqlite3
 import os
 import jellyfish
 import re
-#mport url_util as util
+#import url_util as util
 
 # Use this filename for the database
 DATA_DIR = os.path.dirname(__file__)
-print(DATA_DIR)
 DATABASE_FILENAME = os.path.join(DATA_DIR+"/ui/", "db.sqlite3")
 
 #brands contains the names of brands and other words we want to ignore
@@ -70,15 +69,15 @@ def generate_query_string(recipe_ingredient):
     Takes a list of ingredients and generates an SQL query for each one
     that will return Products that match ingredient string.
     
-    input: recipe_ingredients (list): list of the ingredients for a receipe
+    input: recipe_ingredients (string): receipe ingredient
 
-    output: queries_and_args (tuple) of:
+    output: query_and_arg (tuple) of:
                 query_string (string): SQL query string
                 arg_list (list): arguments for the SQL query
     '''
     query_and_args = match_ingredient_to_product(recipe_ingredient)
 
-    return query_and_args
+    return query_and_arg
 
 
 def find_product(recipe_ingredient):
@@ -92,7 +91,7 @@ def find_product(recipe_ingredient):
 
     input: recipe_ingredients (string): recipe ingredient
 
-    output: bestmatches (tuple): SQL of products that correspond 
+    output: bestmatches (tuple): SQL row of the product that corresponds 
                                 to recipe_ingredients 
     '''
     db = sqlite3.connect(DATABASE_FILENAME)
@@ -108,8 +107,10 @@ def find_product(recipe_ingredient):
     longest_fetch_len = 0
     longest_fetch = []
     otherfetches = []
+
+    #if no names matched the exact string, break into words and look again
     if fetch == []:
-	    #leave bestmatch as None in case new search still doesn't turn up results
+	    #leave bestmatch as None in case new search doesn't turn up results
 	    bestmatch = None
 	    newargs = arg_list[0][1:len(arg_list[0])-1].split(" ")
 	    all_fetches = []
@@ -123,6 +124,18 @@ def find_product(recipe_ingredient):
 		    else:
 			    all_fetches.append(fetch)
 
+        '''
+        Make a list, combinedfetches, that contains the items that appear in
+        the most searches when the ingredient string is broken up into words.
+        First, make the main fetch the longest one. Second, add all other fetch
+        lists to otherfetches. Third, for each product in the longest fetch, 
+        increment the count for each fetch it is (in otherfetches). If the
+        count seen is equal to highest count, it will be added to the final
+        list of products to score for similarity. If it is the highest, the
+        list will be reset and this fetch will be the only one in it (for now).
+        Finally, if no item in longestfetch is seen in otherfetches, add all
+        products from all fetches to the list to be scored.
+        '''
 	    for fetch in all_fetches:
 		    if longest_fetch_len < len(fetch):
 			    longest_fetch_len = len(fetch)
@@ -147,6 +160,8 @@ def find_product(recipe_ingredient):
 			    for fetch in otherfetch:
 				    combinedfetches.append(fetch)
 
+        #for all the products that matches to an equal number of words, 
+        #return the one with the best jaro_winkler score
 	    for product in combinedfetches:
 		    cleanproduct = product[0]
 		    cleanarg = arg_list[0][1:len(arg_list[0])-1]
@@ -160,7 +175,8 @@ def find_product(recipe_ingredient):
 		    if jaroval > matchscore:
 			    matchscore = jaroval
 			    bestmatch = product
-
+    #if the ingredient string matched to products, return the product with the
+    #best jaro_winkler score
     else:
 	    for product in fetch:
 		    cleanproduct = product[0]

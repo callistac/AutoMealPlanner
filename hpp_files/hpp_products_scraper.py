@@ -132,6 +132,7 @@ while remaining > 0:
             if priceperquantlist !=[]:
                 priceperquant = re.findall("\d*\.\d*", priceperquantlist[0])[0]
 
+        #take excess spaces and weird puncuation off the end of names
         if name:
             while name[len(name)-1] in undesirableendings:
                 name = name[0:(len(name)-1)]
@@ -139,7 +140,7 @@ while remaining > 0:
             while nameandquant[len(nameandquant)-1] in undesirableendings:
                 nameandquant = nameandquant[0:(len(nameandquant)-1)]
 
-        #remove dollar sign, each if it there, and random spaces from price
+        #remove dollar sign, each if it's there, and random spaces from price
         price = re.findall("\d*\.\d*", price)[0]
 
         #save to productlist depending on what info we scrapped

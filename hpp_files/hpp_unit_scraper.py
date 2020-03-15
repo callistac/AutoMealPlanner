@@ -10,6 +10,7 @@ with open('hpp_products.') as csvfile:
 	products = csv.reader(csvfile, delimiter='|')
 
 	possible_units = []
+	#ppq is price per quantity
 	possible_ppq = []
 	for row in products:
 		priceperquants = re.findall("[a-zA-Z]*", row[1])
