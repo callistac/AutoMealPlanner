@@ -1,6 +1,6 @@
 '''
 CS 122 Winter '20 Group Project
-The function find_product matches the ingredients of a receipe to the products
+The function find_product matches the ingredients of a recipe to the products
 online at Hyde Park Produce. It will return the product row from the 
 HPP_Products SQL table.
 '''
@@ -8,9 +8,11 @@ import sqlite3
 import os
 import jellyfish
 import re
+#mport url_util as util
 
 # Use this filename for the database
 DATA_DIR = os.path.dirname(__file__)
+print(DATA_DIR)
 DATABASE_FILENAME = os.path.join(DATA_DIR+"/ui/", "db.sqlite3")
 
 #brands contains the names of brands and other words we want to ignore
@@ -42,20 +44,6 @@ cantmatchon = ["black", "white", "sliced", "large", "head", "extract",
 commonfailures = ["brown sugar", "cream", "beef"]
 shouldmatch = ["sugar%brown", "Heavy Whipping Cream", "ground beef"]
 
-#MOVE THIS FN TO A UTILS FILE
-def remove_from_string(remove, string, removeposition = ""):
-    removeobj = re.search(remove, string)
-    if removeobj != None:
-        if removeobj.end() == len(string) or removeposition == \
-            "everythingafter":
-            string = string[:removeobj.start()]
-        elif removeposition == "everythingbefore":
-            string = string[removeobj.end():]
-        elif removeposition == "":
-            string = string[:removeobj.start()] + string[removeobj.end():]
-    return string
-
-
 def match_ingredient_to_product(ingredient):
     """
     Generates a query and arg list to look for Products with names that 
@@ -67,13 +55,13 @@ def match_ingredient_to_product(ingredient):
                 query_string (string): SQL query string
                 arg_list (list): arguments for the SQL query
     """
-    #query_string = "SELECT Ingredients FROM Recipes WHERE Name LIKE ?;"
     query_string = "SELECT * FROM HPP_Products WHERE Product LIKE ?;"
     if ingredient in commonfailures:
         for n in range(len(commonfailures)):
             if commonfailures[n] == ingredient:
                 ingredient = shouldmatch[n]
-    arg_list = ["%"+ingredient+"%"]
+    arg_list = ["%" + ingredient + "%"]
+
     return (query_string, arg_list)
 
 
@@ -89,6 +77,7 @@ def generate_query_string(recipe_ingredient):
                 arg_list (list): arguments for the SQL query
     '''
     query_and_args = match_ingredient_to_product(recipe_ingredient)
+
     return query_and_args
 
 
@@ -101,9 +90,9 @@ def find_product(recipe_ingredient):
     For the products returned in both processes, we remove brand names and then
     compute a Jaro_Winkler score and return the product with the highest.
 
-    input: recipe_ingredients (list): list of the ingredients for a receipe
+    input: recipe_ingredients (string): recipe ingredient
 
-    output: bestmatches (list): names of products that correspond 
+    output: bestmatches (tuple): SQL of products that correspond 
                                 to recipe_ingredients 
     '''
     db = sqlite3.connect(DATABASE_FILENAME)
@@ -163,13 +152,11 @@ def find_product(recipe_ingredient):
 		    cleanarg = arg_list[0][1:len(arg_list[0])-1]
 		    for brand in brands:
 			    if re.findall(brand, cleanproduct) != []:
-				    cleanproduct = remove_from_string(brand, cleanproduct)
-				    #cleanproduct = remove_from_string(, cleanproduct)
-				    cleanproduct = remove_from_string(",", cleanproduct)
+				    cleanproduct = util.remove_from_string(brand, cleanproduct)
+				    cleanproduct = util.remove_from_string(",", cleanproduct)
 			    if re.findall(brand, arg_list[0][1:len(arg_list[0])-1]):
-				    cleanarg = remove_from_string(brand, cleanarg)
+				    cleanarg = util.remove_from_string(brand, cleanarg)
 		    jaroval = jellyfish.jaro_winkler(cleanarg, cleanproduct)
-		    #print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
 		    if jaroval > matchscore:
 			    matchscore = jaroval
 			    bestmatch = product
@@ -179,12 +166,10 @@ def find_product(recipe_ingredient):
 		    cleanproduct = product[0]
 		    for brand in brands:
 			    if re.findall(brand, cleanproduct) != []:
-				    cleanproduct = remove_from_string(brand, cleanproduct)
-				    cleanproduct = remove_from_string(",", cleanproduct)
+				    cleanproduct = util.remove_from_string(brand, cleanproduct)
+				    cleanproduct = util.remove_from_string(",", cleanproduct)
 
 		    jaroval = jellyfish.jaro_winkler(arg_list[0], cleanproduct)
-		    #if jaroval > 0.5:
-		    #  print(arg_list[0][1:len(arg_list[0])-1], cleanproduct, jaroval)
 		    if jaroval > matchscore:
 			    matchscore = jaroval
 			    bestmatch = product
