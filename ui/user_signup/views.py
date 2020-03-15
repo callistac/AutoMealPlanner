@@ -71,14 +71,17 @@ class User_Dashboard(TemplateView):
         results = []
         diets = []
         results.append(request.user.id)
-        for key, value in request.POST.lists():
+        keys = ['csrfmiddlewaretoken', 'firstname', 'lastname', 'email', 'zip', 'budget', 'laziness', 'dietary_restrictions']
+        request_post = sorted(request.POST.lists(), key = lambda x: keys.index(x[0]))
+        for tuple in request_post:
+            key = tuple[0]
+            value = tuple[1]
             if key == 'csrfmiddlewaretoken':
                 pass
             elif key == 'dietary_restrictions':
                 diets.append(value)
             else:
                 results.append(value[0])
-
         c = connection.cursor()
         c.execute(user_data_statement, results)
 
@@ -308,8 +311,11 @@ class Change_User_Info(TemplateView):
     def post(self, request):
         connection = sqlite3.connect('db.sqlite3')
         c = connection.cursor()
-
-        for key, value in request.POST.lists():
+        keys = ['csrfmiddlewaretoken', 'firstname', 'lastname', 'email', 'zip', 'budget', 'laziness', 'dietary_restrictions']
+        request_post = sorted(request.POST.lists(), key = lambda x: keys.index(x[0]))
+        for tuple in request_post:
+            key = tuple[0]
+            value = tuple[1]
             if key == 'csrfmiddlewaretoken':
                 pass
             else:
