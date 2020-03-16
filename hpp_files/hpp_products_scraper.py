@@ -11,6 +11,11 @@ import re
 import csv
 import bs4
 import url_util as util
+import sys
+
+sys.path.append("../")
+import url_util
+
 try:
     from urllib.parse import urlparse
 except ImportError:
@@ -37,14 +42,14 @@ hpp_url1 =  "&ajax=true&productCategoryId=&resetFilters=false&national" +\
 #All the units lists were generated with HPP_unit_scrapper
 strings_to_remove =  ["C&amp;W ", "&amp"]
 
-list_of_units = [' Count', ' Pound', ' LB', ' Pint',' lb', ' Gallon', ' oz', 
+list_of_units = [' Count', ' Pound', ' LB', ' Pint',' lb', ' Gallon', ' oz',
                 ' oz.', ' Pounds', ' Quart',  ' Liter', ' Liters', ' Gallons',
-                ' Grams',' Ounce', ' Ounces', ' Fluid Ounces', ' Pints', 
-                ' Milliliters', ' ct', ' Each', ' Jumbo Eggs', ' Large Eggs', 
-                ' Extra Large Eggs', ' Pack'] 
+                ' Grams',' Ounce', ' Ounces', ' Fluid Ounces', ' Pints',
+                ' Milliliters', ' ct', ' Each', ' Jumbo Eggs', ' Large Eggs',
+                ' Extra Large Eggs', ' Pack']
 units_to_remove = [' ct', ' Each', ' Count', ' Extra Large Eggs',
                     ' Jumbo Eggs', ' Large Eggs', 'Pack']
-units_to_convert = {" LB":" Pound", " lb":" pound", 
+units_to_convert = {" LB":" Pound", " lb":" pound",
                     " Fluid Ounces":" fluid_ounces", "oz": " oz"}
 undesirableendings = ["-", " ", ",", "."]
 
@@ -60,13 +65,13 @@ while remaining > 0:
     data = json.loads(raw)
     products = data['products']
 
-    for product in products:                                                                                                             
+    for product in products:
         productinfo = re.findall("[\t]{6}.*", product)
         nameandquant = (productinfo[0][6:len(productinfo[0])])
         price = (productinfo[2][6:len(productinfo[2])])
 
         nameandquant = remove_from_string("<", nameandquant, "everythingafter")
-        nameandquant = remove_from_string(">\n", nameandquant, 
+        nameandquant = remove_from_string(">\n", nameandquant,
                                                 "everythingbefore")
         price = remove_from_string("<", price, "everythingafter")
 
@@ -75,14 +80,14 @@ while remaining > 0:
         checkiffulltitle = re.findall(".*\.\.\.", nameandquant)
         if checkiffulltitle != []:
             product_url = re.findall("https://www.*", product)[0]
-            request = util.get_request(product_url[0:-1]) 
-            #get_request(...) ends with " since it was a string in the json, 
+            request = util.get_request(product_url[0:-1])
+            #get_request(...) ends with " since it was a string in the json,
             #we have to remove that or it will go to an error page.
             request_html = util.read_request(request)
             soup = bs4.BeautifulSoup(request_html, "html.parser")
             nameandquant0 = str(soup.find_all("h1",
                 class_="product-detail-info__main-text"))
-        
+
             nameandquant = re.findall(nameandquant[0:5]+".*", nameandquant0)[0]
             nameandquant = remove_from_string("</h1>]", nameandquant)
 
