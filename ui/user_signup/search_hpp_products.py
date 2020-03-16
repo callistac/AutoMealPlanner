@@ -110,19 +110,19 @@ def find_product(recipe_ingredient):
 
     #if no names matched the exact string, break into words and look again
     if fetch == []:
-	    #leave bestmatch as None in case new search doesn't turn up results
-	    bestmatch = None
-	    newargs = arg_list[0][1:len(arg_list[0])-1].split(" ")
-	    all_fetches = []
-	    combinedfetches = []
-	    for newarg in newargs:
-		    query = c.execute(query_string, ["%"+newarg+"%"])
-		    fetch = query.fetchall()
-		    if newarg in cantmatchon:
-			    otherfetches.append(fetch)
-			    fetch = []
-		    else:
-			    all_fetches.append(fetch)
+        #leave bestmatch as None in case new search doesn't turn up results
+        bestmatch = None
+        newargs = arg_list[0][1:len(arg_list[0])-1].split(" ")
+        all_fetches = []
+        combinedfetches = []
+        for newarg in newargs:
+            query = c.execute(query_string, ["%"+newarg+"%"])
+            fetch = query.fetchall()
+            if newarg in cantmatchon:
+                otherfetches.append(fetch)
+                fetch = []
+            else:
+                all_fetches.append(fetch)
 
         '''
         Make a list, combinedfetches, that contains the items that appear in
@@ -136,59 +136,60 @@ def find_product(recipe_ingredient):
         Finally, if no item in longestfetch is seen in otherfetches, add all
         products from all fetches to the list to be scored.
         '''
-	    for fetch in all_fetches:
-		    if longest_fetch_len < len(fetch):
-			    longest_fetch_len = len(fetch)
-			    longest_fetch = fetch
+        
+        for fetch in all_fetches:
+            if longest_fetch_len < len(fetch):
+                longest_fetch_len = len(fetch)
+                longest_fetch = fetch
 
-	    for fetch in all_fetches:
-		    if fetch not in longest_fetch:
-			    otherfetches.append(fetch)
+        for fetch in all_fetches:
+            if fetch not in longest_fetch:
+                otherfetches.append(fetch)
 
-	    for fetch in longest_fetch:
-		    count = 0
-		    for otherfetch in otherfetches:
-			    if fetch in otherfetch:
-				    count += 1
-		    if count > maxcount:
-			    maxcount = count
-			    combinedfetches = []
-		    if count >= maxcount:
-			    combinedfetches.append(fetch)
-	    if maxcount == 0:
-		    for otherfetch in otherfetches:
-			    for fetch in otherfetch:
-				    combinedfetches.append(fetch)
+        for fetch in longest_fetch:
+            count = 0
+            for otherfetch in otherfetches:
+                if fetch in otherfetch:
+                    count += 1
+            if count > maxcount:
+                maxcount = count
+                combinedfetches = []
+            if count >= maxcount:
+                combinedfetches.append(fetch)
+        if maxcount == 0:
+            for otherfetch in otherfetches:
+                for fetch in otherfetch:
+                    combinedfetches.append(fetch)
 
         #for all the products that matches to an equal number of words, 
         #return the one with the best jaro_winkler score
-	    for product in combinedfetches:
-		    cleanproduct = product[0]
-		    cleanarg = arg_list[0][1:len(arg_list[0])-1]
-		    for brand in brands:
-			    if re.findall(brand, cleanproduct) != []:
-				    cleanproduct = util.remove_from_string(brand, cleanproduct)
-				    cleanproduct = util.remove_from_string(",", cleanproduct)
-			    if re.findall(brand, arg_list[0][1:len(arg_list[0])-1]):
-				    cleanarg = util.remove_from_string(brand, cleanarg)
-		    jaroval = jellyfish.jaro_winkler(cleanarg, cleanproduct)
-		    if jaroval > matchscore:
-			    matchscore = jaroval
-			    bestmatch = product
+        for product in combinedfetches:
+            cleanproduct = product[0]
+            cleanarg = arg_list[0][1:len(arg_list[0])-1]
+            for brand in brands:
+                if re.findall(brand, cleanproduct) != []:
+                    cleanproduct = util.remove_from_string(brand, cleanproduct)
+                    cleanproduct = util.remove_from_string(",", cleanproduct)
+                if re.findall(brand, arg_list[0][1:len(arg_list[0])-1]):
+                    cleanarg = util.remove_from_string(brand, cleanarg)
+            jaroval = jellyfish.jaro_winkler(cleanarg, cleanproduct)
+            if jaroval > matchscore:
+                matchscore = jaroval
+                bestmatch = product
     #if the ingredient string matched to products, return the product with the
     #best jaro_winkler score
     else:
-	    for product in fetch:
-		    cleanproduct = product[0]
-		    for brand in brands:
-			    if re.findall(brand, cleanproduct) != []:
-				    cleanproduct = util.remove_from_string(brand, cleanproduct)
-				    cleanproduct = util.remove_from_string(",", cleanproduct)
+        for product in fetch:
+            cleanproduct = product[0]
+            for brand in brands:
+                if re.findall(brand, cleanproduct) != []:
+                    cleanproduct = util.remove_from_string(brand, cleanproduct)
+                    cleanproduct = util.remove_from_string(",", cleanproduct)
 
-		    jaroval = jellyfish.jaro_winkler(arg_list[0], cleanproduct)
-		    if jaroval > matchscore:
-			    matchscore = jaroval
-			    bestmatch = product
+            jaroval = jellyfish.jaro_winkler(arg_list[0], cleanproduct)
+            if jaroval > matchscore:
+                matchscore = jaroval
+                bestmatch = product
 
     db.close()
     return bestmatch
