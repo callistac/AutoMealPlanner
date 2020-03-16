@@ -1,13 +1,18 @@
 '''
+Functions for generating the grocery list for a given input of ingredients and
+for estimating the price for the recipes in a given week.
 
+Written by: Melissa Merz
 '''
 import pint
 import math
 import user_signup.search_hpp_products as shp
 
+
+#to hopefully cut down on conversions, set the default unit system to US imperial
 UREG = pint.UnitRegistry(system = "US")
 
-#measurement units which pint will recognize
+#standard measurement units which pint recognizes
 VALID_UNITS = ["cup", "gallon", "tablespoon", "teaspoon", "pint", "quart", \
         "ounce", "fluid_ounce", "pound"]
 
@@ -26,15 +31,37 @@ LARGE_UNITS = ["loaf", "box", "package"]
 
 def convert_mass_to_volume(mass):
     '''
+    Converts a mass or weight "mass" to a volume using the density of water as
+    a rough estimate for the density of the ingredient.
 
+    Input:
+        mass (pint Quantity object): mass or weight of the ingredient in any
+                valid units (like pounds, ounces, or grams)
+
+    Output:
+        volume (pint Quantity object): volume of the ingredient in cm**3
     '''
     density = UREG("1g / cm**3")
+    volume = (mass/density).to_reduced_units()
 
-    return (mass/density).to_reduced_units()
+    return volume
 
 
 def make_grocery_list(ingredient_list):
     '''
+    Makes a grocery list given an input list of ingredients "ingredient_list" by
+    consolidating like ingredients into single entries.
+
+    Input:
+        ingredient_list (list of tuples): list of ingredient tuples containing
+                the number of servings of the recipe it's from, the numerical
+                amount required, the units the recipe calls for it in (like
+                cups or tablespoons), and the name of the ingredient
+
+    Output:
+        ingredients (dict): dictionary with the names of ingredients as the
+                keys and dictionaries with the servings, amounts, and units
+                as the values
 
     '''
     ingredients = {}
@@ -119,7 +146,25 @@ def make_grocery_list(ingredient_list):
 
 def estimate_grocery_price(grocery_list):
     '''
+    Takes in the output dictionary from the make_grocery_list function and
+    interfaces with the database of Hyde Park Produce products through
+    search_hpp_products.py to estimate the price of the recipes for the week.
 
+    Input:
+        grocery_list (dict: dictionary with the names of ingredients as the
+                keys and dictionaries with the servings, amounts, and units
+                as the values
+
+    Output:
+        (tuple): tuple containing the so-called "raw price", or the price per
+                serving for the whole week, based only on how much of each item
+                is used (so if a can of beans is needed, but only 50% is used
+                for the recipe, it would only add 50% of the price of the can
+                to the "raw price"), and the "total price", or the total cost
+                assuming that the base number of servings of each recipe is
+                made, and that the user is purchasing the whole quantities of
+                each (so if a can of beans is needed, but only 50% is used for
+                the recipe, it would add the full price to the "total price")
     '''
     raw_price = 0
     total_price = 0

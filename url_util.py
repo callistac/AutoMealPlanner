@@ -1,9 +1,18 @@
+'''
+Modified version of the util.py file provided in pa2 to work on allrecipes.com.
+Also used for scraping the Hyde Park Produce site. Global variables which are
+defined before the is_url_ok_to_follow function are only applied to the
+allrecipes.com crawling, as the "ok to follow" check is unnecessary for the Hyde
+Park Produce scraping.
+
+Modified by: Melissa Merz
+'''
+
+
 import urllib.parse
 import requests
 import os
 import bs4
-
-######### DO NOT CHANGE THIS CODE  #########
 
 
 def get_request(url):
@@ -113,6 +122,8 @@ def convert_if_relative_url(current_url, new_url):
         return urllib.parse.urljoin(current_url, new_url)
 
 
+#the following are all bad page extensions, as they lead off into non-recipe
+#areas of the website, they should thus be ignore by the crawler
 ACCOUNT = ("https://www.allrecipes.com/account")
 LEN_ACCOUNT = len(ACCOUNT)
 
@@ -144,6 +155,8 @@ DRINKS = ("/drinks/")
 
 HOLIDAYS = ("/holidays-and-events/")
 
+#the following aren't categories on allrecipes.com, so it's easier to exclude
+#them here by examining the urls and just not crawling to them
 PICKLES = ("pickle")
 
 INSTANT_POT = ("instant-pot")
@@ -247,32 +260,3 @@ def is_url_ok_to_follow(url, limiting_domain):
     # does it have the right extension
     (filename, ext) = os.path.splitext(parsed_url.path)
     return (ext == "" or ext == ".html")
-
-
-def is_subsequence(tag):
-    '''
-    Does the tag represent a subsequence?
-    '''
-    return isinstance(tag, bs4.element.Tag) and 'class' in tag.attrs \
-        and tag['class'] == ['courseblock', 'subsequence']
-
-
-def is_whitespace(tag):
-    '''
-    Does the tag represent whitespace?
-    '''
-    return isinstance(tag, bs4.element.NavigableString) and (tag.strip() == "")
-
-
-def find_sequence(tag):
-    '''
-    If tag is the header for a sequence, then
-    find the tags for the courses in the sequence.
-    '''
-    rv = []
-    sib_tag = tag.next_sibling
-    while is_subsequence(sib_tag) or is_whitespace(tag):
-        if not is_whitespace(tag):
-            rv.append(sib_tag)
-        sib_tag = sib_tag.next_sibling
-    return rv
